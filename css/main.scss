@@ -3,10 +3,10 @@
 ---
 @charset "utf-8";
 
-
+// title should have font-family: 'Clicker Script', cursive;
 
 // Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
+$base-font-family: 'Open Sans', sans-serif;
 $base-font-size:   16px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
@@ -47,3 +47,11 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
+
+.site-title { font-family: 'Clicker Script', cursive; font-size: 80pt }
+.site-title:hover { text-decoration: none }
+.motto { font-size: 12pt; font-style: italic; text-align: center; }
+.site-header { background-color: #F5F5DC; }
+.site-footer { background-color: #F5F5DC; }
+.red_flower { margin: 5px; width: 70px  }
+.blue_flower { margin: 0px; width: 40px; vertical-align: top; margin-left: -16px; margin-top: -10px; }
