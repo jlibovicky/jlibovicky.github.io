@@ -48,10 +48,11 @@ $on-laptop:        800px;
         "syntax-highlighting"
 ;
 
-.site-title { font-family: 'Clicker Script', cursive; font-size: 80pt }
+.site-title { font-family: 'Clicker Script', cursive; font-size: 80pt; vertical-align: sub }
 .site-title:hover { text-decoration: none }
 .motto { font-size: 12pt; font-style: italic; text-align: center; }
 .site-header { background-color: #F5F5DC; }
 .site-footer { background-color: #F5F5DC; }
-.red_flower { margin: 5px; width: 70px  }
+.red_flower { margin: 0px; width: 95px; margin-bottom: -15px; margin-top: -15px  }
 .blue_flower { margin: 0px; width: 40px; vertical-align: top; margin-left: -16px; margin-top: -10px; }
+.car { margin: 0px; width: 110px; vertical-align: bottom; margin-left: -80px;    }

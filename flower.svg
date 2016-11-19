@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="300"
-   height="291"
-   viewBox="0 0 300 291"
+   width="310"
+   height="301"
+   viewBox="0 0 310 301"
    id="svg3227"
    version="1.1"
    inkscape:version="0.91 r13725"
@@ -42,7 +42,7 @@
      id="namedview3251"
      showgrid="false"
      inkscape:zoom="0.43369216"
-     inkscape:cx="76.849308"
+     inkscape:cx="-281.69995"
      inkscape:cy="581.73997"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -52,17 +52,18 @@
      id="title3229">Retro-looking abstract flower patterns in late 60's - early 70's style.</title>
   <g
      id="g3268"
-     transform="translate(-14,-11.01421)">
+     transform="translate(-9,-6.01421)"
+     style="stroke:#000000;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
     <path
        d="m 14,135.8081 c 0,-31.8636 25.83075,-57.6945 57.6945,-57.6945 16.0674,0 30.6009,6.5682 41.0619,17.1657 -4.122,-7.9437 -6.4509,-16.9674 -6.4509,-26.535 0,-31.8639 25.8309,-57.6945 57.6945,-57.6945 31.8636,0 57.6945,25.8306 57.6945,57.6945 0,9.5676 -2.3289,18.5913 -6.4509,26.5353 10.461,-10.5978 24.9945,-17.166 41.0619,-17.166 31.8636,0 57.6945,25.8309 57.6945,57.6945 0,31.8639 -25.8309,57.6945 -57.6945,57.6945 -3.1902,0 -6.3198,-0.2589 -9.3693,-0.7569 18.8637,9.4872 31.8063,29.0193 31.8063,51.5739 0,31.86384 -25.8309,57.69461 -57.6945,57.69461 -28.9185,0 -52.8675,-21.27605 -57.048,-49.02881 -4.1805,27.75276 -28.1295,49.02881 -57.048,49.02881 -31.8636,0 -57.6945,-25.83077 -57.6945,-57.69461 0,-22.5546 12.9426,-42.0867 31.8063,-51.5739 -3.0495,0.498 -6.1791,0.7569 -9.3693,0.7569 C 39.83075,193.5026 14,167.672 14,135.8081 Z M 130.0304,165.8 c 0,18.7608 15.2088,33.9696 33.9696,33.9696 18.7608,0 33.9696,-15.2088 33.9696,-33.9696 0,-18.7608 -15.2088,-33.9696 -33.9696,-33.9696 -18.7608,0 -33.9696,15.2088 -33.9696,33.9696 z"
        id="path3233"
        inkscape:connector-curvature="0"
-       style="fill:#d40000" />
+       style="fill:#d40000;stroke:#000000;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <circle
        r="56.25"
        cy="166.30435"
        cx="165.48912"
        id="path3266"
-       style="fill:#ffcc00" />
+       style="fill:#ffcc00;stroke:#000000;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>
