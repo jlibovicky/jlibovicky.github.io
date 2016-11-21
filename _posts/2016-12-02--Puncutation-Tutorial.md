@@ -18,6 +18,16 @@ semicolon. Recurrent neural networks are very powerful models which are used
 for such complicated tasks as machine translation or automatic speech
 recognition, they should work for this simple task as well.
 
+In a machine-learning jargon, we would say we will formulate the problem as a
+sequence-labeling problem - to each symbol in a sequence we assign a label
+(comma, semi-colon, nothing) as we can see in the following scheme.
+
+![sequence-labeling](/assets/punctuation.svg)
+
+Although it may see complicated for now, we will return it many times during
+this tutorial.
+
+
 This, indeed, can never be done 100% correctly - the punctuation very often
 changes the meaning of the sentences. A computer cannot know whether you wanted
 to write a defining or non-defining clause. Let us at least see how far we can
