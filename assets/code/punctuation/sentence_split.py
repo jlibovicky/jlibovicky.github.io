@@ -2,12 +2,13 @@
 
 import re
 import sys
+import nltk
 
 # patterns to detect stop and start of a document
 DOC_START = re.compile(r"^<doc .*>")
 DOC_END = re.compile(r"^</doc>$")
 
-if __name__ == "__main__":
+def main():
     # initialize the sentence splitter
     sentence_splitter = nltk.data.load("tokenizers/punkt/english.pickle")
 
@@ -22,7 +23,7 @@ if __name__ == "__main__":
             lines_added += 1
 
         if lines_added >= 1000:
-            sentences = sentence_splitter.tokenize(tmp_text)
+            sentences = sentence_splitter.tokenize(collected_text)
             # the last sentence may be unfinished, we leave it for the
             # the next sentence splitting
             for sent in sentences[:-1]:
@@ -30,5 +31,8 @@ if __name__ == "__main__":
             collected_text = sentences[-1]
             lines_added = 0
 
-    for sent in sentence_splitter.tokenize(current_text):
+    for sent in sentence_splitter.tokenize(collected_text):
         print(sent)
+
+if __name__ == "__main__":
+    main()
