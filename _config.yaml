@@ -1,8 +1,11 @@
 github: [metadata]
 theme: minima
+markdown: kramdown
 kramdown:
    input: GFM
    hard_wrap: false
+   auto_ids: true
+   syntax_highlighter: rouge
 gems:
    - jekyll-coffeescript
    - jekyll-paginate
