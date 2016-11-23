@@ -21,13 +21,6 @@ def main():
 
         wait = True
         for char in line:
-            if ENGLISH_CHARS.match(char):
-                text.append(char)
-            elif char != ',' and char != ';':
-                text.append('_')  # placeholder for non-standard characters
-            else:
-                wait = True
-
             if wait:  # we need to wait what the next symbol will be
                 wait = False
             else:
@@ -35,6 +28,15 @@ def main():
                     punct.append(char)
                 else:
                     punct.append('_')
+
+            if ENGLISH_CHARS.match(char):
+                text.append(char)
+            elif char != ',' and char != ';':
+                text.append('_')  # placeholder for non-standard characters
+            else:
+                wait = True
+
+
         punct.append('_')
 
         assert len(text) == len(punct)
