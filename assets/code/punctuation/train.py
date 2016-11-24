@@ -59,9 +59,6 @@ def main():
     val_text, val_lengths = data_to_tensor(itertools.islice(f_text, 1000), ALPHABET_DICT)
     val_punct, _ = data_to_tensor(itertools.islice(f_punct, 1000), TARGET_DICT)
 
-    reg_losses = tf.get_collection(tf.GraphKeys.REGULARIZATION_LOSSES)
-    reg_constant = 0.01  # Choose an appropriate one.
-
     bias_regex = re.compile(r'[Bb]ias')
     regularizable = [tf.reduce_sum(
         v ** 2) for v in tf.trainable_variables()
@@ -74,10 +71,13 @@ def main():
     optimizer = tf.train.AdamOptimizer(1e-4)
     train_op = optimizer.minimize(cost)
 
-    session = tf.Session()
+    session = tf.Session(config=tf.ConfigProto(
+          intra_op_parallelism_threads=6))
     session.run(tf.initialize_all_variables())
+    saver = tf.train.Saver()
 
     batch_n = 0
+    max_f_score = 0.
 
     while True:
         batch_n += 1
@@ -104,15 +104,23 @@ def main():
                            targets: val_punct,
                            lengths: val_lengths,
                            dropout_plc: 1.0})
-            accuracy, precision, recall, f_score = evaluation(predictions, punct_batch, batch_lengths)
-            print("batch {}:\tacc: {:.4f}\tprec: {:.4f}\trecall: {:.4f}\txent: {:.4f}".format(
-                batch_n, accuracy, precision, recall, f_score, cross_entropy))
+            accuracy, precision, recall, f_score = evaluation(
+                predictions, punct_batch, batch_lengths)
 
             print("")
             print("Valdidation after batch {}".format(batch_n))
-            print("acc: {:.4f}\tprec: {:.4f}\trecall: {:.4f}\txent: {:.4f}".format(
-                accuracy, precision, recall, f_score, cross_entropy))
+            print("  accuracy:       {:.5f}".format(accuracy))
+            print("  precision:      {:.5f}".format(precision))
+            print("  recall:         {:.5f}".format(recall))
+            print("  F1-score:       {:.5f} (previous max: {:.5f})".format(f_score, max_f_score))
+            print("  cross-entropy:  {:.5f}".format(cross_entropy))
+
             print("")
+
+            if f_score > max_f_score:
+                max_f_score = f_score
+                saver.save(session, "model.variables")
+
 
     f_text.close()
     f_punct.close()
