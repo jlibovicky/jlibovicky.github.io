@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Neural Machine Translation and Translation Theory
+title: What is Neural Machine Translation Capable Of?
 ---
 
 A year ago at [EMNLP in Lisbon](http://www.emnlp2015.org/) I saw a paper called
