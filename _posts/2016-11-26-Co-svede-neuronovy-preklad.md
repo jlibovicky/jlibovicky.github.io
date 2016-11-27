@@ -8,7 +8,7 @@ zahlédl článek, který se jmenoval [On Statistical Machine Translation and
 Translation
 Theory](http://www.emnlp2015.org/proceedings/DiscoMT/pdf/DiscoMT22.pdf) (O
 statistickém strojovém překladu a teorii překladu) od Christiana Hardmeiera.
-Stál před svým posterem a každému, kdo se jeho posteru zastavil se skoro
+    Stál před svým posterem a každému, kdo se u jeho posteru zastavil se skoro
 omlouval, že jeho příspěvek není o nějaké metodě, která zlepšuje stávají
 statistický strojový překlad — a je to _pouhá_ reflexe toho, co dělá
 statistický překlad z pohledu translatologie. Bohužel tento zajímavý článek
@@ -17,9 +17,9 @@ brzy nahrazen překladači založenými na neuronových sítích. Je to jen pár
 co Google oznámil, že ve svém [Google Translate nasazuje neuronový strojový
 překlad](https://research.googleblog.com/2016/09/a-neural-network-for-machine.html).
 
-V tomto příspěvku se tedy společně podíváme na to, jak z hlediska teorie
-překladu s příchodem neuronového strojového překladu a no to, co by pro
-neuronový strojový překlad mohlo znamenat do budoucna.
+V tomto příspěvku se tedy společně podíváme na to, co se změnilo z hlediska
+teorie překladu s příchodem neuronového strojového překladu, a na to, co by to
+pro neuronový strojový překlad mohlo znamenat do budoucna.
 
 ## Nakládáme s významem
 
@@ -29,8 +29,8 @@ o sobě a význam celku postupně skládáme z významu jednolitých částí te
 či víceslovných ustálených frází). Tváříme se, že význam je _kompozicionální_.
 
 Pokud by to tak skutečně bylo, byl by statistický frázový strojový překlad
-(způsob, jakým se strojový překlad dělal doteď), pravděpodobně nejlepší možným
-způsobem, jak k automatickém překladu přistoupit. Pro statistický strojový
+    (způsob, jakým se strojový překlad dělal doteď), pravděpodobně nejlepším možným
+způsobem, jak k automatickému překladu přistoupit. Pro statistický strojový
 překlad je ústředním pojmem slovní zarovnání (word alignment). Z velkých
 paralelních korpusů extrahujeme, jak se slova nebo celé skupiny slov nejčastěji
 překládají do druhého jazyka. To je takzvaný _překladový model_, dovede slovům
@@ -38,7 +38,7 @@ a frázím přiřadit jejich pravděpodobné překlady. Úkolem překladového m
 zachovat význam stavebních prvků textu.
 
 Kromě překladového modelu používají statistické překladové systémy ještě další
-model, takzvaný _jazykový model_. Jeho úkolem je zajistit se z překladů
+model, takzvaný _jazykový model_. Jeho úkolem je zajistit, aby se z překladů
 jednotlivých slov a frází nakonec sestavila gramaticky správná a plynulá věta.
 Úkolem jazykového modelu je postarat se kompozici významu.
 
@@ -48,11 +48,11 @@ pohdled_. Každý text je nějakým pokusem o komunikaci. Autor textu se snaží
 než dlouhá série podivných obrázků), svůj význam dostává až tehdy, když ho
 někdo čte — a právě v tento moment se komunikace završuje. Na rozdíl od
 představy, že slova mají význam sama o sobě a jejich skládáním dostaneme
-skutečný význam celého textu, komunikaci se vždy odehrává v nějakém kontextu —
+skutečný význam celého textu, komunikace se vždy odehrává v nějakém kontextu —
 fyzickém, psychologickém, sociálním. Je to v konečném důsledku sám čtenář, kdo
 vytváří význam toho, co čte.
 
-Překlad z jazyka do jazyka potom také určitým způsobem komunikace. Překladatel
+Překlad z jazyka do jazyka je potom také určitým způsobem komunikace. Překladatel
 vezme (zkonstruuje ve svém vlastním kontextu) význam věty ve zdrojovém jazyce
 (komunikace s původním autorem) a přepíše jej do cílového jazyka, kdy mu čtenář
 opět přiřadí nějaký význam. Statistický strojový překlad něco takového ani
@@ -60,25 +60,25 @@ vzdáleně nedělá — ale ten neuronový by to mohl alespoň simulovat.
 
 Tento zajímavý pohled na význam pochází z knihy How to do Things with Words z
 roku 1955 od britského filozofa Johna Austina. Jeho myšlenky zásadním způsobem
-ovlivnili pohled na význam a komunikaci a stály například u zrodu takzvaných
-kulturálních studií v šedesátých letech, které se zaměřovala především na
+ovlivnily pohled na význam a komunikaci a stály například u zrodu takzvaných
+kulturálních studií v šedesátých letech, která se zaměřovala především na
 masovou komunikaci.
 
 ## Neuronový překlad je jiný
 
 Klasický statistický strojový překlad nejprve odhadne překlady pro slova a
 víceslovné fráze ve zdrojové větě (slova s pokud možno stejným významem). V
-další kroku se z nich snaží vybudovat smysluplnou větu, kdy snaží co nejlépe
-vyvážit mnoho protichůdných podmínek: vybrat nejadekvátnější překlady; každé
-slovo by mělo být přeloženo právě jednou; slova ve výsledné větě by měla být
-přibližně v podobném pořadí jako ve zdrojové větě; věta by měla být co
-nejplynulejší; a takto bychom mohli vymyslet ještě celou řadu další kritérií.
-Tímto způsobem se automatický překlad prováděl do konce devadesátých let do
+dalším kroku se z nich snaží vybudovat smysluplnou větu, kdy se snaží co
+nejlépe vyvážit mnoho protichůdných podmínek: vybrat nejadekvátnější překlady;
+každé slovo by mělo být přeloženo právě jednou; slova ve výsledné větě by měla
+být přibližně v podobném pořadí jako ve zdrojové větě; věta by měla být co
+nejplynulejší; a takto bychom mohli vymyslet ještě celou řadu dalších kritérií.
+Tímto způsobem se automatický překlad prováděl od konce devadesátých let do
 dneška.
 
 Tento přístup byl v nedávné době překonán překladem založeným na neuronových
-sítích. Překladač větu ve zdrojovém jazycei pomocí jedné rekurentní neuronové,
-enkodéru, sítě zakóduje do vektoru reálných čísel. Následně z této reprezentace
+sítích. Překladač větu ve zdrojovém jazyce pomocí jedné rekurentní neuronové sítě,
+enkodéru, zakóduje do vektoru reálných čísel. Následně z této reprezentace
 pomocí další rekurentní neuronové sítě, dekodéru, vygeneruje větu v cílovém
 jazyce. Můžeme si to představit jako jeden stroj, který postupně čte slova
 vstupní věty a při tom mění svůj vnitřní stav, který je reprezentovaný vektorem
@@ -87,9 +87,9 @@ stroji, který postupně vydává slova v cílovém jazyce a s každým slovem t
 změní svůj vnitřní stav (ten tedy vždy kóduje zbytek věty). V praxi je postup
 generování o něco složitější — používá se takzvaný beam search. To si můžeme
 představit tak, že spustíme několik dekodérů paralelně a v průběhu generování
-cílové věty vždy pracujeme z několik hypotézami současně a nakonec z nich
+cílové věty vždy pracujeme s několika hypotézami současně a nakonec z nich
 vybereme tu nejlepší. Pokročilejší neuronové modely používají ještě takzvaný
-_attention mode_. S jeho pomocí se může dekodér v průběhu dekódovaní zaměřovat
+_attention model_. S jeho pomocí se může dekodér v průběhu dekódovaní zaměřovat
 na konkrétní slova ze vstupní věty.
 
 Při uvažování o fungování neuronových překladových systémů se můžeme zcela
@@ -102,7 +102,7 @@ textu napsáno, ale také kontextem, v jakém se nachází. I to je možné v
 neuronových systémech zohlednit. Už teď existují metody, jak lze číselnými
 vektory reprezentovat celé texty (používají se například pro podobnostní
 vyhledávání nebo analýzu sentimetu). Pokud bychom například dávali takový
-vektor jako další vstup neuronovému překladači, dokázal by s dostatkem dat
+vektor jako další vstup neuronovému překladači, dokázal by se s dostatkem dat
 naučit využívat i lingvistický kontext jednotlivých vět, v kterém se nutně
 odráží i psychologický a sociální kontext textů. Jednotlivé sociální skupiny
 používají jazyk odlišně (mají své sociolekty), různé způsoby vyjádření se
@@ -110,7 +110,7 @@ používají při různých příležitostech — to vše se v textech jaksi jen
 odráží. Způsob, jak se vypořádat s různými kontexty vznikl i v rámci
 statistického strojového překladu — říká se mu doménová adaptace. V tomto
 případě je ale nutné mít samostatné systémy pro každou z domén (např. sportovní
-zpravodajství, odborné texty pro lékaře atd.)
+zpravodajství, odborné texty pro lékaře atd.).
 
 ## A co dál?
 
@@ -122,6 +122,7 @@ Translation](http://www.statmt.org/wmt16/).
 
 Jako velice slibný směr ve výzkumu strojového překladu se jeví vícejazyčné
 metody. [Google nedávno publikoval metodu](https://arxiv.org/abs/1611.04558),
-jak lze naučit strojový překlad pro jazykový pár, ale bylo možné je propojit
-přes jiné jazykové páry. V konečném důsledku by potom data jakákoli dvojjazyčná
-data mohlo být použita ku prospěchu překladu mezi všemi jazyky navzájem.
+jak lze naučit strojový překlad pro jazykový pár, pro který je velmi málo
+trénovacích dat, ale bylo možné je propojit přes jiné jazykové páry. V konečném
+důsledku by potom data jakákoli dvojjazyčná data mohlo být použita ku prospěchu
+překladu mezi všemi jazyky navzájem.
