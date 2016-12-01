@@ -40,10 +40,10 @@ zachovat význam stavebních prvků textu.
 Kromě překladového modelu používají statistické překladové systémy ještě další
 model, takzvaný _jazykový model_. Jeho úkolem je zajistit, aby se z překladů
 jednotlivých slov a frází nakonec sestavila gramaticky správná a plynulá věta.
-Úkolem jazykového modelu je postarat se kompozici významu.
+Úkolem jazykového modelu je postarat se o kompozici významu.
 
 K významu lze ale přistoupit jaksi z druhé strany — často nazývané _kulturální
-pohdled_. Každý text je nějakým pokusem o komunikaci. Autor textu se snaží něco
+pohled_. Každý text je nějakým pokusem o komunikaci. Autor textu se snaží něco
 říct svým čtenářům, nějak na něj působí (informuje ho, chce změnit jeho
 chování, pobavit atd.). Text sám o sobě žádný význam nemá (není to koneckonců
 nic než dlouhá série podivných obrázků, kterým říkáme písmena), svůj význam

@@ -19,14 +19,14 @@ Translate](https://research.googleblog.com/2016/09/a-neural-network-for-machine.
 In this post, we will have a look at whether and how did the issues from the
 paper change by introducing an entirely new class of models.
 
-## Dealing with the Meaning
+## Dealing with Meaning
 
 Traditionally, the translation was understood in terms of meaning equivalence.
 A text in a source language has a meaning in that language and we want to
-produce a text in a target language that has the same meaning, whatever the
-meaning is. If we add the assumption of meaning compositionality — the meaning
-of the text arises from aggregating meaning of smaller parts (i.e., word,
-colloquial multi-word expressions and idiomatic phrases).
+produce a text in a target language that has the same meaning, whatever meaning
+is. If we add the assumption of meaning compositionality — the meaning of the
+text arises from aggregating meaning of smaller parts (i.e., word, colloquial
+multi-word expressions and idiomatic phrases).
 
 If this was really the case, [the phrase-based statistical machine
 translation](https://en.wikipedia.org/wiki/Statistical_machine_translation)
