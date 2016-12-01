@@ -35,7 +35,8 @@ def evaluation(logits, targets, lengths):
 
     for predicted, target, length in zip(predicted_classes, targets, lengths):
         correct += np.sum(predicted[:length] == target[:length])
-        correct_punct += np.sum((predicted[:length] > 0) & (predicted[:length] == target[:length]))
+        correct_punct += np.sum((predicted[:length] > 0)
+                                & (predicted[:length] == target[:length]))
         in_prediction += np.sum(predicted[:length] > 0)
         in_annotation += np.sum(target[:length] > 0)
 
@@ -56,13 +57,14 @@ def main():
     f_text = open(sys.argv[1])
     f_punct = open(sys.argv[2])
 
-    val_text, val_lengths = data_to_tensor(itertools.islice(f_text, 1000), ALPHABET_DICT)
+    val_text, val_lengths = data_to_tensor(
+        itertools.islice(f_text, 1000), ALPHABET_DICT)
     val_punct, _ = data_to_tensor(itertools.islice(f_punct, 1000), TARGET_DICT)
 
     bias_regex = re.compile(r'[Bb]ias')
     regularizable = [tf.reduce_sum(
         v ** 2) for v in tf.trainable_variables()
-                     if bias_regex.findall(v.name)]
+        if bias_regex.findall(v.name)]
 
     l2_value = sum(v * v for v in regularizable)
     l2_cost = 1e-6 * l2_value
@@ -72,7 +74,7 @@ def main():
     train_op = optimizer.minimize(cost)
 
     session = tf.Session(config=tf.ConfigProto(
-          intra_op_parallelism_threads=6))
+        intra_op_parallelism_threads=8))
     session.run(tf.initialize_all_variables())
     saver = tf.train.Saver()
 
@@ -81,8 +83,10 @@ def main():
 
     while True:
         batch_n += 1
-        text_batch, batch_lengths = data_to_tensor(itertools.islice(f_text, 64), ALPHABET_DICT)
-        punct_batch, _ = data_to_tensor(itertools.islice(f_punct, 64), TARGET_DICT)
+        text_batch, batch_lengths = data_to_tensor(
+            itertools.islice(f_text, 64), ALPHABET_DICT)
+        punct_batch, _ = data_to_tensor(
+            itertools.islice(f_punct, 64), TARGET_DICT)
 
         if text_batch.shape == (0,):
             break
@@ -93,7 +97,8 @@ def main():
                        targets: punct_batch,
                        lengths: batch_lengths,
                        dropout_plc: 0.5})
-        accuracy, precision, recall, f_score = evaluation(predictions, punct_batch, batch_lengths)
+        accuracy, precision, recall, f_score = evaluation(
+            predictions, punct_batch, batch_lengths)
         print("batch {}:\tacc: {:.4f}\tprec: {:.4f}\trecall: {:.4f}\tF1: {:.4f}\txent: {:.4f}".format(
             batch_n, accuracy, precision, recall, f_score, cross_entropy))
 
@@ -112,7 +117,8 @@ def main():
             print("  accuracy:       {:.5f}".format(accuracy))
             print("  precision:      {:.5f}".format(precision))
             print("  recall:         {:.5f}".format(recall))
-            print("  F1-score:       {:.5f} (previous max: {:.5f})".format(f_score, max_f_score))
+            print(
+                "  F1-score:       {:.5f} (previous max: {:.5f})".format(f_score, max_f_score))
             print("  cross-entropy:  {:.5f}".format(cross_entropy))
 
             print("")
@@ -120,7 +126,6 @@ def main():
             if f_score > max_f_score:
                 max_f_score = f_score
                 saver.save(session, "model.variables")
-
 
     f_text.close()
     f_punct.close()
