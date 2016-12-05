@@ -63,12 +63,12 @@ def build_network(max_lenght=300, embedding_size=32, gru_size=256,
         mask_flatten = tf.reshape(mask, shape=[-1])
 
         xent_per_char = tf.nn.sparse_softmax_cross_entropy_with_logits(
-                logits_flatten, targets_flatten)
+            logits_flatten, targets_flatten)
 
         cost = tf.reduce_sum(xent_per_char * mask_flatten) / tf.reduce_sum(mask)
 
         predictions = tf.reshape(
-            logits, shape=[-1, max_lenght, len(TARGET_CLASSES)])
+            logits_flatten, shape=[-1, max_lenght, len(TARGET_CLASSES)])
 
     if add_lm:
         # Forward language model on the first layer as regularization
