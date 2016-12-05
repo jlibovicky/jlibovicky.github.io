@@ -77,6 +77,7 @@ def main():
         intra_op_parallelism_threads=8))
     session.run(tf.initialize_all_variables())
     saver = tf.train.Saver()
+    saver.restore(session, "model.variables")
 
     batch_n = 0
     max_f_score = 0.
@@ -84,9 +85,9 @@ def main():
     while True:
         batch_n += 1
         text_batch, batch_lengths = data_to_tensor(
-            itertools.islice(f_text, 64), ALPHABET_DICT)
+            itertools.islice(f_text, 128), ALPHABET_DICT)
         punct_batch, _ = data_to_tensor(
-            itertools.islice(f_punct, 64), TARGET_DICT)
+            itertools.islice(f_punct, 128), TARGET_DICT)
 
         if text_batch.shape == (0,):
             break
