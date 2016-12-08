@@ -17,16 +17,16 @@ brzy nahrazen překladači založenými na neuronových sítích. Je to jen pár
 co Google oznámil, že ve svém [Google Translate nasazuje neuronový strojový
 překlad](https://research.googleblog.com/2016/09/a-neural-network-for-machine.html).
 
-V tomto příspěvku se tedy společně podíváme na to, co se změnilo z hlediska
-teorie překladu s příchodem neuronového strojového překladu, a na to, co by to
-pro neuronový strojový překlad mohlo znamenat do budoucna.
+V tomto příspěvku se tedy společně podíváme na to, co se změnilo s příchodem
+neuronového strojového překladu, a na to, co by to pro neuronový strojový
+překlad mohlo znamenat do budoucna.
 
 ## Nakládáme s významem
 
 Na překlad se tradičně pohlíží jako na nějaký proces, při kterém se zachovává
-význam, ať je význam cokoli. Díváme se na text jako na něco, co má význam samo
+význam, ať už je význam cokoli. Díváme se na text jako na něco, co má význam samo
 o sobě a význam celku postupně skládáme z významu jednolitých částí textu (slov
-či víceslovných ustálených frází). Tváříme se, že význam je _kompozicionální_.
+či víceslovných ustálených frází).
 
 Pokud by to tak skutečně bylo, byl by statistický frázový strojový překlad
 (způsob, jakým se strojový překlad dělal doteď), pravděpodobně nejlepším možným
@@ -45,14 +45,14 @@ jednotlivých slov a frází nakonec sestavila gramaticky správná a plynulá v
 K významu lze ale přistoupit jaksi z druhé strany — často nazývané _kulturální
 pohled_. Každý text je nějakým pokusem o komunikaci. Autor textu se snaží něco
 říct svým čtenářům, nějak na něj působí (informuje ho, chce změnit jeho
-chování, pobavit atd.). Text sám o sobě žádný význam nemá (není to koneckonců
-nic než dlouhá série podivných obrázků, kterým říkáme písmena), svůj význam
-dostává až tehdy, když ho někdo čte — a právě v tento moment se komunikace
-završuje. Na rozdíl od představy, že slova mají význam sama o sobě a jejich
-skládáním dostaneme skutečný význam celého textu, komunikace se vždy odehrává
-v nějakém kontextu — fyzickém, psychologickém, sociálním. Je to v konečném
-důsledku sám čtenář, kdo vytváří význam toho, co čte. Záměr autora se buď
-uskuteční nebo také ne.
+chování, pobavit, naštvat atd.). Text sám o sobě žádný význam nemá (není to
+koneckonců nic než dlouhá série podivných obrázků, kterým říkáme písmena), svůj
+význam dostává až tehdy, když ho někdo čte — a právě v tento moment se
+komunikace završuje. Na rozdíl od představy, že slova mají význam sama o sobě a
+jejich skládáním dostaneme skutečný význam celého textu, komunikace se vždy
+odehrává v nějakém kontextu — fyzickém, psychologickém, sociálním. Je to
+v konečném důsledku sám čtenář, kdo vytváří význam toho, co čte. Záměr autora
+se buď uskuteční nebo také ne.
 
 Překlad z jazyka do jazyka je potom také určitým způsobem komunikace.
 Překladatel vezme (zkonstruuje ve svém vlastním kontextu) význam věty ve
@@ -60,12 +60,6 @@ zdrojovém jazyce (komunikace s původním autorem) a přepíše jej do cílov�
 jazyka, kdy mu čtenář opět přiřadí nějaký význam. Statistický strojový překlad
 něco takového ani vzdáleně nedělá — ale ten neuronový by to mohl alespoň
 simulovat.
-
-Tento zajímavý pohled na význam pochází z knihy _How to do Things with Words_
-z roku 1955 od britského filozofa Johna Austina. Jeho myšlenky zásadním
-způsobem ovlivnily pohled na význam a komunikaci a stály například u zrodu
-takzvaných kulturálních studií v šedesátých letech, která se zaměřovala
-především na masovou komunikaci.
 
 ## Neuronový překlad je jiný
 
@@ -99,7 +93,7 @@ na konkrétní slova ze vstupní věty.
 
 Při uvažování o fungování neuronových překladových systémů se můžeme zcela
 obejít bez pojmu významové ekvivalence slov a frází napříč jazyky a představy
-kompozicionality významů. Obsah vstupní věty se celý zakóduje do číselného
+významů izolovaných slov. Obsah vstupní věty se celý zakóduje do číselného
 vektoru, který se potom použije k vygenerování věty v cílovém jazyce.
 
 V předchozí části jsem psal o tom, že význam není vytvářen pouze tím, co je
@@ -119,7 +113,7 @@ zpravodajství, odborné texty pro lékaře atd.).
 
 ## A co dál?
 
-Neuronový strojový překlad je stále velice mladý a pravděpobně existuje velký
+Neuronový strojový překlad je stále velice mladý a pravděpodobně existuje velký
 prostor pro zlepšení. Podobně jako v předchozím paradigmatu, lidé přicházejí se
 stále novými triky, jak systém lépe trénovat. Výzkumníci a vývojáři každý rok
 poměřují síly na soutěži [Workshop on Machine

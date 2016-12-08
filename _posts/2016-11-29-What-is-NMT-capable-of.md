@@ -24,9 +24,9 @@ paper change by introducing an entirely new class of models.
 Traditionally, the translation was understood in terms of meaning equivalence.
 A text in a source language has a meaning in that language and we want to
 produce a text in a target language that has the same meaning, whatever meaning
-is. If we add the assumption of meaning compositionality — the meaning of the
-text arises from aggregating meaning of smaller parts (i.e., word, colloquial
-multi-word expressions and idiomatic phrases).
+is. There was also another assumption that the meaning of the text arises from
+aggregating meaning of smaller parts (i.e., word, colloquial multi-word
+expressions and idiomatic phrases).
 
 If this was really the case, [the phrase-based statistical machine
 translation](https://en.wikipedia.org/wiki/Statistical_machine_translation)
@@ -34,22 +34,22 @@ translation](https://en.wikipedia.org/wiki/Statistical_machine_translation)
 the best approach to solve the translation computationally.  Statistical
 machine translation works with a notion of word alignment. Huge amounts of
 parallel texts are processed with a statistical model that finds out which
-phrases from the source language are frequently translated to phrases in the
-target language. This is more or less what we call a _translation model_.  The
-role of the model in the translation system is to ensure _the linguistic
-equivalence_ of the text's phrases.
+phrases from the source language are frequently translated (aligned) to phrases
+in the target language. This is more or less what we call a _translation
+model_.  The role of the model in the translation system is to ensure _the
+linguistic equivalence_ of the text's phrases.
 
 Statistical systems contain also another model called the _language model_. It
 is capable of placing these phrases into a grammatically correct and fluent
-sentence. Its role in the system is to do the _compositionality job_.
+sentence.
 
 There is also an alternative, sometimes called _a cultural_ view on the meaning
 and consequently on how translation should work. It does it the other way
 round. Each text is a potential act of communication. An author of a text is
 trying to say something to its readers, to affect the readers somehow. The
 text, however, does have a meaning on its own (it is a series of funny pictures
-we call the alphabet), it gets its meaning only when somebody reads the text —
-and at that very moment, communication is happening. Unlike the independently
+we call letters), it gets its meaning only when somebody reads the text — and
+at that very moment, communication is happening. Unlike the independently
 existing meaning that is attributed to the words themselves, communication is
 always contextual — it happens in the physical, psychological and most
 importantly social context — we could even say, it is the reader who ultimately
@@ -61,21 +61,13 @@ translator's context) with a text she writes in a target language (the meaning
 arises in the final reader's context). Obviously, the statistical translation
 does nothing like this — but the neural translation could at least simulate it.
 
-This interesting view on meaning comes from a British philosopher [John
-Austin](https://en.wikipedia.org/wiki/J._L._Austin). In his _How to do things
-with words_ an influential book from 1955, he introduced viewing all utterances
-as acts of communication instead of sentences having truth values.  This way of
-thinking also gave birth to [Cultural
-Studies](https://en.wikipedia.org/wiki/Cultural_studies) in the 1960's, which
-applied these ideas on mass communication.
-
 ## Neural Machine Translation is Different
 
 In the statistical translation, the system first guesses some translations of
 words and multi-word phrases in the source sentence. In the next step, it tries
 to construct a sentence in the target language under many constraints: each
 word from the source-language sentence should be translated exactly once; the
-phrases in the target langugae should be more or less in the same order as in
+phrases in the target language should be more or less in the same order as in
 the source sentences; it should look as fluent as possible given the language
 model; and we could find many other useful constraints. This is how machine
 translation worked from the late 1990's until now.
@@ -98,10 +90,10 @@ focus only on some parts of the input sentence.
 
 ![Neural translation animation](/assets/nmt.gif)
 
-While thinking about the neural systems, we can get rid of the notion of
-linguistic equivalence and compositionality entirely. The message of the input
-sentences is encoded into a numerical representation which is then used to
-generate a sentence in target language.
+While thinking about the neural systems, we can get rid of the notion of word
+equivalence entirely. The message of the input sentences is encoded into a
+numerical representation which is then used to generate a sentence in target
+language.
 
 In the previous section, I said that the meaning arises from not only the
 sentence itself, but also the context in which it is received. A neural model
