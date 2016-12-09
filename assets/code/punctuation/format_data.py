@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import re
+import codecs
 import sys
 import unicodedata
 
@@ -22,10 +22,17 @@ def main():
         text = []
         capital = []
 
-        wait = True
         for char in line:
-            text.append(char.lower())
-            capital.append(str(int(char.isupper())))
+            lower_char = char.lower()
+            if lower_char == 'i':
+                text.append(lower_char)
+                capital.append("1")
+            elif lower_char == 'y':
+                text.append('i')
+                capital.append("2")
+            else:
+                text.append(lower_char)
+                capital.append("0")
 
         print("".join(text), file=f_text)
         print("".join(capital), file=f_capital)

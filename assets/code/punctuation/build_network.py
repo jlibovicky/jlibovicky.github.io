@@ -2,13 +2,13 @@ import tensorflow as tf
 
 ALPHABET = list(("_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                  "0123456789\"'?!.,% #@$(){}[]- "))
-TARGET_CLASSES = ["1", "0"]
+TARGET_CLASSES = ["0", "1", "2"]
 
-def build_network(max_lenght=300, embedding_size=32, gru_size=256,
-                  add_higer_layers=False, add_lm=False):
+
+def build_network(embedding_size=32, gru_size=256):
     """RNN architecture for punctuation filling."""
-    seq_input = tf.placeholder(tf.int32, shape=[None, max_lenght])
-    lengths = tf.placeholder(tf.int64, shape=[None])
+    seq_input = tf.placeholder(tf.int32, shape=[None, None])
+    lengths = tf.placeholder(tf.int32, shape=[None])
     dropout_plc = tf.placeholder(tf.float32)
 
     embeddings = tf.get_variable(
@@ -26,77 +26,32 @@ def build_network(max_lenght=300, embedding_size=32, gru_size=256,
             sequence_length=lengths
         )
         output_bidi = tf.concat(2, [output_fw, output_bw])
-        output_bidi_dropped = tf.nn.dropout(output_bidi, dropout_plc)
 
-    if add_higer_layers:
-        with tf.variable_scope("higher_layers"):
-            layers = [
-                tf.nn.rnn_cell.DropoutWrapper(tf.nn.rnn_cell.GRUCell(gru_size),
-                                              1.0, dropout_plc)
-                for _ in range(3)]
-            multi_layer_cell = tf.nn.rnn_cell.MultiRNNCell(
-                layers, state_is_tuple=False)
+    output = output_bidi
+    output_size = 2 * gru_size
 
-            output, _ = tf.nn.dynamic_rnn(
-                multi_layer_cell,
-                output_bidi_dropped,
-                dtype=tf.float32,
-                sequence_length=lengths
-            )
-            output_size = gru_size
-    else:
-        output = output_bidi
-        output_size = 2 * gru_size
-
-    with tf.variable_scope("punct_classifier"):
+    with tf.variable_scope("classifier"):
         weight_matrix = tf.get_variable(
             "W", shape=[output_size, len(TARGET_CLASSES)])
         bias = tf.get_variable("b", shape=[len(TARGET_CLASSES)])
         outputs_reshapes = tf.reshape(output, shape=[-1, output_size])
         outputs_reshapes_dropped = tf.nn.dropout(outputs_reshapes, dropout_plc)
-        logits_flatten = tf.matmul(outputs_reshapes_dropped, weight_matrix) + bias
+        logits_flatten = tf.matmul(
+            outputs_reshapes_dropped, weight_matrix) + bias
 
-        targets = tf.placeholder(tf.int32, shape=[None, max_lenght])
+    with tf.variable_scope("cost"):
+        targets = tf.placeholder(tf.int32, shape=[None, None])
         targets_flatten = tf.reshape(targets, shape=[-1])
 
-        mask = tf.sequence_mask(lengths)
-        mask_flatten = tf.reshape(mask, shape=[-1])
+        relevance_mask = tf.cast(tf.greater(targets_flatten, 0), tf.float32)
 
         xent_per_char = tf.nn.sparse_softmax_cross_entropy_with_logits(
             logits_flatten, targets_flatten)
 
-        cost = tf.reduce_sum(xent_per_char * mask_flatten) / tf.reduce_sum(mask)
+        cost = tf.reduce_sum(xent_per_char * relevance_mask) / \
+            tf.reduce_sum(relevance_mask)
 
         predictions = tf.reshape(
-            logits_flatten, shape=[-1, max_lenght, len(TARGET_CLASSES)])
-
-    if add_lm:
-        # Forward language model on the first layer as regularization
-        with tf.variable_scope("fw_language_model"):
-            fw_lm_weight_matrix = tf.get_variable(
-                "W", shape=[gru_size, len(ALPHABET)])
-            fw_lm_bias = tf.get_variable("b", shape=[len(ALPHABET)])
-
-            reshaped_fw_outputs = tf.reshape(
-                output_fw[:, :-1, :], shape=[-1, gru_size])
-            fw_lm_logits = tf.matmul(
-                reshaped_fw_outputs, fw_lm_weight_matrix) + fw_lm_bias
-
-            cost += .1 * tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
-                fw_lm_logits, tf.reshape(seq_input[:, 1:], shape=[-1])))
-
-        # Backward language model on the first layer as regulazation
-        with tf.variable_scope("bw_language_model"):
-            bw_lm_weight_matrix = tf.get_variable(
-                "W", shape=[gru_size, len(ALPHABET)])
-            bw_lm_bias = tf.get_variable("b", shape=[len(ALPHABET)])
-
-            reshaped_bw_outputs = tf.reshape(
-                output_bw[:, 1:, :], shape=[-1, gru_size])
-            bw_lm_logits = tf.matmul(
-                reshaped_bw_outputs, bw_lm_weight_matrix) + bw_lm_bias
-
-            cost += .1 * tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
-                bw_lm_logits, tf.reshape(seq_input[:, :-1], shape=[-1])))
+            logits_flatten, shape=[-1, tf.reduce_max(lengths), len(TARGET_CLASSES)])
 
     return seq_input, lengths, targets, predictions, cost, dropout_plc
