@@ -1,16 +1,23 @@
+# -*- coding: utf-8 -*- 
+
 import itertools
 import re
 import sys
 import numpy as np
 import tensorflow as tf
 from build_network import build_network, ALPHABET, TARGET_CLASSES
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
 
 ALPHABET_DICT = {char: index for index, char in enumerate(ALPHABET)}
 TARGET_DICT = {clazz: index for index, clazz in enumerate(TARGET_CLASSES)}
 
+MAX_LEN=200
 
 def data_to_tensor(texts, dictionary):
-    text_indices = [[dictionary.get(c, 0) for c in text.rstrip()]
+    text_indices = [[dictionary.get(c, 0) for c in text.rstrip()[:MAX_LEN]]
                     for text in texts]
     lengths = [len(i) for i in text_indices]
     max_len = max(lengths)
@@ -26,33 +33,20 @@ def evaluation(logits, targets, lengths):
 
     correct = 0.
     count = 0.
-    correct_cap = 0.
-    in_prediction = 0.
-    in_annotation = 0.
 
     for predicted, target, length in zip(predicted_classes, targets, lengths):
         count += np.sum(target[:length] > 0)
         correct += np.sum((predicted[:length] == target[:length]) * (target[:length] > 0))
-            #correct_cap += np.sum((predicted[:length] == 1)
-            #                      & (predicted[:length] == target[:length]))
-            #in_prediction += np.sum(predicted[:length] == 1)
-            #in_annotation += np.sum(target[:length] == 1)
 
     accuracy = correct / count
-    #precision = correct_cap / in_prediction if in_prediction else 0.
-    #recall = correct_cap / in_annotation if in_annotation else 0.
-    #if precision and recall:
-    #    f_score = 2 * precision * recall / (precision + recall)
-    #else:
-    #    f_score = 0.
 
     return accuracy
 
 
 def main():
-    seq_input, lengths, targets, predictions_tf, cross_entropy_tf, dropout_plc = build_network()
+    seq_input, lengths, targets, predictions_tf, cross_entropy_tf, dropout_plc, embeddings = build_network()
     print("The graph has been built.")
-    f_text = open(sys.argv[1])
+    f_text = open(sys.argv[1], encoding="utf-8")
     f_cap = open(sys.argv[2])
 
     val_text, val_lengths = data_to_tensor(
@@ -79,6 +73,32 @@ def main():
     saver = tf.train.Saver()
     print("Session initialized.")
 
+    embedding_plot_n = 0
+    def plot_embeddings():
+        nonlocal embedding_plot_n
+        if embedding_plot_n < 500:
+            plt.clf()
+            embeddings_values = session.run(embeddings)
+            tsne = TSNE(n_components=2, random_state=0)
+            np.set_printoptions(suppress=True)
+            tsne = TSNE(n_components=2, random_state=0)
+            Y = tsne.fit_transform(embeddings_values)
+            plt.scatter(Y[:, 0], Y[:, 1], s=0)
+            for label, x, y in zip(ALPHABET, Y[:, 0], Y[:, 1]):
+                plt.annotate(label, xy=(x, y), xytext=(0, 0), textcoords='offset points')
+
+            axes = plt.gca()
+            axes.set_xlim([-200,200])
+            axes.set_ylim([-200,200])
+
+            plt.axis('off')
+            plt.tick_params(axis='both', left='off', top='off', right='off', bottom='off', labelleft='off', labeltop='off', labelright='off', labelbottom='off')
+
+            plt.savefig("embeddings_{}.png".format(embedding_plot_n))
+
+            embedding_plot_n += 1
+
+    plot_embeddings()
     batch_n = 0
     max_acc = 0.
 
@@ -123,6 +143,9 @@ def main():
             if accuracy > max_acc:
                 max_acc = accuracy
                 saver.save(session, "model.variables")
+
+        if batch_n % 100 == 0:
+            plot_embeddings()
 
     f_text.close()
     f_cap.close()

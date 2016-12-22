@@ -1,14 +1,24 @@
 #!/usr/bin/python
 
-import codecs
+"""Prepare text and correct answers."""
+
 import sys
 import unicodedata
 
+CZECH_CHARS = set(list("aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž"
+                       "AÁBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ"))
+
 def remove_accents(input_str):
     """Convert text to pure ASCII."""
-    nfkd_form = unicodedata.normalize('NFKD', input_str)
-    only_ascii = nfkd_form.encode('ASCII', 'ignore')
-    return only_ascii.decode('ASCII')
+    res = ""
+    for char in input_str:
+        if char in CZECH_CHARS:
+            res += char
+        else:
+            nfkd_form = unicodedata.normalize('NFKD', char)
+            only_ascii = nfkd_form.encode('ASCII', 'ignore')
+            res += only_ascii.decode('ASCII')
+    return res
 
 def main():
     # file with text without capitaluation
@@ -24,11 +34,14 @@ def main():
 
         for char in line:
             lower_char = char.lower()
-            if lower_char == 'i':
+            if lower_char == 'i' or lower_char == "í":
                 text.append(lower_char)
                 capital.append("1")
             elif lower_char == 'y':
                 text.append('i')
+                capital.append("2")
+            elif lower_char == "ý":
+                text.append("í")
                 capital.append("2")
             else:
                 text.append(lower_char)
