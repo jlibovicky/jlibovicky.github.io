@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*- 
+"""Training script for the spelling task."""
+# -*- coding: utf-8 -*-
 
 import itertools
 import re
@@ -6,15 +7,11 @@ import sys
 import numpy as np
 import tensorflow as tf
 from build_network import build_network, ALPHABET, TARGET_CLASSES
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-from sklearn.manifold import TSNE
 
 ALPHABET_DICT = {char: index for index, char in enumerate(ALPHABET)}
 TARGET_DICT = {clazz: index for index, clazz in enumerate(TARGET_CLASSES)}
 
-MAX_LEN=200
+MAX_LEN = 200
 
 def data_to_tensor(texts, dictionary):
     text_indices = [[dictionary.get(c, 0) for c in text.rstrip()[:MAX_LEN]]
@@ -42,9 +39,23 @@ def evaluation(logits, targets, lengths):
 
     return accuracy
 
+def get_train_op(model):
+    bias_regex = re.compile(r'[Bb]ias')
+    regularizable = [tf.reduce_sum(
+        v ** 2) for v in tf.trainable_variables()
+                     if bias_regex.findall(v.name)]
+
+    l2_value = sum(v * v for v in regularizable)
+    l2_cost = 1e-6 * l2_value
+
+    cost = model.cost + l2_cost
+    optimizer = tf.train.AdamOptimizer(1e-4)
+    train_op = optimizer.minimize(cost)
+    return train_op
+
 
 def main():
-    seq_input, lengths, targets, predictions_tf, cross_entropy_tf, dropout_plc, embeddings = build_network()
+    model = build_network()
     print("The graph has been built.")
     f_text = open(sys.argv[1], encoding="utf-8")
     f_cap = open(sys.argv[2])
@@ -54,17 +65,7 @@ def main():
     val_cap, _ = data_to_tensor(itertools.islice(f_cap, 400), TARGET_DICT)
     print("Validation data are ready.")
 
-    bias_regex = re.compile(r'[Bb]ias')
-    regularizable = [tf.reduce_sum(
-        v ** 2) for v in tf.trainable_variables()
-                     if bias_regex.findall(v.name)]
-
-    l2_value = sum(v * v for v in regularizable)
-    l2_cost = 1e-6 * l2_value
-
-    cost = cross_entropy_tf + l2_cost
-    optimizer = tf.train.AdamOptimizer(1e-4)
-    train_op = optimizer.minimize(cost)
+    train_op = get_train_op(model)
     print("Optimizer has been built.")
 
     session = tf.Session(config=tf.ConfigProto(
@@ -73,32 +74,6 @@ def main():
     saver = tf.train.Saver()
     print("Session initialized.")
 
-    embedding_plot_n = 0
-    def plot_embeddings():
-        nonlocal embedding_plot_n
-        if embedding_plot_n < 500:
-            plt.clf()
-            embeddings_values = session.run(embeddings)
-            tsne = TSNE(n_components=2, random_state=0)
-            np.set_printoptions(suppress=True)
-            tsne = TSNE(n_components=2, random_state=0)
-            Y = tsne.fit_transform(embeddings_values)
-            plt.scatter(Y[:, 0], Y[:, 1], s=0)
-            for label, x, y in zip(ALPHABET, Y[:, 0], Y[:, 1]):
-                plt.annotate(label, xy=(x, y), xytext=(0, 0), textcoords='offset points')
-
-            axes = plt.gca()
-            axes.set_xlim([-200,200])
-            axes.set_ylim([-200,200])
-
-            plt.axis('off')
-            plt.tick_params(axis='both', left='off', top='off', right='off', bottom='off', labelleft='off', labeltop='off', labelright='off', labelbottom='off')
-
-            plt.savefig("embeddings_{}.png".format(embedding_plot_n))
-
-            embedding_plot_n += 1
-
-    plot_embeddings()
     batch_n = 0
     max_acc = 0.
 
@@ -113,11 +88,10 @@ def main():
             break
 
         _, predictions, cross_entropy = session.run(
-            [train_op, predictions_tf, cross_entropy_tf],
-            feed_dict={seq_input: text_batch,
-                       targets: cap_batch,
-                       lengths: batch_lengths,
-                       dropout_plc: 0.5})
+            [train_op, model.predictions, model.cost],
+            feed_dict={model.input: text_batch,
+                       model.targets: cap_batch,
+                       model.lengths: batch_lengths})
         accuracy = evaluation(
             predictions, cap_batch, batch_lengths)
         print("batch {}:\tacc: {:.4f}\txent: {:.4f}".format(
@@ -125,11 +99,10 @@ def main():
 
         if batch_n % 10 == 0:
             predictions, cross_entropy = session.run(
-                [predictions_tf, cross_entropy_tf],
-                feed_dict={seq_input: val_text,
-                           targets: val_cap,
-                           lengths: val_lengths,
-                           dropout_plc: 1.0})
+                [model.predictions, model.cost],
+                feed_dict={model.input: val_text,
+                           model.targets: val_cap,
+                           model.lengths: val_lengths})
             accuracy = evaluation(
                 predictions, val_cap, batch_lengths)
 
@@ -143,9 +116,6 @@ def main():
             if accuracy > max_acc:
                 max_acc = accuracy
                 saver.save(session, "model.variables")
-
-        if batch_n % 100 == 0:
-            plot_embeddings()
 
     f_text.close()
     f_cap.close()

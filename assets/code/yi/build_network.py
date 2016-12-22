@@ -8,7 +8,7 @@ ALPHABET = list(("_aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxzž"
 TARGET_CLASSES = ["0", "1", "2"]
 
 Network = namedtuple('Network',
-                     ['input', 'lenghts', 'targets',
+                     ['input', 'lengths', 'targets',
                       'predictions', 'cost'])
 
 def build_network(embedding_size=32, gru_size=256):
