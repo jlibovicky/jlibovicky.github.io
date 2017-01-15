@@ -59,3 +59,8 @@ $on-laptop:        800px;
 
 a { color: #DAA520 }
 a:visited { color: #DAA520 }
+
+table, th, td { border-collapse: collapse; border: 1px solid #CCC; }
+table { margin-bottom: 10px; margin-left: auto; margin-right: auto }
+th { background-color: #F5F5DC }
+td, th {padding: 2px }
