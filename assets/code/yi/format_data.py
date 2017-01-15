@@ -8,19 +8,23 @@ import unicodedata
 CZECH_CHARS = set(list("aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž"
                        "AÁBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ"))
 
+
 def remove_accents(input_str):
     """Convert text to pure ASCII."""
     res = ""
     for char in input_str:
         if char in CZECH_CHARS:
             res += char
-        else:
+        else: # if not Czech char, use ASCII equivalent
             nfkd_form = unicodedata.normalize('NFKD', char)
             only_ascii = nfkd_form.encode('ASCII', 'ignore')
             res += only_ascii.decode('ASCII')
     return res
 
+
 def main():
+    """Run the formating."""
+
     # file with text without capitaluation
     f_text = open("text.txt", 'w')
     # file with the correct capitaluation

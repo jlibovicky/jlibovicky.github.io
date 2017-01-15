@@ -1,5 +1,11 @@
 #!/usr/bin/python
 
+"""Take XML from Wikipedia and format do the sentence splitting.
+
+The raw Wikipedia data needs to be processed with Wikiextractor first.
+(https://github.com/attardi/wikiextractor)
+"""
+
 import re
 import sys
 import nltk
@@ -8,7 +14,10 @@ import nltk
 DOC_START = re.compile(r"^<doc .*>")
 DOC_END = re.compile(r"^</doc>$")
 
+
 def main():
+    """Run the sentence splitting."""
+
     # initialize the sentence splitter
     sentence_splitter = nltk.data.load("tokenizers/punkt/english.pickle")
 
@@ -17,7 +26,7 @@ def main():
     lines_added = 0
 
     for line in sys.stdin:
-        line = line.rstrip() # remove \n from the end
+        line = line.rstrip()  # remove \n from the end
         if not DOC_START.match(line) and not DOC_END.match(line):
             collected_text += u" " + line
             lines_added += 1
@@ -33,6 +42,7 @@ def main():
 
     for sent in sentence_splitter.tokenize(collected_text):
         print(sent)
+
 
 if __name__ == "__main__":
     main()
