@@ -1,31 +1,36 @@
 ---
 layout: post
-title: Spellchecking of y and in Czech using deep learning
+title: Spell checking of y and in Czech using deep learning
 ---
 
-It this post we will have a closer look how can be deep learning used for spell
+It this post we will have a closer look on how we use deep learning for spell
 checking of a particular phenomenon in the Czech language - choosing whether to
-write 'i' or 'y'. I have chosen this phenomenon becase even native speaker
-sometimes tend make errors in this.  I will try show how we can at least
+write 'i' or 'y'. I have chosen this phenomenon because even native speaker
+sometimes tend make errors in this. I will try show how we can at least
 attempt to solve it using deep learning and demonstrate how a computer
 scientist (or a computational linguist) would think about developing a solution
-for this problem.
+for this problem. If you are not scared of reading source code, it can also
+serve as a programming tutorial.
 
-# Jak se to vlastně píše
+# How do the Czechs spell it
 
-At the elemntary school, children are tought many more or less complicated
-rules of how we choose whether to write 'y' or 'i'. The problem is they are
-pronounced in the exactly same way (although it wasn't always the case in the
-history). Southern slavic languages as Slovene has reflected that in their
-spelling and use 'i' wherever possible. Although it might seem tempting to
-simplify the spelling in this way, it has also some unexpected consequences.
-This decision some words which are pronounced the same became spelled the same
-way and this additional need for disambiguation made reading slower.
+You probably ask why is it so hard problem that I am even thinking about
+developing a deep learning solution for it. The problem is that both 'i' and
+'y' are pronounced in the exactly same way (although it wasn't always the case
+in long long time ago) So, even if you are a native speaker, you don't have to
+know which one of them you're actually saying. At the elementary school,
+children are thought many more or less complicated rules of how we choose
+whether to write 'y' or 'i'.  Southern Slavic languages as Slovene has
+reflected that in their spelling and use 'i' wherever possible.  Although it
+might seem tempting to simplify the spelling in this way (school kids would be
+definitely happy about it), it can also have some unexpected consequences. This
+brought a lot of ambiguity in the language and actually slowed down the
+reading.
 
 The rules Czech children need to acquire are:
 
 * After some consonants, only 'y' or only 'i' can be written. The problem with
-  this rule is that sometimes placing 'i' changes the pronounciation of the
+  this rule is that sometimes placing 'i' changes the pronunciation of the
   previous consonant, so you need to know in advance how the word is
   pronounced.
 
@@ -35,29 +40,37 @@ The rules Czech children need to acquire are:
   belong and remember the endings for different grammatical cases in all the
   paradigms.
 
-* shoda podmětu s přísudkem (k tomu musíme umět alespoň základním způsobem umět
-  větný rozbor a poznat, co je podmět a co je přísudek),
+* The verbs should be with grammatical agreement with nouns (for that it is
+  necessary to acquire at least basics [dependency
+  syntax](https://en.wikipedia.org/wiki/Dependency_grammar)).
 
-* vyznat se v tom, kdy pravidla kolidují (píšeme _tácy_, přestože _c_ je měkká
-  souhláska, protože skloňujeme podle vzoru _hrad_).
+* Know what to do when the rules collide and remember countless exceptions.
 
-Abychom mohli taková pravidla naprogramovat, museli bychom umět nejdřív udělat
-automaticky větný rozbor včetně všech pádů, rodů a čísel, abychom mohli všechna
-pravidla použít. Pro představu, jak může větný rozbor fungovat, si můžete
-vyzkoušet napříkald
+To be able to program these rules into a programming language, we would need to
+be able to be many things before could even start. We would need to be to
+detect the word stems, find in what is their case, gender, number. We would
+need to be able do to the dependency parsing to check the agreement.  (If you
+are curious how automatic syntactic analysis looks like, you have a look at
 [Treex](https://lindat.mff.cuni.cz/services/treex-web/result/2HfygMLDnvZm63ZX4EF).
 
-Automatické větné analyzátory obvykle spoléhají na to, že věty jsou gramaticky
-správně a pokud nejsou, dělá chyby. Vzhledem k tomu, že chceme věty opravovat
-je to poměrně nepříjemná vlastnost.
+The sad thing is that the automatic syntax analyzer usually rely on the
+sentences to be spelled correctly (this is how they get the information about
+gender, number etc.) and if they are not, the analyzers make mistakes. If we
+want to correct the sentences, it is a kind of unpleasant property.
+We will leave this vicious circle using deep learning such that we will be able
+to cope without all of these rules.
 
-# Trénovací a testovací data
+# Train and test data
 
-Jakékoli strojové učení vždy potřebuje nějaká data, ze kterých se bude učit. V
-případě této úlohy můžeme trénovací data získat velmi snadno tak, že stáhneme z
-Internetu větší množství českého textu a budeme doufat, že je z většiny
-gramaticky správně. Jednoduše dá stáhnout najednou například celá [česká
-Wikipedie](https://dumps.wikimedia.org/cswiki/latest/) v XML formátu.
+Whenever you do some machine learning, you always need some data your model
+will learn from. In this case, the data can be obtained very easily. The only
+thing we need is a big amount of text in Czech language which is in most cases
+grammatically correct. For instance we can download complete [Wikipedia
+dump](https://dumps.wikimedia.org/cswiki/latest/) in XML format.
+
+Before we start to work with the text, we need clean and preprocess a little
+bit. We will split into sentences ([NLTK](http://www.nltk.org) library contains
+Czech models).
 
 Text z Wikipedie je ještě potřeba trochu upravit a pročistit. Text se dá
 například automaticky rozdělit na věty (knihovna [NLTK](http://www.nltk.org/)
