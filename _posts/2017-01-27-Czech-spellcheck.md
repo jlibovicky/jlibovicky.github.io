@@ -3,14 +3,20 @@ layout: post
 title: Spell checking of y and in Czech using deep learning
 ---
 
+In the recent years, deep learning (machine learning with neural networks)
+became a frequently used buzzword of technological word. We can find plenty of
+articles on how machine intelligence (a new, probably sexier term for
+artificial intelligence) can solve machine translation, speech recognition or
+enable smart assistants as Google Home or Amazon Echo.
+
 It this post we will have a closer look on how we use deep learning for spell
 checking of a particular phenomenon in the Czech language - choosing whether to
 write 'i' or 'y'. I have chosen this phenomenon because even native speaker
-sometimes tend make errors in this. I will try show how we can at least
-attempt to solve it using deep learning and demonstrate how a computer
-scientist (or a computational linguist) would think about developing a solution
-for this problem. If you are not scared of reading source code, it can also
-serve as a programming tutorial.
+sometimes tend make errors in this. I will try show how we can attempt to solve
+it using deep learning and demonstrate how a computer scientist (or a
+computational linguist) would think about developing a solution for this
+problem. If you are not scared of reading source code, it can also serve as a
+programming tutorial.
 
 # How do the Czechs spell it
 
@@ -62,27 +68,27 @@ to cope without all of these rules.
 
 # Train and test data
 
-Whenever you do some machine learning, you always need some data your model
-will learn from. In this case, the data can be obtained very easily. The only
-thing we need is a big amount of text in Czech language which is in most cases
-grammatically correct. For instance we can download complete [Wikipedia
-dump](https://dumps.wikimedia.org/cswiki/latest/) in XML format.
+Success of all machine learning application always stands and falls with having
+enough data to train the models on.  In this case, the data can be obtained
+very easily. The only thing we need is a big amount of text in Czech language
+which is in most cases grammatically correct. For instance we can download
+complete [Wikipedia dump](https://dumps.wikimedia.org/cswiki/latest/) in XML
+format.
 
 Before we start to work with the text, we need clean and preprocess a little
 bit. We will split into sentences ([NLTK](http://www.nltk.org) library contains
-Czech models).
+Czech models). For simplity we will keep only characters of Czech alphabet,
+numerals and punctuation and replace all the other characters with a special
+symbol, e.g., `_`. Wikipedia contains many snippet of text in various languages
+in various alphabet and these string wouldn't be useful for our models anyway.
+To make the task even simpler, we will lowercase the text on top of that.
 
-Text z Wikipedie je ještě potřeba trochu upravit a pročistit. Text se dá
-například automaticky rozdělit na věty (knihovna [NLTK](http://www.nltk.org/)
-obsahuje i modely pro češtinu). Pro jednoduchost ještě nahradíme všechny znaky,
-které nejsou z české abecedy nějakým speciálním symbolem (třeba `_`) —
-Wikipedie obsahuje spoustu útržků textů v jiných abecedách. Pro větší
-jednoduchost ještě převedeme veškerý text převedeme na malá písmena.
+Now, our data are almost ready. The last thing missing is to change all
+occurrences of 'y' to 'i' and remember their original position. We may encode it
+e.g., like this:
 
-Nyní už zbývá jenom změnit všechna i na měkká a zapamatovat si, kde se mají
-změnit na tvrdá. Výsledek může vypadat nějak takto:
 
-*Vstup:*
+*Input:*
 
 ```txt
 aristotelés dále určil poloměr země, kterí ale odhadl na dvojnásobek...
@@ -90,7 +96,7 @@ v aristotelovském modelu země stojí a měsíc se sluncem a hvězdami krouží
 mišlenki aristotelovi rozvinul ve 2. století našeho letopočtu klaudios...
 ```
 
-*Výstup*
+*Desired output:*
 
 ```txt
 00001000000000000000000000000000001000000100000000000000000000001000000100000...
@@ -98,115 +104,122 @@ mišlenki aristotelovi rozvinul ve 2. století našeho letopočtu klaudios...
 00000000000000000010000000000001000002000000000000000000020000000000000000000...
 ```
 
-V tomu výstupu jednička značí měkké i, dvojka značí y a nula všechny ostatní
-znaky. Můžete si prohlédnout kód pro [rozdělení textu na
-věty](/assets/code/yi/sentence_split.py) a [přípravu
-dat](/assets/code/yi/format_data.py). V době stahování bylo na české Wikipedie
-přibližně 5 milionů českých vět.
+In this encoding `1` means 'i', `2` means 'y' and other characters are
+denoted by `0`. You can preview both the code for [sentence
+splitting](/assets/code/yi/sentence_split.py) and the [data
+encoding](/assets/code/yi/format_data.py). By the time I downloaded the Czech
+Wikipedia there were more than 5 million sentences.
 
-Když řešíme nějaký problém pomocí strojového učení — a je jedno jestli je to
-dnes tak populární hluboké učení nebo jiné metody, je potřeba striktně
-oddělovat trénovací a testovací data. Trénovací používáme k naučení modelu.
-Když nějaký model vyvíjíme, mělo by nás spíše zajímat, jak si povede, až uvidí
-nějaká data, která při trénování neviděl. To se obvykle řeší tak, že si necháme
-část dat stranou, model na nich netrénujeme a tato data používáme pouze k tomu,
-abychom porovnali, který model je lepší a který je horší. Pro naše další
-experimenty si odložíme stranou tisíc vět a ty budeme používat pro testování
-našich metod.
+When we solve any problem using machine learning, no matter whether it is deep
+leaning or other machine learning methods, we need to strictly separate train
+and test data. As the term suggests, train data are used to train the model and
+therefore it is no surprise that the model usually works very well on the data.
+What we are really interested is in, is how the model will work work on data
+that are yet to come. We can simulate it by leaving a part of our data aside
+and use them only to compare models with each other. For our experiments, we
+will leave 1,000 sentences for testing and the rest for training.
 
-# Jednoduchá řešení
+# Simple Solutions
 
-Triviálním řešením by bylo všude nechat měkká i. Tímto přístupem se na našich
-testovacích dostaneme na krásných __76.4 %__. V počítačové lingvistice (a umělé
-inteligenci obecně) se tomu obvykle říká _stanovení baseline_. Aby řešení
-nějaké úlohy bylo vůbec nějak zajímavé, je potřeba, aby bylo výrazně lepší, než
-nějaké triviální řešení.
+A trivial solution would be leaving 'i' everywhere. In this trivial manner, we
+will get solid performance of __76.4 %__. In computational linguistics, and
+artificial intelligence in general, we call this _setting a baseline_. Any
+meaningful solution to any problem needs to show that it is significantly
+better than a simple base solution. In this section, we will try to come up
+with multiple simple solutions to see, how far we can get.
 
-Zkusíme se ještě na chvíli u těchto jednoduchých řešení zastavit. Můžeme
-například zkusit dávat tvrdé y po tvrdých souhláskách _h_, _ch_ (tedy zase
-vlastně _h_), _k_ a _r_. U hlásek _d_, _t_ a _n_ ale nemáme možnost jednoduše
-poznat, jestli se mají vyslovovat měkce a má za nimi následovat _i_ nebo tvrdě.
+We can for instance may observe that in words with originally Czech stem, there
+is always 'y' after 'h', 'k' and 'r'. A similar observation is that many words
+starts with the 'vy-' prefix (which means out) and that it may be a good
+strategy to put 'y' in all words beginning like this (my apologies Vikings and
+[vicugnas](https://upload.wikimedia.org/wikipedia/commons/e/eb/Vicunacrop.jpg).
 
-Další pozorování, které můžeme udělat je, že pokud slovo začíná na _vi_/_vy_,
-většinou se jedná o předponu _vy_ (Vikingové a lama vikuňa prominou).
+The following table summarizes results of these simple approaches:
 
-|                     |  přesnost |
+|                     |  accuracy |
 |:--------------------|----------:|
-|všechna měkká        |    76.4 % |
-| + tvrdé souhlásky   |    77.5 % |
-| + předpona _vy_     |    80.0 % |
+|'i' everywhere       |    76.4 % |
+| + 'h', 'k','r'      |    77.5 % |
+| + '_vy_-' prefix    |    80.0 % |
 
-S řešením, které se dá napsat na jeden řádek pomocí dvou regulárních výrazů
-jsme se dostali na úspěšnost 80.0 %. Kdybychom se nad skupinami hlásek
-zamysleli důkladněji a pomohli bychom si důkladnější statistickou analýzou,
-zvládli bychom se dostat ještě o několik procent výše.
+Very simple heuristics (that can be written using a single line regular expression)
+brought us to 80.0 % accuracy. If we would try harder, we might be able to come
+with some other rules that would increase the accuracy even few percentage points
+higher.
 
-Místo toho se zastavíme u jiného velmi jednoduchého řešení. Z předchozí části
-víme, že máme k dispozici celou Wikipedii jako trénovací data. Můžeme si zkusit
-pro každé slovo zaznamenat, kolikrát se vyskytlo s jakým pravopisem. Později,
-při testování, použijeme pro každé slovo jeho nejčastější pravopis. Následující
-tabulka ukazuje, jaké přesnosti dosáhneme po zpracování určitého množství vět.
-
-| počet přečtených vět  |  přesnost |
-|----------------------:|----------:|
-|                   500 |    77.9 % |
-|                 5 000 |    85.3 % |
-|                50 000 |    88.6 % |
-|               500 000 |    90.4 % |
-|             5 000 000 |    90.8 % |
+Instead of that, will we try a different simple solution which be called a
+trivial machine learning solution. Because we have the whole Wikipedia as our
+training data, we can simply remember what is the most frequent spelling for
+each word. Whenever a word is encountered, we can simply use its most frequent
+spelling. The following table shows what was the accuracy after processing
+different amounts of training sentences.
 
 
-Vidíme, že s rostoucím množstvím zpracovaného textu roste i úspěšnost modelu.
-Není to nic překvapivého. Čím více textu vidíme, tím menší pravděpodobnost je,
-že v něm uvidíme nějaká slova, která jsme ještě neviděli.
+| number of seen sentences  |  accuracy |
+|--------------------------:|----------:|
+|                       500 |    77.9 % |
+|                     5,000 |    85.3 % |
+|                    50,000 |    88.6 % |
+|                   500,000 |    90.4 % |
+|                 5,000,000 |    90.8 % |
+
+We can see that with the increasing amount of processed data, the accuracy
+increases. It should not surprise us — the more text we see, the smaller
+chance, that we will encounter a previously unseen word. On other hand, after
+processing 500,000 words, there is only little chance.
+
+Now we know what we may want from our model. Anything over 91 % will be a
+success, anything worse would mean that the network was not able to remember
+the most frequent spelling of every word. From the baseline preliminary
+experiments we also know that to pass this accuracy, the model will have to
+learn some grammar to keep nouns and verbs in agreement.
 
 # Model
 
-Než se dostaneme k podrobnostem, jak takový model funguje, rozmyslíme si, co po
-něm vlastně chceme. Určitě po něm chceme, aby pracoval s větší úspěšností než
-91% — potom by bylo poměrně zbytečné se s něčím takovým vůbec ztrácet čas.
-Jenže také víme, že okolo těch 91% bude ležet hranice, na kterou je možné se
-dostat tak, že si zapamatujeme, jak se píše většina slov. Abychom se dostali za
-tuto hranici, je nutné, aby se naše neuronová síť naučila alespoň základní
-pravidla shody podmětu s přísudkem, kde se lidé neobejdou bez větného rozboru.
-
-Na naši úlohu použijeme rekurentní neuronovou síť. Rekurentní neuronová síť
-funguje tak, že pokaždé, když dostane nějaký vstup, provede update svého
-vnitřního stavu a vydá nějaký výstup. Schéma kousku sítě rozvinuté v čase
-vidíme na následujícím obrázku.
+Will will use a recurrent network for out experiments. Every time, such a
+network gets an input, it updates in inner state (based on the state in was
+previously in) and emits some output. The following scheme shows a recurrent
+network rolled in time.
 
 ![sequence-labeling](/assets/rnn_cs.svg)
 
-Rekurentní síť dělá v každém kroku (tedy s každým písmenkem) tu samou operaci.
-To se může zdát na první pohled zvláštní, ale je to přesně to, co naší síti
-chceme. Každé písmeno má jinou naučenou vektoru reprezentaci, a když ji síť
-obdrží, rozhodne, co udělá. Vnitřní stav rekurentní sítě je vlastně paměť, kde
-si ukládá, jaké vstupy viděla v minulosti a co to znamená pro vstupy, které
-mají teprve přijít.
+The network reads the text letter by letter. In every step, it updates its
+stored inner state and emits some output - actually, it makes the operation
+with each letter. It may seem strange at the first sight, but it is exactly
+what we want our network to do. Every letter has its own learned representation
+and when the network receives it, it decides what to do. The inner state of the
+network is actually a memory where the network stores relevant information from
+what it has already seen and what does it mean for what is yet to come.
 
-Síť se učí především reprezentovat vstupní písmena a už viděný text takovým
-způsobem, aby dokázala dobře plnit svůj úkol. Učení vhodné reprezentace se
-často zdůrazňuje jako jedna z nejdůležitějších vlastností hlubokého učení. V
-textu nijak nezdůrazňujeme lingvistické koncepty, které nám pomáhají pravopis
-nějakým způsobem pojmově uchopit. Je to prostě proud znaků a neuronová síť s
-ním musí nějakým způsobem poradit.
+The network learns to represent the input letters and the previously seen text
+in such a way that is suitable for its task. Representation learning is often
+stressed as one of the most important properties of deep learning (after all,
+one of the most prestigious conference in the field is called International
+Conference on Representation Learning). We do not mark any linguistics concepts
+in our data that allows humans to conceptualize the spelling rules. We do not
+even treat spaces between words in any special way. The data is just a stream
+of characters and it is up to the  network to deal with it.
 
-Síť ještě vylepšíme jednoduchým trikem. Použijeme nezávisle dvě rekurentní
-neuronové sítě. Jedna bude číst text odpředu a bude se snažit odhadnout
-pravopis podle toho, co bylo ve větě nalevo od posledního písmene, druhá síť
-bude používat to, co bylo napravo od něj.
+We will use one more trick to improve the networks' performance. We will use
+two recurrent networks - one reading the text from the front and the second one
+in the backward direction. In this way, we can use information about what is
+both left and right from a letter to estimate the spelling.
 
-# Trénování
+If you are interested in the details of the network (number of neurons etc.),
+you can check out [the model's source code](/assets/code/yi/build_network.py).
 
-Rekurentní síť vydává nějaký výstup po přečtení každého z písmen, ale nás zde
-zajímají jenom, kde je na vstupu i a máme rozhodnout, jestli je měkké nebo
-tvrdé. Výstupy na ostatních místech sítě můžeme ignorovat a zjednodušit si tím
-práci.
+# Training
 
-Na začátku trénování jsou váhy v síti náhodné. V průběhu učení síť vždy přečte
-větu, provede svůj odhad a ten porovnáme s tím, co by měla síť vydat do opravdu
-a váhy sítě se drobně upraví tak, aby byly blíže tomu, co by síť měla skutečně
-vydat.
+The recurrent network gets an output for every input letter. In fact, we are
+interested only in 'i's. We can ignore all other outputs and thus make our work
+easier.
+
+At the beginning of the training, the weights of the neurons' connection are
+random. During the learning, we always compare the network's estimate is the
+desired output and if it makes an error, we shift the weights slightly in such
+a way, that it makes a smaller error.
+
+This very simple feedback is sufficient.
 
 Pouze z této základní informace se neuronová síť postupně naučí, reprezentovat
 vstupní věty tak, aby snadno mohla rozhodovat. Při trénování se nikdy výslovně
@@ -219,14 +232,14 @@ Naše síť trénovaná na ne příliš výkonné grafické kartě zpracovala 5 
 za 8 hodin a nakonec dosáhla úspěšnosti __98 %__.
 
 
-|metoda               |  přesnost |
-|:--------------------|----------:|
-|všechna měkká        |    70.4 % |
-|jednoduchá pravidla  |    80.0 % |
-|nejčastější pravopis |    90.8 % |
-|neuronová síť        |    98.3 % |
+|method                 |  accuracy |
+|:----------------------|----------:|
+|'i' everywhere         |    70.4 % |
+|simple rules           |    80.0 % |
+|most frequent spelling |    90.8 % |
+|neural network         |    98.3 % |
 
-# Co se síť naučila
+# What did the network learn
 
 Nevýhodou neuronových sítí je to, že nemáme možnost nějak jednoduše zjistit, co
 se vlastně naučila. Jakousi základní představu si můžeme udělat z takzvaných
@@ -247,69 +260,12 @@ pamatování si nejčastějšího pravopisu až po 300 000 větách. Ty by při 
 rychlosti čtení 200 slov za minutu trvalo přečíst 17 dní bez přestávky (29
 Zločinech a trestech).
 
-Další možností, jak zjistit, co se naše síť naučila, je provést ručně rozbor
-chyb na nějakých zajímavých příkladech. My se podíváme na několik vět z
-[televizního diktátu Zdeňka Svěráka z roku
-2008](http://zpravy.idnes.cz/umite-pravopis-vyplnte-si-sverakuv-diktat-na-idnes-cz-ppd-/domaci.aspx?c=A080829_111241_studium_bar).
+If you are interested in linguistic analysis of the network performance, you
+probably speak Czech and can have a look at the [Czech version of the
+post](2017/02/20/Pravopis.html).
 
-* Děti se jako vždycky nejvíc těšily na slavnou velrybí kostru.
+And that's it. We were able learn a decent spell checker for a particularly
+difficult phenomenon in Czech grammar. There are of course ways to improve on
+top of this state (use a multi-layer network, regularize with other training
+objective, acquire more training data), but more on this maybe later.
 
-|:----------------------|:-------------------------------------------------------------|
-|*pravidla*             |Děti se jako vždicky nejvíc těšili na slavnou velrybí kostru. |
-|*nejčastější*          |Děti se jako vždycky nejvíc těšili na slavnou velrybí kostru. |
-|*neuronová síť (83 %)* |Děti se jako vždicky nejvíc těšili na slavnou velribý kostru. |
-|*neuronová síť (92 %)* |Děty se jako vždicky nejvíc těšily na slavnou velribý kostru. |
-|*neuronová síť (96 %)* |Děti se jako vždicky nejvíc těšily na slavnou velrybí kostru. |
-
-* Rodiče zase lákaly archeologické nálezy kostěných nástrojů starých kultur.
-
-|:----------------------|:--------------------------------------------------------------------------|
-|*pravidla*             |Rodiče zase lákali archeologické nálezi kostěních nástrojů starých kultur. |
-|*nejčastější*          |Rodiče zase lákaly archeologické nálezy kostěných nástrojů starých kultur. |
-|*neuronová síť (83 %)* |Rodiče zase lákali archeologické nálezi kostěních nástrojů starích kultur. |
-|*neuronová síť (92 %)* |Rodiče zase lákaly archeologické nálezi kostěných nástrojů starých kultur. |
-|*neuronová síť (96 %)* |Rodiče zase lákaly archeologické nálezy kostěných nástrojů starých kultur. |
-
-* V oddělení nerostů pak byli zaujati třpytivými drahokamy, hýřícími kouzelnými
-  barvami.
-
-|:----------------------|:--------------------------------------------------------------------------------------|
-|*pravidla*             |V oddělení nerostů pak bili zaujati třpitivími drahokami, hýřícími kouzelními barvami. |
-|*nejčastější*          |V oddělení nerostů pak byly zaujati třpytivými drahokamy, hýřícími kouzelnými barvami. |
-|*neuronová síť (83 %)* |V oddělení nerostů pak byli zaujati třpitivími drahokami, hířícími kouzelními barvami. |
-|*neuronová síť (92 %)* |V oddělení nerostů pak byly zaujati třpitivými drahokami, hýřícími kouzelnými barvami. |
-|*neuronová síť (96 %)* |V oddělení nerostů pak byly zaujaty třpitivými drahokami, hířícími kouzelnými barvami. |
-
-* Mezi plazy vás určitě zaujmou krokodýli.
-
-|:----------------------|:----------------------------------------|
-|*pravidla*             |Mezi plazi vás určitě zaujmou krokodíli. |
-|*nejčastější*          |Mezi plazy vás určitě zaujmou krokodýli. |
-|*neuronová síť (83 %)* |Mezi plazi vás určitě zaujmou krokodíli. |
-|*neuronová síť (92 %)* |Mezi plazy vás určitě zaujmou krokodíli. |
-|*neuronová síť (96 %)* |Mezi plazy vás určitě zaujmou krokodíly. |
-
-Na těchto pár příkladech vidíme, že pravidla, která fungují na 80 % dobře stále
-produkují text, který vypadá jako by ho psal téměř analfabet. Deset procent,
-které od sebe dělí jednoduchá pravidla a používání nejčastějšího pravopisu na
-druhou stranu vytváří dojem, že je text téměř bez chyby. Chyby jsou na místech,
-kde je skutečně potřeba využít pravidel o gramatické shodě.
-
-Zkusit nějak interpretovat chování neuronové sítě je podstatně náročnější. V
-době, kdy dosahovala úspěšnosti okolo 83 %, dávala na skoro všechna místa měkké
-i, kromě dvou případů (*byli* a *velribý*). Za situace, kdy model na větách z
-Wikipedie dosahoval úspěšnosti 92 %, vypadají jeho výstupy na našich ukázkových
-větách poněkud zmateně. Přestože se jedná o kvantitativně lepší výsledek, než
-pamatovat si pro každé slovo nejčastější pravopis, příklady působí jako, že si
-model počíná dost náhodně.
-
-Znatelně lepší je situace ve stavu, kdy model dosahoval úspěšnosti 96 %.
-Vidíme, že v teno okamžik zvládá shodu podmětu s přísudkem a první dvě věty
-jsou bez chyby.  V třetí větě je hned několik chyb, které je nejspíš možné
-přisoudit tomu, že slova *třpytivý* a *hýřivý* a jim příbuzná se vyskytují
-poměrně řídce a model neměl možnost se je dobře naučit. Potom může chybně
-reprezentovat celou větu a dělat chyby i na jiných místech. Z chyby ve slově
-*hýřivý* můžeme usuzovat také na to, že spíš než, že by se model naučil seznam
-tvrdých souhlásek, spíše bude sám pro sebe učit něco jako vyjmenovaná slova.
-Naznačuje to i *krokodíly*, které se v tomto případě tváří podobně jako třeba
-slovo *světadíly*.
