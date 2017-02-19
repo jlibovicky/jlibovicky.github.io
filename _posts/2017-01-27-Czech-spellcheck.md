@@ -241,24 +241,42 @@ can see in the table below.
 
 # What did the network learn
 
-Nevýhodou neuronových sítí je to, že nemáme možnost nějak jednoduše zjistit, co
-se vlastně naučila. Jakousi základní představu si můžeme udělat z takzvaných
-učících křivek. To je graf, který má na ose *x* počet použitých trénovacích dat
-a na ose *y* úspěšnost modelu.
+A disadvantage of neural networks is that we cannot easily find out what the
+network have learned just from the network itself. We can get at least some
+insight by looking at the learning curves. A learning curve is a graph having
+amount of data using during training on _x_ axis and the accuracy on the _y_.
+It basically tells how fast the learning was.
 
 ![sequence-labeling](/assets/rnn_learning_curve_cs.svg)
 
-Z grafu na první pohled vidíme, že neuronová síť potřebovala poměrně dost
-trénovacích příkladů na to, aby se naučila dělat něco lepšího, než všude dávat
-měkké i. Potřebovala k tomu 13 tisíc vět.
+We can see from the graph that neural network needed quite a lot of data to
+learn something better than just putting 'i' everywhere possible. It needed
+more than 13,000 sentences. By that time, the network probably starts get the
+notion of individual characters.
 
-Zatímco algoritmus, který si pamatuje nejčastější pravopis každého slova
-potřeboval 1 500 vět k tomu, aby byl úspěšnější, než naše jednoduchá pravidla,
-neuronová síť k tomu potřebovala 33 000 trénovacích vět - to je 2200 normostran
-textu, více než trojnásobek délky Dostojevského Zločinu a trestu. Síť překonala
-pamatování si nejčastějšího pravopisu až po 300 000 větách. Ty by při průměrné
-rychlosti čtení 200 slov za minutu trvalo přečíst 17 dní bez přestávky (29
-Zločinech a trestech).
+Whereas the algorithm remembering the most frequent spelling of each word
+needed almost 1,500 sentences to beat the simple rules, the network needed
+33,000 training sentences. It is 2,200 norm pages of text, it is more that
+three times longer Dostoevsky's 'Crime and Punishment'. By that time, the
+network can probably tell that under some circumstances, 'y' usually follows
+some consonants.
+
+At the beginning, the most frequent spelling algorithms has a big advantage
+over the network because it operates with the notion of words from the very
+beginning (for simplicity I considered words to be separated by spaces and
+ignored hyphens, apostrophes, etc.). The network first needs to find out that
+the spaces plays special roles. Therefore it overcame the most frequent
+spelling algorithms only after using 300,000 training sentences. With the
+average speed of reading of 200 words per minute, would take 17 days of
+non-stop reading (29 times 'Crime and Punishment').
+
+This by the shows the strengths of human abstraction and that the so called
+artificial intelligence is something completely different from the human
+intelligence. You can probably explain the spelling much faster than by reading
+30 voluminous books, but as stated in the introduction, there is no easy way to
+tell this rules to a computer. On the other hand, trying to infer spelling
+rules from a pile of books would a painstaking intellectual adventure to any
+human.
 
 If you are interested in linguistic analysis of the network performance, you
 probably speak Czech and can have a look at the [Czech version of the
