@@ -219,18 +219,18 @@ random. During the learning, we always compare the network's estimate is the
 desired output and if it makes an error, we shift the weights slightly in such
 a way, that it makes a smaller error.
 
-This very simple feedback is sufficient.
+This very simple feedback is sufficient to gradually learn inner the data
+representation that may be entirely different from human. During the training,
+there is never the notion of word, or consonants and vowels. No one tells the
+network: "This is subject because it is in the nominative case, you can see it
+from its ending." There are genders, numbers or persons annotated in the data.
+Everything the network needs comes just from the simple feedback of being right
+or wrong
 
-Pouze z této základní informace se neuronová síť postupně naučí, reprezentovat
-vstupní věty tak, aby snadno mohla rozhodovat. Při trénování se nikdy výslovně
-neobjevuje pojem slova, souhlásky a samohlásky. Síti nikdo neříká: "Toto je
-podmět, protože je v prvním pádě," nepracuje se slovesným rodem, s pády, čísly
-a skloňovacími vzory. Všechno to, k čemu jako lidé potřebuje složitá explicitní
-pravidla, je schopna během trénování odvodit ze samotných dat.
-
-Naše síť trénovaná na ne příliš výkonné grafické kartě zpracovala 5 milionů vět
-za 8 hodin a nakonec dosáhla úspěšnosti __98 %__.
-
+Training our network on 5 million sentences took 5 hours on a old
+low-performance GPU and achieved the accuracy of __98 %__. Although still quite
+far from perfection, it is much better better than all the other methods as you
+can see in the table below.
 
 |method                 |  accuracy |
 |:----------------------|----------:|
