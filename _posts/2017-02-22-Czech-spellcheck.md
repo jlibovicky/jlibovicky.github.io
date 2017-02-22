@@ -166,6 +166,7 @@ We can see that with the increasing amount of processed data, the accuracy
 increases. It should not surprise us — the more text we see, the smaller
 chance, that we will encounter a previously unseen word. On other hand, after
 processing 500,000 words, there is only little chance we will see anything new.
+The [source code](/assets/code/yi/statistical.py) is very simple.
 
 Now we know what we may expect from our model. Anything over 91 % will be a
 success, anything worse would mean that the network was not able to remember
@@ -175,28 +176,29 @@ learn some grammar to keep nouns and verbs in agreement.
 
 # Model
 
-We will use a recurrent network for out experiments. Every time, such network
-gets an input, it updates in inner state (based on the state in was previously
+We will use a recurrent network for our experiments. Every time, such network
+gets an input, it updates its inner state (based on the state in was previously
 in) and emits some output. The following scheme shows a recurrent network
 rolled in time.
 
 ![sequence-labeling](/assets/rnn.svg)
 
 The network reads the text letter by letter. In every step, it updates its
-stored inner state and emits some output - actually, it makes the operation
-with each letter. It may seem strange at the first sight, but it is exactly
-what we want our network to do. Every letter has its own learned representation
-and when the network receives it, it decides what to do. The inner state of the
-network is actually a memory where the network stores relevant information from
-what it has already seen and what does it mean for what is yet to come.
+stored inner state and emits some output – actually, it makes the same
+operation with each letter. It may seem strange at the first sight, but it is
+exactly what we want our network to do. Every letter has its own learned
+representation and when the network receives it, it decides what to do next.
+The inner state of the network is in fact a memory where the network stores
+relevant information from what it has already seen and what does it mean for
+what is yet to come.
 
-The network if forced to learn a suitable representation of the input letters
-and the previously seen text. Representation learning is often stressed as one
-of the most important properties of deep learning (after all, one of the most
-prestigious conference in the field is called International Conference on
-Representation Learning). The data does not contain any markups for any
-concepts that allows humans to conceptualize the spelling rules. We do not even
-treat spaces between words in any special way. The data is just a stream of
+The network is thus forced to learn a suitable representation of the input
+letters and the previously seen text. Representation learning is often stressed
+as one of the most important properties of deep learning (after all, one of the
+most prestigious conference in the field is called International Conference on
+Representation Learning). The data does not contain markups for any concepts
+that allows humans to conceptualize the spelling rules. We do not even treat
+spaces between words in any special way. The data is just a stream of
 characters and it is up to the  network to deal with it.
 
 We will use one more trick to improve the networks' performance. We will use
@@ -222,9 +224,9 @@ This very simple feedback is sufficient to gradually learn inner data
 representation that may be entirely different from human conceptualization.
 During the training, there is never the notion of word, or consonants and
 vowels. No one tells the network: “This is subject because it is in the
-nominative case, you can see it from its ending.” There are no  genders,
-numbers or persons annotated in the data.  Everything the network needs comes
-just from the simple feedback of being right or wrong on the outputs.
+nominative case, you can see it from its ending.” There are no genders, numbers
+or persons annotated in the data. Everything the network needs comes just from
+the simple feedback of being right or wrong on the outputs.
 
 Training our network on 5 million sentences took 5 hours on an old
 low-performance GPU and achieved the accuracy of __98 %__. Although still quite
