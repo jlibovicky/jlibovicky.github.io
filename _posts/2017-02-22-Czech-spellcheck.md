@@ -284,7 +284,7 @@ human.
 
 If you are interested in linguistic analysis of the network performance, you
 probably speak Czech and can have a look at the [Czech version of the
-post](2017/02/22/Pravopis.html).
+post](/2017/02/22/Pravopis.html).
 
 And that's it. We were able learn a decent spell checker for a particularly
 difficult phenomenon in Czech grammar. There are of course ways to improve on
