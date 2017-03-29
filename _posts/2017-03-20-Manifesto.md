@@ -3,6 +3,8 @@ layout: post
 title: Computational Linguistics in the 21st century – a private manifesto of its perpetual student
 ---
 
+__[Česká verze příspěvku](/2017/03/20/Manifest.html)__
+
 In this essay, I would like to sum up my opinions on what is the role of
 computational linguistics, why should people concern with it and I believe are
 its current problems, and most importantly why it is a very exciting field of
@@ -183,11 +185,11 @@ globe, although the outset of space technology wouldn't be possible without
 generous public support.
 
 I believe that public support is crucial for development of complex
-word-changing technologies. The Internet has its origin in an U.S. army
-project. The success of deep learning would be possible without long-lasting
-generous support of Canadian government. On the other hand, it is important to
-capture the right moment when the public support is no longer indispensable for
-the technology as for instance in case of the satellite communication.
+technologies. The Internet has its origin in a U.S. army project. The success
+of deep learning would be possible without long-lasting generous support of
+Canadian government. On the other hand, it is important to capture the right
+moment when the public support is no longer indispensable for the technology as
+for instance in case of the satellite communication.
 
 It is no longer true that machine translation is a basic research, whose public
 support can bring groundbreaking results. It is neither automatic syntactic

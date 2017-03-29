@@ -3,6 +3,8 @@ layout: post
 title: What is Neural Machine Translation Capable of?
 ---
 
+__[Česká verze příspěvku](/2016/11/29/Co-svede-neuronovy-preklad.html)__
+
 A year ago at [EMNLP in Lisbon](http://www.emnlp2015.org/) I saw a paper called
 [On Statistical Machine Translation and Translation
 Theory](http://www.emnlp2015.org/proceedings/DiscoMT/pdf/DiscoMT22.pdf) by

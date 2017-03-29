@@ -3,6 +3,8 @@ layout: post
 title: Co dovede neuronový překlad?
 ---
 
+__[English version of the post](/2016/11/29/What-is-NMT-capable-of.html)__
+
 Před rokem jsem na konferenci [EMNLP v Lisabonu](http://www.emnlp2015.org/)
 zahlédl článek, který se jmenoval [On Statistical Machine Translation and
 Translation

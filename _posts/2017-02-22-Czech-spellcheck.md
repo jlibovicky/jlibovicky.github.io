@@ -3,6 +3,8 @@ layout: post
 title: Spell checking of y and in Czech using deep learning
 ---
 
+__[Česká verze příspěvku](/2017/02/22/Pravopis.html)__
+
 In the recent years, deep learning (machine learning with neural networks)
 became a frequently used buzzword in the technological word. We can find plenty
 of articles on how machine intelligence (a new, probably sexier term for
