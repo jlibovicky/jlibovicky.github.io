@@ -107,9 +107,11 @@ mišlenki aristotelovi rozvinul ve 2. století našeho letopočtu klaudios...
 
 In this encoding `1` means 'i', `2` means 'y' and other characters are denoted
 by `0`. You can preview both the code for [sentence
-splitting](/assets/code/yi/sentence_split.py) and the [data
-encoding](/assets/code/yi/format_data.py). By the time I downloaded the Czech
-Wikipedia, there were more than 5 million sentences.
+splitting](https://github.com/jlibovicky/jlibovicky.github.io/tree/master/assets/code/yi/sentence_split.py)
+and the [data
+encoding](https://github.com/jlibovicky/jlibovicky.github.io/tree/master/assets/code/yi/format_data.py).
+By the time I downloaded the Czech Wikipedia, there were more than 5 million
+sentences.
 
 When we solve any problem using machine learning, no matter whether it is deep
 leaning or other machine learning methods, we need to strictly separate train
@@ -168,7 +170,9 @@ We can see that with the increasing amount of processed data, the accuracy
 increases. It should not surprise us — the more text we see, the smaller
 chance, that we will encounter a previously unseen word. On other hand, after
 processing 500,000 words, there is only little chance we will see anything new.
-The [source code](/assets/code/yi/statistical.py) is very simple.
+The [source
+code](https://github.com/jlibovicky/jlibovicky.github.io/tree/master/assets/code/yi/statistical.py)
+is very simple.
 
 Now we know what we may expect from our model. Anything over 91 % will be a
 success, anything worse would mean that the network was not able to remember
@@ -209,7 +213,8 @@ in the backward direction. In this way, we can use information about what is
 both left and right from a letter to estimate the spelling.
 
 If you are interested in the details of the network (number of neurons etc.),
-you can check out [the model's source code](/assets/code/yi/build_network.py).
+you can check out [the model's source
+code](https://github.com/jlibovicky/jlibovicky.github.io/tree/master/assets/code/yi/build_network.py).
 
 # Training
 
@@ -243,7 +248,7 @@ can see in the table below.
 |neural network         |    98.3 % |
 
 If you are interested in the code, have a look at [the training
-script](/assets/code/yi/train.py).
+script](https://github.com/jlibovicky/jlibovicky.github.io/tree/master/assets/code/yi/train.py).
 
 # What did the network learn
 
