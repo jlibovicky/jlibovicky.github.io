@@ -81,34 +81,56 @@ impact would be rather low.
 Another problem the competitions suffer with is the fact that no metric is
 perfect. You can gain an advantage in the competition by greedily optimize
 towards the competition metric, even though it does not correlate with how
-people perceive the task.
-To vedlo v oblasti strojového překladu k tomu, že se kromě
-samotného překladu soutěží i v tom, jak automaticky měřit kvalitu strojového
-překladu tak, aby co nejvíce odpovídala lidskému hodnocení. Kvalitu těchto
-metrik je ale potřeba nějak měřit. Soutěž v tom, jak měřit kvalitu měření
-kvality strojového překladu se ovšem zatím nekoná.
+people perceive the task. In machine translation it even led to creating
+another competition, not in the translation itself, but in measuring the
+quality of the translation. The participants try to develop such a metric that
+correlates the most with how humans perceive translation quality - which needs
+to be measured as well! Luckily, there is no competition in measuring the
+quality of measuring the quality of machine translation.
 
-Ten, kdo najde slabinu hodnocení, může uspět, přestože se mu ve skutečnosti
-vůbec nepodaří vyřešit úlohu, o kterou v soutěži primárně jde. Příkladem toho
-může být soutěž v tvz. Turingově testu. Turingovým testem, který byl poměrně
-dlouho považován za kritérium "inteligentnosti" umělé inteligence, projde
-takový systém, se kterým se dá chatovat takovým způsobem, že člověk nerozezná,
-zda na druhé straně sedí člověk nebo počítačový program. To se skutečně v roce
-2014 podařilo, když porotce dokázal zmást program, který předstíral, že je
-[třináctiletý chlapec z Ukrajiny, který není rodilý mluvčí
-angličtiny](https://www.theguardian.com/technology/2014/jun/08/super-computer-simulates-13-year-old-boy-passes-turing-test).
-Způsob, jakým toho program dosáhl nevypovídá ani tolik o inteligenci programu
-samotného jako jeho autorů.
+Finding a weakness of the competition metric can lead to success even though it
+totally misses the objective of the competition tries to follow. An excellent
+example could be so called Turing Test which has been for a long time
+considered to be criterion of AI being intelligent. A system passes the Turing
+Test if it is able to chat with a human in such a way that the human is not
+able to tell whether he or she talks to another human or a computer program.
+The first and the only one system that passed this test was a project of the
+Russian programmers in 2014. It fooled the judges by pretending, it was [a
+thirteen-years-old boy from Ukraine who was not a native speaker of
+English](https://www.theguardian.com/technology/2014/jun/08/super-computer-simulates-13-year-old-boy-passes-turing-test).
+Obviously, winning the competition in this way does not shows more intelligence
+of the authors than intelligence of the program itself.
 
-Když se soutěž ve vědecké komunitě etabluje, může se stát se na jejich
-standardních datech se standardními metrikami soutěží nadále, přestože samotný
-soutěžní úkol pozbyl vědecké i praktické relevance. To je podle mě případ
-soutěže ve [sledování stavu mluveného
-dialogu](http://workshop.colips.org/dstc5/). V soutěži se měří to, jak dobrou
-má systém představu o tom, jaký je cíl uživatele, který telefonu s dialogovým
-systémem (člověk si chce třeba koupit lístek do kina, nebo zjistit kdy mu jede
-příští tramvaj z Náměstí bratří Synků). Podoba soutěžního úkolu vychází z toho,
-jak bylo před deseti lety zvykem dekomponovat architekturu dialogového systému.
-To se s nástupem takzvaného hlubokého učení výrazně změnilo, přesto se vypisují
-další a další kola této soutěže.
+When a competition gets established in the scientific community with its
+standard datasets and standard metrics, researchers may continue to take part
+even though, the problem does have to be as relevant as in the time the
+competition started. This is in my  point of view case of [Dialog State
+Tracking Challenge](http://workshop.colips.org/dstc5/). The goal of the
+competing systems is to find out what is a goal of a user of a spoken dialog
+system (e.g., find out when the next tram arrives). The design of the task
+assumes a decomposition of the dialog system which was invented ten years ago.
+This has changed with the advent of deep learning, however new rounds of the
+challenge start every year.
+
+# Kaggle
+
+This maybe surprising competitiveness of AI researchers has been used by a
+company [Kaggle](https://www.kaggle.com) with a very interesting business
+model. This server holds competition in various machine learning problems
+accessible for broad public. Kaggle's clients can come up with a machine
+learning problem and list a reward for the best solvers. These are problems
+like [automatic labeling of YouTube
+videos](https://www.kaggle.com/c/youtube8m), [searching satellite pictures for
+places where the Amazon rain forest is being
+destroyed](https://www.kaggle.com/c/planet-understanding-the-amazon-from-space).
+In addition to commercially motivated problems, there are also competitions on
+the server to help programmers learn how to work with machine learning, as well
+as problems motivated more academically.
+
+Kaggle was founded in 2010 and since the time, it gathered a community of 536
+thousand registered users and supposedly [earned 12.5 million
+dollars](https://www.crunchbase.com/organization/kaggle#/entity). The company
+was recently bought by
+[Google](https://techcrunch.com/2017/03/07/google-is-acquiring-data-science-community-kaggle/)
+and became a part of the Alphabet holding.
 
