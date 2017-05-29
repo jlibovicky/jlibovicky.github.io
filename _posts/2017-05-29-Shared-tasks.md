@@ -3,7 +3,7 @@ layout: post
 title: Further, faster, stronger, dear AI
 ---
 
-__[Česká verze příspěvku](/2017/04/14/Shared-tasks.html)__
+__[Česká verze příspěvku](/2017/05/29/Souteze.html)__
 
 Since I was a little boy, I was astonished how weird sport biathlon is. I
 couldn't imagine how could someone possible invent a combination of
