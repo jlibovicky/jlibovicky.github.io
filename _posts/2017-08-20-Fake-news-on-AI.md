@@ -47,22 +47,44 @@ https://research.googleblog.com/2016/11/zero-shot-translation-with-googles.html
 
 # Facebook's AI Grew out of Control, so they Had To Stop It
 
+One weakness of current models natural language processing is that they model
+_how does the language look like_. Language is mostly a means of communication.
+Almost everything that we say we say with some intention: entertain someone,
+make someone angry, tell the world what is the right thing to do or buy a
+postage stamp. Knowing how the language look like may be good enough when you do
+machine translation, but when you want a program to negotiate about something,
+intentionally following the goal you want to achieve sounds like a better
+strategy that simulating what other people usually say in similar situations.
+
+The goal of Facebook's experiment was train models that will be able to achieve
+some communication goals. (Machine translation in )
+
+What actually happened was that the machines were able to find a code that may
+be efficient for negotiating about the price of apples, but does not resemble
+human language at all. If we think of it more deeply, it is actually no
+surprise. Human language is not probably the most efficient code for negotiating
+the prices of apples, but it has many other fascinating properties: we can
+write poems in it, tell jokes, etc.
+
+https://www.forbes.com/sites/tonybradley/2017/07/31/facebook-ai-creates-its-own-language-in-creepy-preview-of-our-potential-future
+
 # Why are these news dangerous
 
-The way media talk about AI techonolgies (even the usage of the term AI)
-intentionally resembles the way AI is depicted in the sci-fi literature and
-movies. Illustration photos in the news stories usually come from the movies.
+The way media talk about AI technologies (even the usage of the term AI, what
+will say when we will have _real_ intelligence?!) intentionally resembles the
+way AI is depicted in the sci-fi literature and movies. Illustration photos in
+the news stories usually come from the movies.
 
 _TODO: some examples_
 
 This might be what makes the stories more attractive to the users, but it is
-highly missleading while talking about the potential risks of AI because the
+highly misleading while talking about the potential risks of AI because the
 sci-fi conceptualization tend to make us think about sci-fi risks. What comes to
-our minds are technologz getting out of control eventually exterminating
-humanity.
+our minds are technology getting out of control eventually exterminating
+humanity or a supervillain using the emerging technology to conquer the world.
 
 The main risks are different. What I would worry the most is criminal abuse. I
-can imagine robots crawling web and finding oportunities for blackmailing
+can imagine robots crawling web and finding opportunities for blackmailing
 people (matching faces from LinkedIn images with some or wild parties photos).
 There are endless opportunities to make better and more personalized
 [advance-fee scams](https://en.wikipedia.org/wiki/Advance-fee_scam).
