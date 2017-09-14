@@ -27,6 +27,11 @@ the world.
 These associations of course make the news stories more attractive and make the
 technologies more popular among the public, on the other hand it makes false
 expectations both in terms of use and possible misuse of the technologies.
+Public discussion is misdirected towards hypothetical risks and overlooks the
+real ones.
+
+In this post, I would like to discuss some of these misconceptions and highlight
+what are the main risks these emerging technologies pose.
 
 # Neural Network Simulates Brain
 
@@ -51,18 +56,6 @@ to human or animal brains.  Marketing of technology companies with brands like
 _Google Brain_ or _Google Deepmind_ then only deepen these misconception.
 
 https://www.nytimes.com/2016/12/14/magazine/the-great-ai-awakening.html?mcubz=0
-
-# Google's Machine Translation is Better than Humans
-
-https://arxiv.org/abs/1609.08144
-
-https://research.googleblog.com/2016/09/a-neural-network-for-machine.html
-
-https://www.wired.com/2016/09/google-claims-ai-breakthrough-machine-translationo
-
-https://www.theverge.com/2016/9/27/13078138/google-translate-ai-machine-learning-gnmt
-
-https://www.washingtonpost.com/news/innovations/wp/2016/10/03/google-translate-is-getting-really-really-accurate
 
 # Google's Machine Translation Developed its Own Language
 
@@ -91,6 +84,9 @@ we can write poems in it, tell jokes, etc.
 
 https://www.forbes.com/sites/tonybradley/2017/07/31/facebook-ai-creates-its-own-language-in-creepy-preview-of-our-potential-future
 
+Recently a similar result has been presented, a similar result has been
+presented on experiments with a more controlled language whose goal was
+
 # Why are these News Dangerous
 
 The way media talk about AI technologies (even the usage of the term AI, what
@@ -105,11 +101,28 @@ highly misleading while talking about the potential risks of AI because the
 sci-fi conceptualization tend to make us think about sci-fi risks. What comes
 to our minds are technology getting out of control eventually exterminating
 humanity or a super villain using the emerging technology to conquer the world.
+The risk are in fact earthbound well-known problems that has been here since
+ever: criminality, power struggle and careless way of doing business.
 
 Recently, Elon Musk initiated an important discussion on possible misuse of AI
 in the weapon industry. However, the more closer risk are different. What I
 would worry the most is criminal abuse. I can imagine robots crawling web and
 finding opportunities for blackmailing people (matching faces from LinkedIn
-images with some or wild parties photos).  There are endless opportunities to
+images with some or wild parties photos). There are endless opportunities to
 make better and more personalized [advance-fee
 scams](https://en.wikipedia.org/wiki/Advance-fee_scam).
+
+Compromising peoples privacy is another big issue. Recently, Stanford university
+researchers published a method for estimating sexual orientation exclusively
+from images.
+
+Deep learning models are always optimized towards an objective that is
+necessarily agnostic to everything except the objective. This problem has been
+popularized by the though experiment of [paperclip
+maximizer](https://wiki.lesswrong.com/wiki/Paperclip_maximizer) in which general
+AI is deployed in a factory producing paperclips with the only objective:
+producing as many paperclips for as low price as possible, eventually turning
+the entire solar system into a paperclip factory.
+
+The risk are not as fatal as in this though experiment and therefore maybe less
+interesting for media, but are based on the same principle.
