@@ -107,6 +107,8 @@ poems in it, tell jokes, etc.
 
 https://www.forbes.com/sites/tonybradley/2017/07/31/facebook-ai-creates-its-own-language-in-creepy-preview-of-our-potential-future
 
+https://gizmodo.com/no-facebook-did-not-panic-and-shut-down-an-ai-program-1797414922
+
 Recently a similar result has been presented, a similar result has been
 presented on experiments with a more controlled language whose goal was to
 develop a communication code for practical negotiation in a game. Although the
@@ -159,3 +161,5 @@ training data. In the example, they showed, the model attributed exclusively to
 female actors more than 80% cases even though it was the case only in 66% of the
 training instances. We can easily imagine that the same bias amplification can
 happen in models banks may use to estimate clients credibility.
+
+http://www.wired.co.uk/article/machine-learning-bias-prejudice
