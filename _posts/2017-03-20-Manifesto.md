@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Computational Linguistics in the 21st century – a private manifesto of its perpetual student
+lang: en
 ---
 
 __[Česká verze příspěvku](/2017/03/20/Manifest.html)__
