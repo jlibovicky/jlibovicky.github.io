@@ -9,8 +9,13 @@ kramdown:
 gems:
    - jekyll-coffeescript
    - jekyll-paginate
+   - jekyll-seo-tag
 title: Jindřich's blog
-# decription: >
-#baseurl: "https://jlibovicky.github.io"
-#twitter_username: jlibovicky
+decription: A blog on deep learning and natural language processing.
+baseurl: "https://jlibovicky.github.io"
+twitter_username: jlibovicky
 github_username: jlibovicky
+social:
+   - https://www.linkedin.com/in/jind%C5%99ich-libovick%C3%BD-13281046/
+   - https://twitter.com/jlibovicky
+   - http://ufal.mff.cuni.cz/jindrich-libovicky

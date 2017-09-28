@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Spell checking of y and in Czech using deep learning
+lang: en
 ---
 
 __[Česká verze příspěvku](/2017/02/22/Pravopis.html)__
