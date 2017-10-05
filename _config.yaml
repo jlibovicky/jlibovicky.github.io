@@ -12,7 +12,6 @@ gems:
    - jekyll-seo-tag
 title: Jindřich's blog
 decription: A blog on deep learning and natural language processing.
-baseurl: "https://jlibovicky.github.io"
 twitter_username: jlibovicky
 github_username: jlibovicky
 social:
