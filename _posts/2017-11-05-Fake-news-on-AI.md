@@ -6,14 +6,18 @@ title: Dangers of AI and Fake News about it
 __[Česká verze příspěvku](/2017/05/29/Fake-news-o-AI.html)__
 
 While reading news stories about research or products involving deep learning, I
-get often astonished how inaccurate and misleading the news stories are. It is
-not probably the only field where it is so, the same feeling must have doctors,
-flight engineers and other experts reading articles on their field.
+get often surprised how inaccurate and misleading the news stories are. It is
+probably a problem of almost all expert fields which happen to appear in media,
+luckily they do not bother me as much as AI.
 
-News stories are compete the get our attention in a world where so many things
-to do. There the news stories that appear in the news must satisfy some criteria
-to even get chance to attract the readers' attention, these are often call [news
-values](https://en.wikipedia.org/wiki/News_values).
+News stories compete the get our attention in a world with so many things to
+do. The news story needs to win the never-ending fight for your attention with
+your work, Facebook posts, friends, family, books you want to read—and that is
+not an easy task at all. Media scientists claim the news must satisfy some
+criteria to even get chance to attract the readers' attention, these are often
+call [news values](https://en.wikipedia.org/wiki/News_values).  In case of
+technology news these are in particluar cultural proximity, unambiguity,
+personalization (narratng as actions of concrete person).
 
 Obviously, the news must be simplified and put in a shape that fits the news
 values. This why the media tend to avoid complicated technical terminology with
@@ -28,7 +32,7 @@ Frankenstein](https://en.wikipedia.org/wiki/Frankenstein) (have you ever notice
 how often the bad guys have academic degrees?).
 
 These unspoken connections of course make the news stories more attractive and
-make the technologies more popular among the public, on the other hand it makes
+make the technologies more popular among the public. On the other hand, it raises
 false expectations both in terms of use and possible misuse of the technologies.
 Public discussion is misdirected towards hypothetical risks and overlooks the
 real ones.
@@ -36,35 +40,9 @@ real ones.
 In this post, I would like to discuss some of these misconceptions and highlight
 what are the main risks these emerging technologies pose.
 
-# Neural Network Simulates Brain
-
-Terms _artificial intelligence_ and _neural network_ stand at the beginning of
-the conceptual misunderstanding. The word _intelligence_ (no matter what
-intelligence means in general) makes a false impression that AI is something
-comparable to human intelligence. Indeed, AI algorithms perform tasks which
-require some cognitive effort while performed by humans, like speech
-recognition or playing Go, however these algorithms can always do one thing
-unlike people are certainly not aware of doing what they are doing.
-
-The term _neural network_ makes a false impression that the goal the algorithms
-simulate human brain. Artificial neural network originated from computational
-simulation of what scientists believed could be a simplified model of a
-biological neuron. Not only is the model no longer consider biologically
-plausible, but it has been abandoned by the computer scientists as well.
-Artificial neural networks are no longer conceptualized as networks of
-individual neurons, but as network of so called _layers_ with purely algebraic
-intuition.
-
-One of the evergreen of popular articles mentioning deep learning is comparison
-to human or animal brains. Marketing of technology companies with brands like
-_Google Brain_ or _Google Deepmind_, _Microsoft Cognitive Services_ only deepen
-this misconception.
-
-https://www.nytimes.com/2016/12/14/magazine/the-great-ai-awakening.html?mcubz=0
-
 # Google's Machine Translation Developed its Own Language
 
-During this year, Google published a study showing how its neural machine
+Earlier this year, Google published a study showing how its neural machine
 translation model can be modified in such a way that a single model is capable
 to translate between multiple language pairs, including language pairs that
 were never seen during the training. This can be seen on a scheme from [Google
@@ -80,7 +58,19 @@ tranlsation from the early days of its research.
 
 Some people called the common input representatin the models had to learn as
 _interligua_ which is a hypothetical common meaning representation that should
-be the same for all the languages, an ultimate analysis of a sentence.
+be the same for all the languages, an ultimate analysis of a sentence. This
+news has been reported even by the most read technology news servers:
+
+* [Wired.com: Google's AI just created its own universal 'language'](http://www.wired.co.uk/article/google-ai-language-create)
+
+* [TechCruch.com: Google’s AI translation tool seems to have invented its own secret internal language](https://techcrunch.com/2016/11/22/googles-ai-translation-tool-seems-to-have-invented-its-own-secret-internal-language/)
+
+The articles not only do not mention that the translation was useless for any
+practical purposes, but they also make a false impression that the intemediate
+representation that the system uses is something that can be used a language.
+In fact, the representations the system uses are tables with thousands of real
+numbers for which we have no direct iterpretatation. It also has none of the
+properties people usually attribute to languages.
 
 # Facebook's AI Grew out of Control, so they Had To Stop It
 
@@ -120,38 +110,22 @@ of human language.
 
 The way media talk about AI technologies (even the usage of the term AI, what
 will say when we will have _real_ intelligence?!) intentionally resembles the
-way AI is depicted in the sci-fi literature and movies. Illustration photos in
-the news stories usually come from the movies.
+way AI is depicted in the sci-fi literature and movies. This might be what
+makes the stories more attractive. The problem is that while talking about the
+potential risks of AI, the sci-fi conceptualization tends to make us think
+about sci-fi risks. What comes to our minds are technology getting out of
+control eventually exterminating humanity or a supervillain using the emerging
+technology to conquer the world. The risks are in fact earthbound well-known
+problems that has been here since ever: criminality, power struggle and
+careless way of doing business.
 
-_TODO: some examples_
-
-This might be what makes the stories more attractive to the users, but it is
-highly misleading while talking about the potential risks of AI because the
-sci-fi conceptualization tend to make us think about sci-fi risks. What comes to
-our minds are technology getting out of control eventually exterminating
-humanity or a super villain using the emerging technology to conquer the world.
-The risk are in fact earthbound well-known problems that has been here since
-ever: criminality, power struggle and careless way of doing business.
-
-Recently, Elon Musk initiated an important discussion on possible misuse of AI
-in the weapon industry. However, the likely risks are different. What I would
-worry the most is criminal abuse. I can imagine robots crawling web and finding
-opportunities for blackmailing people (matching faces from LinkedIn images with
-some or wild parties photos). There are endless opportunities to make better and
-more personalized [advance-fee
-scams](https://en.wikipedia.org/wiki/Advance-fee_scam).
-
-Compromising peoples privacy is another big issue. Recently, Stanford university
+What I would worry the most is criminal abuse.  I can imagine programs crawling
+web and finding opportunities for blackmailing people (matching faces from
+LinkedIn images with some or wild parties photos).  Collecting information for
+various kind of scams is also likely to happen.  Recently, Stanford university
 researchers published a method for estimating sexual orientation exclusively
 from publicly available images. There is no need to say how such a tool can be
 used in conservative authoritarian regimes.
-
-Deep learning models are always optimized towards an objective that is agnostic
-anything else. This problem has been popularized by the though experiment of
-[paperclip maximizer](https://wiki.lesswrong.com/wiki/Paperclip_maximizer) in
-which general AI is deployed in a factory producing paperclips with the only
-objective: producing as many paperclips for as low price as possible, eventually
-turning the entire solar system into a paperclip factory.
 
 The risk are not as fatal as in this though experiment and therefore maybe less
 interesting for media, but are based on the same principle. A paper awarded by
@@ -162,4 +136,6 @@ female actors more than 80% cases even though it was the case only in 66% of the
 training instances. We can easily imagine that the same bias amplification can
 happen in models banks may use to estimate clients credibility.
 
-http://www.wired.co.uk/article/machine-learning-bias-prejudice
+None of these sounds super attractive for a news story, nevertheless there are
+real problems, much more real than speculation whether deep learning algorithms
+cat take over the world. No, they cannot.
