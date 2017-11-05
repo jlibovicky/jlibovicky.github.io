@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Dangers of AI and Fake News about it
+title: Fake news on artificial intelligence
 ---
 
 __[Česká verze příspěvku](/2017/05/29/Fake-news-o-AI.html)__
@@ -79,39 +79,46 @@ has none of the properties people usually attribute to languages.
 
 # Facebook's AI Grew out of Control, so they Had To Stop It
 
-One of the weaknesses of current models for natural language processing is that
-they model only _how does the language look like_. Although language can have
-various uses, it mostly used when we to communicate something to someone else:
-entertain someone, make someone angry, tell the world what is the right thing
-to do or buy a postage stamp. For machine translation, it might enough to teach
-the model how does a sentence in a target look like for a given source
-sentence. Nevertheless, if we wanted to create a program that negotiates with
-someone about something, a program that intentionally follows the goal you want
-it to achieve, trying to simulate what people do in similar situation does not
-like a good strategy. Obviously, you need to know what you want to achieve in
-order to achieve it.
+One of the properties of current models for natural language processing is that
+they model only _how the language looks like_, not what it does. When we speak,
+we do not primarily think about how our language looks like, but on what we
+want to achieve: entertain someone, find out what time is it, make people vote
+for the Green party, pray, or buy a postage stamp. For instance machine
+translation models do not bother with that all. In this case, it might be
+enough to teach the model how does a sentence in a target look like for a given
+source sentence.
+
+Nevertheless, if we wanted to create a program that for instance negotiates
+with someone about something, a program that intentionally follows the goal you
+want it to achieve, trying to simulate what people do in similar situation does
+not like a good strategy.  Obviously, you need to know what you want to achieve
+in order to achieve it. You cannot do it just by mimicking of what people to
+when they negotiate.
 
 During the last summer, a research team at Facebook did an experiment whose
 goal was exactly this. In the experiments, they trained chatbots which were
 supposed to negotiate with each other about exchanging hats, balls and book.
 They used the same principle as was used for instance while training the
-AlphaGo system for playing the game of Go. The systems were given some prior
-knowledge how to negotiate and they were improving their negotiation skills by
-constantly communicating with each other. AS a result, the system learned to
-negotiate very efficiently with each other. On the other hand, the code they
-have developed for that did not resemble English at all.
+AlphaGo system for playing the game of Go which was trained by playing millions
+of games against different version of itself. In this case, the systems were
+given some prior knowledge how Facebook users chat with each other, their
+initial state was in fact knowing how the language look like. Then they were
+improving their negotiation skills by constantly communicating with each other.
+As a result, the systems learned to negotiate very efficiently with each other.
+On the other hand, the code they have developed for that did not resemble
+English at all.
 
 The experiment got surprisingly high media coverage. Most of the news stories
 were telling that Facebook had done an experiment with artificial intelligence
 that had got out of control and therefore they had to stop it.
 
-* [Forbes.com, 31.7. 2017: Facebook AI Creates Its Own Language In Creepy Preview Of Our Potential Future ](https://www.forbes.com/sites/tonybradley/2017/07/31/facebook-ai-creates-its-own-language-in-creepy-preview-of-our-potential-future)
+* [Forbes.com, 31.7. 2017: Facebook AI creates its own language in creepy preview of our potential future](https://www.forbes.com/sites/tonybradley/2017/07/31/facebook-ai-creates-its-own-language-in-creepy-preview-of-our-potential-future)
 
-* [Independent.co.uk: Facebook's Artificial Intelligence Robots Shut Down after they Start Talking to each other in their own language](http://www.independent.co.uk/life-style/gadgets-and-tech/news/facebook-artificial-intelligence-ai-chatbot-new-language-research-openai-google-a7869706.html)
+* [Independent.co.uk, 31.7. 2017: Facebook's artificial intelligence robots shut down after they start talking to each other in their own language](http://www.independent.co.uk/life-style/gadgets-and-tech/news/facebook-artificial-intelligence-ai-chatbot-new-language-research-openai-google-a7869706.html)
 
-* [Mirror.co.uk: Robot intelligence is dangerous: Expert's warning after Facebook AI develop their own language](http://www.mirror.co.uk/tech/robot-intelligence-dangerous-experts-warning-10908711)
+* [Mirror.co.uk, 1.8. 2017: Robot intelligence is dangerous: Expert's warning after Facebook AI develop their own language](http://www.mirror.co.uk/tech/robot-intelligence-dangerous-experts-warning-10908711)
 
-* [Business Insider: Facebooks's AI accidentally created its own language](http://uk.businessinsider.com/facebook-chat-bots-created-their-own-language-2017-6?r=US&IR=T)
+* [Business Insider 21.7. 2017: Facebooks's AI accidentally created its own language](http://uk.businessinsider.com/facebook-chat-bots-created-their-own-language-2017-6?r=US&IR=T)
 
 At this time, it was the technology news servers that tried to calm down and
 explain the exaggerate news from other media:
@@ -124,43 +131,23 @@ If we think of it more deeply, it is actually no surprise that the code the
 systems had developed was totally different from any language. Human language
 is not probably the most efficient code for negotiating about hats, balls and
 books, but it has many other fascinating properties: we can write poems in it,
-tell jokes, etc. Facebook stopped the experiment not because it was dangerous,
-but because it already delivered results they wanted and it was useless for any
-practical use.
+tell jokes, etc. We can interpret the result of the experiment as an strong
+argument, that talking business is not a primary function of language which is
+at least for me good news. Facebook stopped the experiment not because it was
+dangerous, but because it already delivered results they wanted and it was
+useless for any practical use.
 
-# Problems with News like this
+# What are the takeaways?
 
 The way media talk about AI technologies (even the usage of the term AI, what
-will say when some will develop a really intelligent intelligence?!)
-intentionally resembles the way AI is depicted in the sci-fi literature and
-movies. This might be what makes the stories more attractive. The problem is
-that while talking about the potential risks of AI, the sci-fi
-conceptualization tends to make us think about sci-fi risks. What comes to our
-minds are technology getting out of control eventually exterminating humanity
-or a supervillain using the emerging technology to conquer the world. The risks
-are in fact earthbound well-known problems that has been here since ever:
-criminality, power struggle and careless way of doing business.
-
-What I would worry the most is criminal abuse.  I can imagine programs crawling
-web and finding opportunities for blackmailing people (matching faces from
-LinkedIn images with some or wild parties photos).  Collecting information for
-various kind of scams is also likely to happen.  Recently, Stanford university
-researchers published a method for estimating sexual orientation exclusively
-from publicly available images. There is no need to say how such a tool can be
-used in conservative authoritarian regimes.
-
-The risk are not as fatal as in this though experiment and therefore maybe less
-interesting for media, but are based on the same principle. A paper awarded by
-the best paper price at the [EMNLP 2017 conference](https://emnlp2017.net)
-showed that [deep learning models tend to amplify the
-bias](http://aclweb.org/anthology/D17-1319) that is present in the training
-data they with. One of the examples they showed, was classification of
-activities (who does what) captured on photographs. For instance, the models
-said there was a female cooking in the photograph in more that 80% cases even
-though it was the case only in 60% of the training instances. We can easily
-imagine that the same bias amplification can happen in models banks may use to
-estimate clients credibility.
-
-None of these sounds super attractive for a news story, nevertheless there are
-real problems, much more real than speculation whether deep learning algorithms
-cat take over the world. No, they cannot.
+will say when some will develop a really intelligent intelligence?!) often
+resembles the way AI is depicted in the sci-fi literature and movies (where it
+usually means something completely different). This might be what makes the
+stories more attractive. The problem is that while talking about the potential
+risks of AI, the sci-fi conceptualization tends to make us think about sci-fi
+risks. What comes to our minds are technology getting out of control eventually
+exterminating humanity or a supervillain using the emerging technology to
+conquer the world. Don't worry, none of it is in preparation, neither in
+Facebook or Google labs, neither anywhere else. The technologies are going to
+have a big effect on society that we should focus on, instead of talking
+sci-fi.
