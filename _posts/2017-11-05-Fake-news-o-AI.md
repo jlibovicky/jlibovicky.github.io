@@ -12,52 +12,56 @@ nicméně rozhořčování se nad nepřesností zpráv například z letectví n
 medicíny přenechám jiným a budu se věnovat strojovému učení a umělé
 inteligenci.
 
-Zpravodajské obsahy soutěží o získání naší pozornosti se spoustou jiných zdrojů
-zábavy a způsobů trávení času. Abych si vůbec nějakou zprávu přečetl, musí pro
-mě být v daný okamžik zajímavější než práce, kterou bych měl dělat, procházení
+Zpravodajské obsahy soutěží o naší pozornost se spoustou jiných zdrojů zábavy a
+způsobů trávení času. Abych si vůbec nějakou zprávu přečetl, musí pro mě být v
+daný okamžik zajímavější například než práce, kterou bych měl dělat, procházení
 Facebooku odshora dolů, povídaní si s kamarády nebo si třeba jít zaběhat.
 Mediální odborníci v této souvislosti hovoří o takzvaných [_zpravodajských
 hodnotách_](https://cs.wikipedia.org/wiki/Zpravodajsk%C3%A9_hodnoty), znacích,
 které musí zprávy splňovat, aby měly vůbec šanci oslovit čtenáře
-mainstreamových médií. V případě zpráv o umělé inteligenci to jsou pak
-především: kulturní blízkost (technologie mají jasné místo místo v našem
-kulturním okruhu), jednoznačnost (pokrok je pokrok) a možnost personalizace
-zprávy (vyprávět ji jako příběh jednotlivce nebo malé skupiny vývojářů).
+mainstreamových médií. V případě zpráv o umělé inteligenci hraje roli především
+především kulturní blízkost (technologie mají jasné místo místo v naší
+kultuře), jednoznačnost (všichni ví, k čemu je pokrok), částečně i možnost
+personalizace zprávy (vyprávět ji jako příběh jednotlivce nebo malé skupiny
+vývojářů nebo příběh uživatelů, kterým se změnil život).
 
 Zprávy se také musí vyhýbat nesrozumitelným vědeckých a technických termínům. V
 případě umělé inteligence pak není daleko k tomu, že si novináři vypomohou
-termíny a metaforami ze sci-fi literatury a filmů. Nevyslovená souvislost mezi
+metaforami ze sci-fi literatury a filmů. Nevyslovená souvislost mezi
 nejnovějšími technologiemi a sci-fi žánrem určitě dělá takové zprávy v očích
 veřejnosti atraktivnější, na druhou stranu vytváří falešné povědomí o rizicích,
-která mohou být s novými technologiemi spojeny.
+která mohou být s novými technologiemi spojena.
 
-Ve zbytku tohoto příspěvku bych chtěl ukázat příklady, jak média informují o
-umělé inteligenci, o jakých rizicích mluví, a jaká rizika naopak přehlížejí.
+V následujících odstavcích si to ukážeme na dvou příkladech z letošního roku.
 
 # Strojový překlad od Googlu vytvořil univerzální jazyk
 
 Na konci minulého roku Google publikoval studii, která ukazuje, jak je možné
-jednoduše pozměnit současný neuronový strojový překlad, který používá Google
-Translate, tak, aby jeden jediný model zvládal překlad mezi více jazykovými
-páry, a i mezi jazyky, které systém nikdy předtím neviděl spolu. Jak systém
-funguje, můžete ne vidět na schématu, který [Google Research publikoval na svém
+jednoduše pozměnit neuronový strojový překlad, který používá Google Translate,
+tak, aby jeden jediný model zvládal překlad mezi více jazykovými páry. Systém
+je údajně schopný překládat nejen mezi dvojicemi jazyků, pro které byl
+natrénován, ale i mezi páry jazyků, které systém nikdy předtím neviděl spolu.
+Přehledné schéma toho, jak systém funguje, ukazuje [Google Research na svém
 blogu](https://research.googleblog.com/2016/11/zero-shot-translation-with-googles.html).
 
 ![Google's Zero-Shot Translation](/assets/google_zero_shot.gif)
 
-Kdyby něco takového fungovalo, byl by to pro strojový překlad velký krok
-dopředu. V současnosti je totiž potřeba zvláštní model pro každý jazykový pár.
-Nicméně nic takového se nestalo. Výsledky Googlu jsou nesmírně zajímavé z
-teoretického hlediska, ale úspěšnost představených modelů je daleko za tím, na
-co jsou uživatelé Google Translate zvyklí.
+V současnosti je totiž potřeba zvláštní model pro každý jazykový pár.  Pro
+mnoho dvojic jazyků ani neexistuje dostatečné množství dvojjazyčných textů, s
+jejichž pomocí by bylo možné překlad natrénovat. Kdyby něco takového fungovalo
+dobře, byl by to pro strojový překlad velký krok dopředu.  Bohužel nic takového
+se nestalo. Výsledky Googlu jsou nesmírně zajímavé z teoretického hlediska, ale
+úspěšnost představených modelů je daleko za tím, na co jsou uživatelé Google
+Translate zvyklí.
 
-V mediích se objevily následně objevily zprávy, které nejenom že chválily, jak
-systém dobře funguje, ale obsahovaly i další zavádějící tvrzení, totiž, že
-překladový systém si vytvořil vlastní univerzální jazyk, takzvanou
-_interlinguu_. Jako interlingua se v lingvistice označuje hypotetická
-reprezentace významu, která by měla být nezávislá na konkrétním jazyce. Zpráva
-o tom, že překladač od Googlu jaksi sám vytvořil univerzální jazyk, se objevila
-v mnoha médiích včetně nejprestižnějších technologických serverů:
+V mediích se objevily objevily zprávy, které nejenom že chválily, jak systém
+dobře funguje, ale obsahovaly i další zavádějící tvrzení, totiž, že překladový
+systém si vytvořil vlastní univerzální jazyk, takzvanou _interlinguu_, který
+používá při přechodu mezi jazyky. Jako interlingua se v lingvistice označuje
+hypotetická reprezentace významu, která by měla být nezávislá na konkrétním
+jazyce. Zpráva o tom, že překladač od Googlu jaksi sám vytvořil univerzální
+jazyk, se objevila v mnoha médiích včetně nejčtenějších technologických
+serverů:
 
 * [Respekt, 13.1. 2017: Nový Google Translator chápe vztahy mezi jazyky, které vedle sebe nikdy neviděl](https://www.respekt.cz/denni-menu/novy-google-translator-chape-vztahy-mezi-jazyky-ktere-vedle-sebe-nikdy-nevidel)
 
@@ -65,49 +69,52 @@ v mnoha médiích včetně nejprestižnějších technologických serverů:
 
 * [TechCruch.com, 22.11. 2017: Google’s AI translation tool seems to have invented its own secret internal language](https://techcrunch.com/2016/11/22/googles-ai-translation-tool-seems-to-have-invented-its-own-secret-internal-language/)
 
-Nejenom, že články zapomínají zmínit, že pro praktické použití, je takový
-systém k ničemu, ale navíc vytváří falešný dojem, že si nějaký model strojového
-učení vytvořil vlastní jazyk. Tím zároveň mezi řádky říkají, že současné
-neuronové sítě jsou natolik inteligentní objekty, že u nich má smysl mluvit o
-tom, že používají lidský jazyk, a nejenom to, dokonce si samy pro sebe vytváří
-nové jazyky. To je něco, co bychom v lidském přisoudili maximálně napůl
-autistickým géniům. Ve skutečnosti modely reprezentují vstupní sekvence jako
-tabulky reálných čísel, které nemají žádnou přímou interpretaci a nevykazují
-žádné vlastnosti, které obvykle jazyku přisuzujeme.
+Nejenom, že články zapomínají zmínit, že pro praktické použití je takový systém
+k ničemu, ale navíc vytváří falešný dojem, že nějaký model strojového učení
+(umělá inteligence!) vytvořil vlastní jazyk. Tím totiž mezi řádky říkají, že
+současné neuronové sítě jsou natolik inteligentní objekty, že u nich má smysl
+mluvit o tom, že používají lidský jazyk, a nejenom to, dokonce si samy pro sebe
+vytváří nové, lepší jazyky. To je něco, co bychom v lidském přisoudili
+maximálně napůl autistickým géniům. Kdyby něco takové počítače doopravdy uměly
+bylo by to jistě fascinující a do jisté míry děsivé. Ve skutečnosti modely
+reprezentují vstupní sekvence jako tabulky reálných čísel, které nemají žádnou
+přímou interpretaci a nevykazují žádné vlastnosti, které obvykle jazyku
+přisuzujeme.
 
 # Experiment s umělou inteligencí se Facebooku vymkl kontrole
 
 Většina modelů strojového učení, které se používají na zpracování přirozeného
-jazyka, modeluje, pouze jak jazyk vypadá za určitých okolností. Když mluvíme,
-nepřemýšlíme v první řadě o tom, jak jazyk vypadá, ale o tom, co chceme udělat:
-pobavit někoho, zjistit kolik je hodin, přesvědčit okolí, aby volilo Stranu
-zelených, modlit se nebo si třeba koupit poštovní známku. Modely, které se
-používají například pro strojový překlad toto neberou a možná ani nemusí brát v
-potaz. Zdá se, že v případě strojového překladu si vystačíme s tím, že umíme
-modelovat, jak vypadá věta v cílovém jazyce, když nám byla ukázána věta ve
-zdrojovém jazyce.
-
-Pokud bychom ale chtěli vytvořit program, který s někým o něčem vyjednával,
-program, který by používal jazyk k tomu, aby dosáhl nějakého předem daného cíle
-(třeba sjednat co nejvýhodnější obchod), napodobování toho, co lidé dělají v
-podobných situacích, by nejspíše nevedlo k cíli.
+jazyka, modeluje pouze, jak jazyk za určitých okolností vypadá. Když mluvíme,
+chceme jazyk k něčemu konkrétnímu použít, a až na výjimka se nestaráme o to,
+jak zrovna náš jazyk vypadá: chceme například někoho, zjistit, kolik je hodin,
+přesvědčit kamarády, aby volili Stranu zelených, modlit se, nebo si třeba
+koupit poštovní známku. Modely, které se používají například pro strojový
+překlad, toto neberou (a možná ani nemusí brát) v potaz. Zdá se, že v případě
+strojového překladu si vystačíme s tím, že umíme modelovat, jak vypadá věta v
+cílovém jazyce, když nám byla ukázána věta ve zdrojovém jazyce. Pokud bychom
+ale chtěli vytvořit program, který s někým o něčem vyjednával, program, který
+by používal jazyk k tomu, aby dosáhl nějakého předem daného cíle (třeba sjednat
+co nejvýhodnější obchod), napodobování toho, co lidé dělají v podobných
+situacích, by nejspíše nevedlo k cíli, měl by vědět, jak se jazyk používá.
 
 Letos v létě provedli výzkumníci ve Facebooku experiment, ve kterém se snažili
-vyvinout model, který by měl přesně takovéto vlastnosti. Pokusili se natrénovat
-model, který by používal přirozený jazyk k tomu, aby vyjednával co
-nejvýhodnější směny čepic, míčů a knížek. V experimentu využili stejného
-principu, který používal systém AplhaGo pro hraní hry Go, který si dařilo
-zdokonalovat tím, že hrál neustále partie sám s různými verzemi sebe sama a
-metodou pokus-omyls zjišťovat, co je nejlepší. V případě tohoto experimentu, se
-modely nejprve předtrénovaly tak, že uměly simulovat konverzace mezi uživateli
-Facebooku. Jejich další trénování probíhalo tak, že mezi sebou vyjednávali o
-výměnách předmětů tak, aby to pro ně bylo nejvýhodnější. Modely tak vyvinuli
-velmi efektivní kód pro vyjednávání o výměně předmětů, který ale ani v nejmenší
-nepřipomínal angličtinu.
+vyvinout model, který by měl přesně takovéto vlastnosti. Model, na kterém
+pracovali, měl používat přirozený jazyk k tomu, aby vyjednával co nejvýhodnější
+směny čepic, míčů a knížek. V experimentu využili stejného principu, který
+používal systém [AplhaGo](https://cs.wikipedia.org/wiki/AlphaGo), který jako
+první porazil člověka ve hře Go. Program sám sebe zdokonaloval tím, že hrál
+miliony partií s různými verzemi sebe sama a metodou pokus–omyl zjišťovat, co
+je nejlepší. V případě tohoto experimentu, výzkumníci modely nejprve
+předtrénovaly tak, že uměly simulovat, jak vypadají konverzace mezi uživateli
+na chatu – vycházely tedy toho, jak jak jazyk vypadá. Jejich další trénování
+probíhalo tak, že jednotlivé modely mezi sebou vyjednávaly o výměnách předmětů
+tak, aby to pro ně bylo nejvýhodnější. Modely si tak vytvořily velmi efektivní
+kód pro vyjednávání o výměně předmětů, který ale ani v nejmenší nepřipomínal
+angličtinu.
 
 Experiment získal překvapivě vysoké mediální pokrytí. Ve většině zpráv
 nechybělo, že Facebook byl nucen ukončit experiment, ve kterém se umělá
-inteligence začala vymykat kontrole. 
+inteligence začala vymykat kontrole.
 
 * [Forbes.com, 31.7. 2017: Facebook AI creates its own language in creepy preview of our potential future](https://www.forbes.com/sites/tonybradley/2017/07/31/facebook-ai-creates-its-own-language-in-creepy-preview-of-our-potential-future)
 
@@ -117,7 +124,7 @@ inteligence začala vymykat kontrole.
 
 * [Business Insider 21.7. 2017: Facebooks's AI accidentally created its own language](http://uk.businessinsider.com/facebook-chat-bots-created-their-own-language-2017-6?r=US&IR=T)
 
-Na rozdíl od zpráv o domnělém univerzálního jazyka, který měl vzniknout v
+Na rozdíl od zpráv o domnělém univerzálním jazyce, který měl vzniknout v
 Googlu, nejvýznamnější technologické servery se naopak snažily šokující zprávy
 o umělé inteligenci uvést na pravou míru.
 
@@ -125,24 +132,30 @@ o umělé inteligenci uvést na pravou míru.
 
 * [Gizmodo, 31.7. 2017: No, Facebook Did Not Panic and Shut Down an AI Program That Was Getting Dangerously Smart](https://gizmodo.com/no-facebook-did-not-panic-and-shut-down-an-ai-program-1797414922)
 
-Když se nad experimentem zamyslíme, není nejspíš velkým překvapením, že kód,
-který modely vyvinuly není podobný přirozenému jazyku. Lidský jazyk
-pravděpodobně není nejefektivnějším kódem pro vyjednávání o směně předmětů, ale
-má mnoho jiných fascinujících vlastností: můžeme v něm psát básně, vyprávět
-vtipy, atd. Výsledek experimentu můžeme brát také jako argument pro to, že
-vyjednávání není hlavní nijak určující funkce jazyka. Pro mě je to určitě dobrá
-zpráva. Facebook experiment zastavil ne proto, že by byl jakkoli nebezpečný,
-ale především protože nepřinesl praktické výsledky.
+Když se nad experimentem zamyslíme, není nejspíš velkým překvapením, že
+vyjednávací kód, který modely vyvinuly nakonec není podobný přirozenému jazyku.
+Ostatně, lidský jazyk pravděpodobně není nejefektivnějším kódem pro vyjednávání
+o směně předmětů. Za to má mnoho jiných fascinujících vlastností: můžeme v něm
+psát básně, vyprávět vtipy nebo zpívat Kolo, kolo, mlýnský. Výsledek
+experimentu můžeme brát také jako argument pro to, že obchodní jednání není
+hlavní funkce jazyka. Facebook experiment zastavil ne proto, že by byl jakkoli
+nebezpečný, ale především protože nepřinesl praktické výsledky.
 
 # Co si z toho odnést?
 
 To, jak média informují o umělé inteligenci (už i sám pojem umělá inteligence
 je poměrně zavádějící) často evokuje způsob, jakým se o umělé inteligenci mluví
-ve sci-fi literatuře, kde ovšem toto sousloví obvykle znamená něco úplně
-jiného. Články na zpravodajských serverech to zatraktivňuje.  Problém je, že
-terminologie převzatá z vědecko-fantastických filmů, obvykle evokuje i problémy
-a rizika z těchto filmů. Čtenářům vyvstává na mysli možnost, že se umělá
-inteligence vymkne kontrole a vzbouří se proti lidstvu, nebo že se nějaký
-super-padouch rozhodne s její pomocí ovládnout svět. Jako každá technologie má
-umělá inteligence a strojové učení určitá rizika, ale tím, že bude v médiích
-mluvit o sci-fi scénářích, se nikdy nestanou součástí veřejné diskuze.
+ve sci-fi literatuře, kde toto sousloví obvykle znamená něco úplně jiného.
+Média rádi využijí příležitost, jak interpretovat technologické novinky v tomto
+duchu. Články na zpravodajských serverech to zatraktivňuje, i kdyby se měl
+nakonec čtenář rozčílit, že to, o čem se píše přece není žádná inteligence.
+
+Jako největší problém vnímám, že terminologie převzatá z vědecko-fantastických
+filmů, obvykle evokuje i problémy a rizika z těchto filmů. Čtenářům vyvstává na
+mysli možnost, že se umělá inteligence vymkne kontrole a vzbouří se proti
+lidstvu, nebo že se nějaký super-padouch rozhodne s její pomocí ovládnout svět.
+Jak by něco takového mohl udělat model, který počítá podmíněnou pravděpodobnost
+slov v české větě, je-li dána anglická věta, nemám nejmenší tušení. Jako každá
+technologie má umělá inteligence a strojové učení určitá rizika, ale tím, že
+bude v médiích mluvit o sci-fi scénářích, se ty opravdové problémy nestanou
+součástí veřejné diskuze.
