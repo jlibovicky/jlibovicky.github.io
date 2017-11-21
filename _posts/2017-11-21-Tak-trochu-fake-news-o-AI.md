@@ -76,7 +76,7 @@ současné neuronové sítě jsou natolik inteligentní objekty, že u nich má 
 mluvit o tom, že používají lidský jazyk. A nejenom to, dokonce si samy pro sebe
 vytváří nové, lepší jazyky. To je něco, co bychom v lidském přisoudili
 maximálně napůl autistickým géniům. Stroj s takovými schopnosti tak každému
-musí připadat jako děsivá a nepředvidatelný věc. Ve skutečnosti modely
+musí připadat jako děsivá a nepředvidatelná věc. Ve skutečnosti modely
 reprezentují vstupní sekvence jako tabulky reálných čísel, které nemají žádnou
 přímou interpretaci a nevykazují žádné vlastnosti, které obvykle jazyku
 přisuzujeme.
