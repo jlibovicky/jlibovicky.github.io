@@ -26,7 +26,7 @@ blízkost), všichni ví, k čemu je pokrok (jednoznačnost), částečně i mo
 personalizace zprávy – vyprávět ji jako příběh jednotlivce nebo malé skupiny
 vývojářů nebo příběh uživatelů, kterým se změnil život.
 
-Zprávy se také musí vyhýbat nesrozumitelným vědeckých a technických termínům.
+Zprávy se také musí vyhýbat nesrozumitelným vědeckým a technickým termínům.
 V případě umělé inteligence pak není daleko k tomu, že si novináři vypomohou
 metaforami ze sci-fi literatury a filmů. Nevyslovená souvislost mezi
 nejnovějšími technologiemi a sci-fi žánrem určitě dělá takové zprávy v očích
