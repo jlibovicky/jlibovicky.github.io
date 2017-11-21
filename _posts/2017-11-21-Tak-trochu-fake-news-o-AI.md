@@ -145,7 +145,7 @@ nebezpečný, ale především protože nepřinesl praktické výsledky.
 To, jak média informují o umělé inteligenci (už i sám pojem umělá inteligence
 je poměrně zavádějící), často připomíná způsob, jakým se o umělé inteligenci
 mluví ve sci-fi literatuře, kde toto sousloví obvykle znamená něco úplně
-jiného. Média rádi využijí příležitost, jak interpretovat technologické novinky
+jiného. Média ráda využijí příležitost, jak interpretovat technologické novinky
 v tomto duchu. Články na zpravodajských serverech to zatraktivňuje, a to i
 v případě kdyby se měl nakonec čtenář rozčílit, že to, o čem se píše přece není
 žádná inteligence.
