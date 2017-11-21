@@ -21,7 +21,7 @@ zaběhat. Mediální odborníci v této souvislosti hovoří o takzvaných
 hodnotách_](https://cs.wikipedia.org/wiki/Zpravodajsk%C3%A9_hodnoty), znacích,
 které musí zprávy splňovat, aby měly vůbec šanci oslovit čtenáře
 mainstreamových médií. V případě zpráv o umělé inteligenci hraje roli především
-především to, že technologie mají jasné místo místo v naší kultuře (kulturní
+především to, že technologie mají jasné místo v naší kultuře (kulturní
 blízkost), všichni ví, k čemu je pokrok (jednoznačnost), částečně i možnost
 personalizace zprávy – vyprávět ji jako příběh jednotlivce nebo malé skupiny
 vývojářů nebo příběh uživatelů, kterým se změnil život.
