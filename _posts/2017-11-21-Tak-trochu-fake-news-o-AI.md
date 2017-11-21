@@ -147,8 +147,8 @@ je poměrně zavádějící), často připomíná způsob, jakým se o umělé i
 mluví ve sci-fi literatuře, kde toto sousloví obvykle znamená něco úplně
 jiného. Média ráda využijí příležitost, jak interpretovat technologické novinky
 v tomto duchu. Články na zpravodajských serverech to zatraktivňuje, a to i
-v případě kdyby se měl nakonec čtenář rozčílit, že to, o čem se píše přece není
-žádná inteligence.
+v případě, kdy by se měl nakonec čtenář rozčílit, že to, o čem se píše přece
+není žádná inteligence.
 
 Jako největší problém vnímám, že terminologie převzatá z vědecko-fantastických
 filmů, obvykle evokuje i problémy a rizika z těchto filmů. Čtenářům vyvstává na
