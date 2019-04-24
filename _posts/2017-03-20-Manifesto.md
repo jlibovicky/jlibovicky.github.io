@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Computational Linguistics in the 21st century – a private manifesto of its perpetual student
+categories: [English, Popular]
 lang: en
 ---
 

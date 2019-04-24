@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Co dovede neuronový překlad?
+categories: [Czech, Popular]
 lang: cs
 ---
 

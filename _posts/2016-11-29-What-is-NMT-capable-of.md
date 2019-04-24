@@ -1,6 +1,7 @@
 ---
 layout: post
 title: What is Neural Machine Translation Capable of?
+categories: [English, Popular]
 lang: en
 ---
 

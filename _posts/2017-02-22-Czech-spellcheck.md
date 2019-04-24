@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Spell checking of y and in Czech using deep learning
+categories: [English, Popular]
 lang: en
 ---
 

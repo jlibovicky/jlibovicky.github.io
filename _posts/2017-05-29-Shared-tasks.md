@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Further, faster, stronger, dear AI
+categories: [English, Popular]
 lang: en
 ---
 

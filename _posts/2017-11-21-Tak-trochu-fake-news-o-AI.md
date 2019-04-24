@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Tak trochu fake news o umělé inteligenci
+categories: [Czech, Popular]
+lang: cs
 ---
 
 __[English version of the post](/2017/11/21/Kind-of-fake-news-on-AI.html)__
