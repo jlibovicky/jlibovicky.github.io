@@ -15,7 +15,7 @@ Translation_](https://www.mitpressjournals.org/doi/full/10.1162/tacl_a_00256)
 that appeared this week in the [TAACL
 journal](https://www.transacl.org/ojs/index.php/tacl).
 
-In the last few years, we almost got used to innovations that there is an
+In the last few years, we almost got used to that there is an
 innovation that improves machine translation by quite a large margin every
 year. It was the [attention model](https://arxiv.org/abs/1409.0473) in 2015,
 training data processing innovations like [subword
