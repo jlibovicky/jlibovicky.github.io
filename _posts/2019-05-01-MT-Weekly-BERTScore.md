@@ -29,11 +29,11 @@ The BERT model itself is based on the [Transformer
 architecture](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf),
 originally invented for machine translation. The model is trained to guess
 input words that were randomly masked out and to decide whether two sentences
-follow each other in a sentence. This relatively simple supervision causes that
-the model develops a very informative sentence representation. Models based on
-BERT set the new state of the art in many NLP tasks including sentiment
-analysis, paraphrase detection, finding an answer for a question in a coherent
-text, syntactic analysis, etc.
+follow each other. This relatively simple supervision causes that the model
+develops a very informative sentence representation. Models based on BERT set
+the new state of the art in many NLP tasks including sentiment analysis,
+paraphrase detection, finding an answer for a question in a coherent text,
+syntactic analysis, etc.
 
 And surprise… MT evaluation is another task where BERT rules. According to the
 results in the paper, BERTScore is the best MT evaluation metric that currently
