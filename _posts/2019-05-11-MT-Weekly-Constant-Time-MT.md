@@ -48,6 +48,21 @@ source sentence representation from the encoder. Because everything can be
 computed in parallel, the decoder generates a sequence of output words in
 asymptotically constant time.
 
+<div align="center">
+<img src="/assets/MT-Weekly-3/step0.svg" id="slide" />
+</div>
+
+<script>
+function slideshow() {
+    var slide_src = document.getElementById("slide").src;
+    var slide_id = parseInt(slide_src[slide_src.length - 5]);
+    var next_id = (slide_id + 1) % 8;
+    document.getElementById("slide").src = "/assets/MT-Weekly-3/step" + next_id + ".svg";
+    setTimeout(slideshow, 2000);
+}
+setTimeout(slideshow, 2000);
+</script>
+
 Words generated with the lowest probability are masked out and the output is
 used as an input to the decoder in the next step. The mask-out words are
 replaced by more fine-grained estimates. The paper suggests repeating this 10
