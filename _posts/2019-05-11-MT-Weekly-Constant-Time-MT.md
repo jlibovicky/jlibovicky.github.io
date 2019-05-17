@@ -6,7 +6,7 @@ lang: en
 ---
 
 This week, we will have a look at a brand-new method for non-autoregressive
-machine translation published [few weeks ago on
+machine translation published [a few weeks ago on
 arXiv](https://arxiv.org/pdf/1904.09324.pdf) by [Facebook AI
 Research](https://research.fb.com/category/facebook-ai-research/), two days
 before the anonymity period for [the EMNLP
@@ -24,7 +24,7 @@ models which proceed in parallel and generate all target words at once. The
 models usually reach 200–300% speedup at the cost of a significant drop in
 translation quality. This new paper called [_Constant-Time Machine Translation
 with Conditional Masked Language Models_](https://arxiv.org/pdf/1904.09324.pdf)
-manages to keep the same speedup, however, narrows the quality gap from the
+manages to keep the same speedup, however, it narrows the quality gap from the
 autoregressive model to 5–10%.
 
 The model borrows the idea of masked language modeling from [_BERT_, a general
@@ -32,32 +32,39 @@ sentence representation model](https://arxiv.org/pdf/1810.04805.pdf). In BERT,
 a neural network is taught to guess what words were masked-out in the input.
 The network is thus forced “comprehend” (whatever it means) the rest of the
 sentence in such a way, it can guess what word is missing. And this is exactly
-what this translation model is trained to as well.
+what this translation model is trained to do as well.
 
 As the first step, the model encodes the source sentence in the same way the
 standard MT models do. It also uses the source sentence representation to
-estimate the target sentence length. (As others, they just do classification
+estimate the target sentence length. (Like others, they just do classification
 and treat all possible lengths as _independent_, which for some weird reason
-works better than regression. Does anybody understand why?) This estimate is
-used to generate a fully masked target sentence (i.e., only a sequence of blank
-symbols) which is the input to the decoder in its first iteration.
+works better than regression.) This estimate is used to generate a fully masked
+target sentence (i.e., only a sequence of blank symbols) which is the input to
+the decoder in its first iteration.
 
 As in BERT, the decoder is a stack of Transformer layers that attend to the
-masked input. Unlike BERT (and like decoders in MT) it also attends to the
+masked input. But unlike BERT (and like decoders in MT) it also attends to the
 source sentence representation from the encoder. Because everything can be
 computed in parallel, the decoder generates a sequence of output words in
 asymptotically constant time.
 
 <div align="center">
-<img src="/assets/MT-Weekly-3/step0.svg" id="slide" />
+<img src="/assets/MT-Weekly-3/step00.svg" id="slide" />
 </div>
 
 <script>
+Number.prototype.pad = function(size) {
+    var s = String(this);
+    while (s.length < (size || 2)) {s = "0" + s;}
+    return s;
+}
+
 function slideshow() {
     var slide_src = document.getElementById("slide").src;
-    var slide_id = parseInt(slide_src[slide_src.length - 5]);
-    var next_id = (slide_id + 1) % 8;
-    document.getElementById("slide").src = "/assets/MT-Weekly-3/step" + next_id + ".svg";
+	var slide_id_str = slide_src[slide_src.length - 6] + slide_src[slide_src.length - 5];
+    var slide_id = parseInt(slide_src[slide_src.length - 6] + slide_src[slide_src.length - 5]);
+    var next_id = (slide_id + 1) % 16;
+    document.getElementById("slide").src = "/assets/MT-Weekly-3/step" + next_id.pad(2) + ".svg";
     setTimeout(slideshow, 2000);
 }
 setTimeout(slideshow, 2000);
@@ -71,7 +78,7 @@ not further improve the translation quality.
 
 This is an example (page 3, Figure 1) from the paper (examples in papers always
 carefully cherry-picked, but maybe I'm just judging others by my own standards)
-which shows how translation get gradually improved during the iterations.
+which shows how the translation gets gradually improved during the iterations.
 
 ![Paper example](/assets/constant_time.png)
 
