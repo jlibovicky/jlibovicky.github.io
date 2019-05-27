@@ -9,26 +9,26 @@ With the ACL camera-ready deadline slowly approaching, future ACL papers start
 to pop up on arXiv. One of those which went public just a few days ago is a
 paper called [_Analyzing Multi-Head Self-Attention: Specialized Heads Do the
 Heavy Lifting, the Rest Can Be Pruned_](https://arxiv.org/pdf/1905.09418.pdf)
-which was done by quite a diverse group of researchers from University of
-Amsterdam, University of Edinburgh, Moscow Institute of Physics and Technology
-and Russian company Yandex.
+written by quite a diverse group of researchers from University of Amsterdam,
+University of Edinburgh, Moscow Institute of Physics and Technology and Russian
+company Yandex.
 
 The paper analyzes the encoder of the Transformer models for machine
 translation and tries to get to the bottom of what the self-attention heads in
 the encoder do. The self-attention is known to capture some linguistic
-phenomena, but most of the attention heads learn to do mysterious operations
+phenomena, but most of the attention heads learn to do “mysterious” operations
 that no one can really interpret. It is indeed tempting to think that this is
-what makes the Transformer such a powerful model. However, this paper shows
-that exactly these heads are the most superfluous ones and if you (cleverly)
-remove them from an already trained model, the translation is quality is not
-harmed at all.
+one of the things that make the Transformer such a powerful model. However,
+this paper shows that exactly these heads are the most superfluous ones and if
+you (cleverly) remove them from an already trained model, the translation is
+quality is not harmed at all.
 
 <details>
 
 <summary>First, let me remind you how the self-attention heads in the <a
 href="https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf">Transformer
-model</a> look like. (Click to unroll if your interested in a clumsy summary or
-just skip it.)</summary>
+model</a> look like. (Click to unroll if you are interested in a clumsy summary
+or just skip it.)</summary>
 
 <p>The inputs of the encoder are word embedding vectors. A word vector in the
 next sublayer is a combination of the vectors on the previous layers, more
@@ -66,15 +66,15 @@ href="http://jalammar.github.io/illustrated-transformer/">Jay Alammar</a>.</p>
 
 The paper classifies the attention heads into several categories. In the first
 category, there are _position heads_, systematically attending to surrounding
-words (the Transformer is by design not aware of word order and needs to learn
-it). The second category consists of so-called _syntactic heads_. The authors
-came up with a clever technique (which might be enough for a separate paper)
-and detected heads that reach the maximum values when attending from one
-syntactic category to another one. There are heads identifying object-verb
-relation, heads attaching verbs with adverbial modifiers, etc. In the third and
-last category, there are heads attending to statistically _rare words_. It is
-hard to say why they are there, perhaps because the rare words tend to say a
-lot about the topic of the sentence.
+words at a fixed relative position (the Transformer is by design not aware of
+word order and needs to learn it). The second category consists of so-called
+_syntactic heads_. The authors came up with a clever technique (which might be
+enough for a separate paper) and detected heads that reach the maximum values
+when attending from one syntactic category to another one. There are heads
+identifying object-verb relation, heads attaching verbs with adverbial
+modifiers, etc. In the third and last category, there are heads attending to
+statistically _rare words_. It is hard to say why they are there, perhaps
+because the rare words tend to say a lot about the topic of the sentence.
 
 After that, they used [Layer-wise Relevance
 Propagation](https://pdfs.semanticscholar.org/17a2/73bbd4448083b01b5a9389b3c37f5425aac0.pdf),
@@ -91,23 +91,24 @@ This might have been enough for a decent paper, but the story does not end yet.
 The paper introduces a clever technique for learnable switching off the
 attention heads. There is a gate added to every attention head (something
 similar to the [Gumbel-softmax](https://arxiv.org/pdf/1611.01144.pdf)) which
-makes a hard 0/1 decision whether the head is used or not, but the decision is
-still differentiable and the gradient can get through during training. It is
-used for model fine-tuning which has two objectives: first, switch off as many
-heads as possible, and, second, minimize cross-entropy of reference sentences
+makes a hard 0/1 decision whether the head is used or not. However, the
+decision is still differentiable and the gradient can get through during
+training. It is used for a multi-task model fine-tuning which with two
+objectives: first, switch off as many heads as possible (maximize the gate
+probabilities), and, second, minimize cross-entropy of reference sentences
 (i.e., the standard way of training MT). The more weight is given to the first
 objective, the more heads get switched off. The experiments again show that the
-heads from the already mentioned categories tend to survive and “mysterious”
-heads are the first ones that get removed, and importantly, it barely
-influences the translation quality. This is shown on a diagram with the number
-of remaining heads on the horizontal axis and head categories on the vertical
-axis (the picture is taken from the paper, page 7, figure 8).
+heads from the already mentioned categories tend to survive and the
+“mysterious” heads are the first ones that get removed, and importantly, it
+barely influences the translation quality. This is shown on a diagram with the
+number of remaining heads on the horizontal axis and head categories on the
+vertical axis (the picture is taken from the paper, page 7, figure 8).
 
 ![head pruning](/assets/MT-Weekly-4/head_pruning.png)
 
 At first glance, the method seems a bit over-engineered, but just removing one
-of the heads without finetuning would certainly break the model immediately.
+of the heads without fine-tuning would certainly break the model immediately.
 Even if the “mysterious” head only generated noise, the rest of the network
-would be tuned to the particular type of noise. So, if I think about it in more
-detail, this is truly an elegant way of learning to remove something from a
-neural network without doing much harm.
+would be tuned to the particular type of noise. In fact, this is truly an
+elegant way of learning to remove something from a neural network without doing
+much harm.
