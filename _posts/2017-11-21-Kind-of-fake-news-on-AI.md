@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Kind of fake news on artificial intelligence
+lang: en
+tags: [Populaziation, en]
 ---
 
 __[Česká verze příspěvku](/2017/11/21/Tak-trochu-fake-news-o-AI.html)__

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Machine Translation Weekly 4: Analyzing Multi-Head Self-Attention"
-tags: [MT Weekly]
+tags: [MT Weekly, en]
 lang: en
 ---
 

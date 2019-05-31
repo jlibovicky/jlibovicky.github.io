@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Machine Translation Weekly 1: Bidirectional Decoding"
-tags: [MT Weekly]
+tags: [MT Weekly, en]
 lang: en
 ---
 
