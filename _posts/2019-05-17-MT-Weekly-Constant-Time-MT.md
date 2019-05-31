@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Machine Translation Weekly 3: Constant-Time Machine Translation with Conditional Masked Language Models"
-tags: [MT Weekly, en]
+tags: [mt-weekly, en]
 lang: en
 ---
 

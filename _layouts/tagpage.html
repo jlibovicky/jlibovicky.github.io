@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<div class="post">
+<h1>{{ page.title }}</h1>
+<h2>Tag: {{ page.tag }}</h2>
+
+<article class="post-content">
+    {{ content }}
+</article>
+
+<ul>
+{% for post in site.tags[page.tag] %}
+  <li><a href="{{ post.url }}">{{ post.title }}</a> ({{ post.date | date_to_string }})</li>
+{% endfor %}
+</ul>
+</div>
+<hr>

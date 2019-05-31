@@ -2,7 +2,7 @@
 layout: post
 title: Co dovede neuronový překlad?
 lang: cs
-tags: [Popularization, cs]
+tags: [popularization, cs]
 ---
 
 __[English version of the post](/2016/11/29/What-is-NMT-capable-of.html)__

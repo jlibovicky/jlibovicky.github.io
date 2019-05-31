@@ -2,7 +2,7 @@
 layout: post
 title: Further, faster, stronger, dear AI
 lang: en
-tags: [Populaziation, en]
+tags: [popularization, en]
 ---
 
 __[Česká verze příspěvku](/2017/05/29/Souteze.html)__

@@ -2,7 +2,7 @@
 layout: post
 title: What is Neural Machine Translation Capable of?
 lang: en
-tags: [Popularization, en]
+tags: [popularization, en]
 ---
 
 __[Česká verze příspěvku](/2016/11/29/Co-svede-neuronovy-preklad.html)__
