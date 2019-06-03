@@ -8,8 +8,8 @@ layout: default
     so the humans can finally become a pack of carefree, barefooted,
     long-haired hippies. (← irony)</p>
 
-	<div class="tags">
-	<span class="categories-head">Categories</span>
+    <div class="tags">
+    <span class="categories-head">Categories</span>
 {% capture temptags %}
   {% for tag in site.tags %}
     {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
@@ -21,30 +21,34 @@ layout: default
   {% capture tagname %}{{ tagitems[1] }}{% endcapture %}
   <a href="/tag/{{ tagname }}"><span class="tag-large"><nobr>{{ tagname }}</nobr></span></a>
 {% endfor %}
-	</div>
+    </div>
 
   <h1 class="page-heading">Posts</h1>
 
-  <ul class="post-list">
+  <div class="post-list">
 
-	{% for post in site.posts %}
-	  {% capture currentdate %}{{post.date | date: "%A, %B %d, %Y"}}{% endcapture %}
-	  {% if currentdate != thedate %}
-		<span class="post-meta">{{ currentdate }}</span>
-		{% capture thedate %}{{currentdate}}{% endcapture %}
-	  {% endif %}
-      <h2><a href="{{ post.url }}">{{ post.title }}</a><br />
-            {% for tag in post.tags %}
-			  {% capture tag_name %}{{ tag }}{% endcapture %}
-              <span class="tag"><a href="/tag/{{ tag_name }}"><nobr>{{ tag_name }}</nobr></a></span></a>&nbsp;
-            {% endfor %}
-        </h2>
-	{% endfor %}
+    {% for post in site.posts %}
+      {% capture currentdate %}{{post.date | date: "%A, %B %d, %Y"}}{% endcapture %}
+      {% if currentdate != thedate %}
+        <span class="post-meta">{{ currentdate }}</span>
+        {% capture thedate %}{{currentdate}}{% endcapture %}
+      {% endif %}
+      <div class="post-link-div">
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <p class="teaser">{{ post.content | strip_html | truncatewords: 45 }}</p>
+        <p>
+          {% for tag in post.tags %}
+            {% capture tag_name %}{{ tag }}{% endcapture %}
+            <span class="tag"><a href="/tag/{{ tag_name }}"><nobr>{{ tag_name }}</nobr></a></span>&nbsp;
+          {% endfor %}
+        </p>
+      </div>
+    {% endfor %}
 
-  </ul>
+  </div>
 
-	<div class="tags">
-	<span class="categories-head">Categories</span>
+    <div class="tags">
+    <span class="categories-head">Categories</span>
 {% capture temptags %}
   {% for tag in site.tags %}
     {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
@@ -56,7 +60,7 @@ layout: default
   {% capture tagname %}{{ tagitems[1] }}{% endcapture %}
   <a href="/tag/{{ tagname }}"><span class="tag-large"><nobr>{{ tagname }}</nobr></span></a>
 {% endfor %}
-	</div>
+    </div>
 
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
