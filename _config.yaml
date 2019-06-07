@@ -10,6 +10,7 @@ gems:
    - jekyll-coffeescript
    - jekyll-paginate
    - jekyll-seo-tag
+   - jekyll-sitemap
 title: Jindřich's blog
 decription: A blog on deep learning and natural language processing.
 twitter_username: jlibovicky
