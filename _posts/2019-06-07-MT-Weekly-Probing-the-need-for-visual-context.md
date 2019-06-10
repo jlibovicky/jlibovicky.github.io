@@ -29,23 +29,23 @@ there was basically no difference between the text-only and multimodal models.
 The translation quality, however, is not the only thing that people solving the
 task are interested in. The main research question behind the tasks is how to
 design deep learning models to be able to consider textual and visual
-information simultaneously. This was never evident from the translation
-quality, but the introspection of the models suggested that the models indeed
-take advantage of both modalities.
+information simultaneously. It was never clear from the translation quality
+whether it happens or not, but the introspection of the attention in the models
+suggested that the models indeed take advantage of both modalities.
 
 This paper finally brings a clear quantitative answer to this question. It
 introduces a method that fully shows the capabilities of the models for
-multimodal translation using a simple but clever really idea. The authors
-conducted experiments with artificial noise in the source sentences and
-measured how well missing information from the source sentences can be
-recovered when different model architectures are used. In particular, they were
-masking out (think of BERT, masking out words is obviously popular these days):
+multimodal translation using a simple but clever idea. The authors conducted
+experiments with artificial noise in the source sentences and measured how well
+the missing information from the source sentences can be recovered when
+different model architectures are used. In particular, they were masking out
+(think of BERT, masking out words is obviously popular these days):
 
 * color adjectives;
 
 * nouns denoting entities in the image; and
 
-* random words.
+* different numbers of words from the end of the sentence.
 
 In all the experiments, multimodal models (with only small differences among
 the multimodal architectures) were able to recover the information using the
