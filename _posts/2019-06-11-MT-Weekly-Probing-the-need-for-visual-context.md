@@ -52,7 +52,7 @@ words:
 In all the experiments, multimodal models (with only small differences among
 the multimodal architectures) were able to recover the missing information
 using the image, in contrast to the text-only models that do not any other
-option that guessing what missing word can be from the textual context.
+option than guessing the missing word using the textual context.
 
 The most interesting result of the paper is that masking the words during
 training also makes the attention over the image much more aware of the objects
