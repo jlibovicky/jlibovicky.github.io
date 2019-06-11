@@ -23,13 +23,14 @@ and it was never completely clear if the translation quality difference is
 caused by the multimodal capabilities of the models or by some random
 artifacts. Whereas in 2017, the manual evaluation at WMT suggested that
 multimodal models are better than their text-only counterparts, in 2018 when
-the translation quality was higher in general thanks to the Transformer models,
-there was basically no difference between the text-only and multimodal models.
+the translation quality was higher in general (thanks to the Transformer
+models), there was basically no difference between the text-only and multimodal
+models.
 
 The translation quality, however, is not the only thing that people solving the
-task are interested in. The main research question behind the tasks is how to
+task are interested in. The main research question behind the task is how to
 design deep learning models to be able to consider textual and visual
-information simultaneously. It was never clear from the translation quality
+information simultaneously. It was never evident from the translation quality
 whether it happens or not, but the introspection of the attention in the models
 suggested that the models indeed take advantage of both modalities.
 
@@ -39,22 +40,23 @@ multimodal translation using a simple but clever idea. The authors conducted
 experiments with artificial noise in the source sentences and measured how well
 the missing information from the source sentences can be recovered when
 different model architectures are used. In particular, they were masking out
-(think of BERT, masking out words is obviously popular these days):
+(think of BERT, masking out words is obviously popular these days) following
+words:
 
 * color adjectives;
 
 * nouns denoting entities in the image; and
 
-* different numbers of words from the end of the sentence.
+* words from the end of the sentence.
 
 In all the experiments, multimodal models (with only small differences among
-the multimodal architectures) were able to recover the information using the
-image, in contrast to the text-only models that do not any other option that
-guessing what missing word can be from the textual context.
+the multimodal architectures) were able to recover the missing information
+using the image, in contrast to the text-only models that do not any other
+option that guessing what missing word can be from the textual context.
 
-The most interesting results of the papers si that masking the words during
-training, but it also makes the attention over the image much more aware of the
-objects in the picture as can be seen in the following visualization.
+The most interesting result of the paper is that masking the words during
+training also makes the attention over the image much more aware of the objects
+in the picture as can be seen in the following visualization.
 
 ![attention visualization](/assets/probing_mmt.png)
 
