@@ -24,24 +24,24 @@ already well-known to the model. Let’s say you have a single model that you
 train to translate from English to German, and from French to Czech. If
 everything goes well, the model will develop a shared representation for
 English and French and use it to decode either Czech or German. The model
-should be able to translate also from French to German and from English to
+should also be able to translate from French to German and from English to
 Czech. (Yes, it’s fascinating to see something like this work.)
 
 ![scheme](/assets/MT-Weekly-7/scheme.svg)
 
 Back in 2016, soon after it became clear that neural machine translation works
-better than statistical models, I believe most of the researches thought some
-kind of zero-shot translation was possible and knew how they would design their
-experiments if they had the resources. However, there were only a few places
-with sufficient resources to conduct the experiments. If I recall correctly, at
-that time our department only had two GPUs (compared to over one hundred right
-now). Result of the experiments in the 2016 paper posed no real surprise for
-the community. The translation quality of the zero-shot systems was never
-better than using English as a pivot language and was too low for any practical
-use. They showed that zero-shot translation was somehow possible but certainly
-did not make a breakthrough. Nevertheless, Google did a very good PR job and
-newspapers happily reported that artificial intelligence created its own
-language.
+better than statistical models, I believe most of the researches thought that
+some kind of zero-shot translation was possible and knew how they would design
+their experiments if they had the resources. However, there were only a few
+places with sufficient resources to conduct the experiments. If I recall
+correctly, at that time our department only had two GPUs (compared to over one
+hundred right now). Result of the experiments in the 2016 paper posed no real
+surprise for the community. The translation quality of the zero-shot systems
+was never better than using English as a pivot language and was too low for any
+practical use. They showed that zero-shot translation was somehow possible but
+certainly did not make a breakthrough. Nevertheless, Google did a very good PR
+job and newspapers happily reported that artificial intelligence created its
+own language.
 
 Now, two and half years later, outside the media spotlight, researches from
 Facebook AI, New York University and The University of Hong Kong, published a
@@ -75,7 +75,7 @@ WMT competition. It is also the main technique that enables low-resource and
 unsupervised translation. You start with not really well-performing systems for
 translating in both directions and iteratively improve them using
 back-translation of monolingual text as new training data. (It is kind of
-similar to how AlphaGo learned to play by playing countless games against
+similar to how AlphaGo learned to play Go by playing countless games against
 itself.)
 
 This paper shows that this technique also fits nicely to the zero-shot
