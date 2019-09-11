@@ -6,14 +6,14 @@ lang: en
 ---
 
 The holiday period is over and I almost settled in my new place of operation
-which is the Ludwig-Maximilian University of Munich. This means I can continue
-with weekly reports on what is new in the world of machine translation and
-natural language processing.
+which is the Ludwig-Maximilian University of Munich, and now there is nothing
+that can prevent me from continuing with weekly reports on what is new in the
+world of machine translation and natural language processing.
 
-This week it will be two related papers that recently popped up on arXiv. The
-papers were written by quite an overlapping group of authors from Google and
-both of them deal with massively multilingual translation models. The first one
-is accepted to [EMNLP 2018](https://emnlp-ijcnlp2019.org) and is called
+This week, I will discuss two related papers that recently popped up on arXiv.
+The papers were written by quite an overlapping group of authors from Google
+and both of them deal with massively multilingual translation models. The first
+one is accepted to [EMNLP 2018](https://emnlp-ijcnlp2019.org) and is called
 [Investigation Multilingual NMT Representations at
 Scale](https://arxiv.org/abs/1909.02197), the second one is called [Evaluating
 the Cross-Lingual Effectiveness of Massively Multilingual Neural Machine
@@ -28,11 +28,12 @@ only 0.25 [BLEU](https://en.wikipedia.org/wiki/BLEU) on average. It mostly
 drops for high-resource languages whereas for low-resourced languages it
 usually increases. This itself is an amazing achievement.
 
-The main finding of the first paper is that the vector representations cluster
-according to language families as can be seen in a 2D projection below. They
-took vectors (of 512 dimensions!) from the encoder part of the network, compute
-the average over sentences and drew a 2D projection that more or less preserves
-the distances in the original space.
+The main finding of the first paper is that the vector representations from the
+encoder tend to cluster according to language families as can be seen in the
+figure below. They took vectors (of 512 dimensions!) from the encoder part of
+the network, compute the average over the sentences and drew a 2D projection
+that more or less preserves the distances in the original high-dimensional
+space.
 
 ![Language clusters](/assets/MT-Weekly-10/clusters.png)
 
@@ -44,14 +45,14 @@ in the network without explicitly teaching them to do so. It just, by the way,
 emerges while learning to translate from 102 languages into English.
 
 The second paper explores options to use the sentence representations from the
-multilingual models in other natural language tasks. To be honest, the results
-are not so exciting as in the first one. The first reason is that many of the
-tasks are rather artificial: part-of-speech-tagging in many languages at once,
-multilingual exercise from predicate logic called natural language inference,
-etc. The second reason is that the representations seem to be similarly good as
-Multilingual BERT. Unlike the machine translation model, BERT is trained to
-predict masked-out neighboring words, the model does not have any supervision
-other plain text. Multilingual NMT uses the English translation as a means of
-tying the representations together. I would thus expect that the common
+multilingual models in other natural language tasks. The results are not so
+exciting as in the first paper. Many of the tasks are rather artificial:
+part-of-speech-tagging in many languages at once, multilingual exercise from
+predicate logic called natural language inference, etc. The second reason is
+that the representations seem to be similarly good as Multilingual BERT. Unlike
+the machine translation model, BERT is trained to predict masked-out words in a
+sentence, so the model does not have any supervision other than plain text.
+Multilingual NMT, on the other hand, can use the English translation as a means
+of tying the representations together. I would thus expect that the common
 training signal can make the representations more cross-lingual. It does not
 happen and the paper does not discuss why.
