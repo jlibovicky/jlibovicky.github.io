@@ -13,7 +13,7 @@ world of machine translation and natural language processing.
 This week, I will discuss two related papers that recently popped up on arXiv.
 The papers were written by quite an overlapping group of authors from Google
 and both of them deal with massively multilingual translation models. The first
-one is accepted to [EMNLP 2018](https://emnlp-ijcnlp2019.org) and is called
+one is accepted to [EMNLP 2019](https://emnlp-ijcnlp2019.org) and is called
 [Investigation Multilingual NMT Representations at
 Scale](https://arxiv.org/abs/1909.02197), the second one is called [Evaluating
 the Cross-Lingual Effectiveness of Massively Multilingual Neural Machine
