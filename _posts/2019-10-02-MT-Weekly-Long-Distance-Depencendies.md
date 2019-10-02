@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Machine Translation Weekly 12: Long Distance Dependencies"
+title: "Machine Translation Weekly 13: Long Distance Dependencies"
 tags: [mt-weekly, en]
 lang: en
 ---
