@@ -1,0 +1,17 @@
+---
+layout: none
+---
+
+<ul>
+    {% for post in site.posts limit:5 %}
+      <li>
+          <big><a href="https://jlibovicky.github.io/{{ post.url }}">{{ post.title }}</a></big>
+      {% capture currentdate %}{{post.date | date: "%B %d, %Y"}}{% endcapture %}
+      {% if currentdate != thedate %}
+        <span class="post-meta">({{ currentdate }})</span>
+      {% capture thedate %}{{currentdate}}{% endcapture %}
+      {% endif %}
+      </li>
+    {% endfor %}
+
+</ul>
