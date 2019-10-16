@@ -56,3 +56,27 @@ Multilingual NMT, on the other hand, can use the English translation as a means
 of tying the representations together. I would thus expect that the common
 training signal can make the representations more cross-lingual. It does not
 happen and the paper does not discuss why.
+
+__BibTeX Reference__
+```bibtex
+@article{siddhant2019evaluating,
+	title = {Evaluating the Cross-Lingual Effectiveness of Massively Multilingual Neural Machine Translation},
+	author = {Siddhant, Aditya and Johnson, Melvin and Tsai, Henry and Arivazhagan, Naveen and Riesa, Jason and Bapna, Ankur and Firat, Orhan and Raman, Karthik},
+	url = {http://arxiv.org/abs/1909.00437},
+	month = sep,
+	year = {2019},
+	note = {arXiv: 1909.00437},
+	journal = {arXiv:1909.00437 [cs]},
+}
+
+@article{kudugunta2019investigating2019,
+	title = {Investigating Multilingual {NMT} Representations at Scale},
+	author = {Kudugunta, Sneha Reddy and Bapna, Ankur and Caswell, Isaac and Arivazhagan, Naveen and Firat, Orhan},
+	url = {http://arxiv.org/abs/1909.02197},
+	month = sep,
+	year = {2019},
+	note = {arXiv: 1909.02197},
+	annote = {Comment: Paper at EMNLP 2019},
+	journal = {arXiv:1909.02197 [cs]},
+}
+```

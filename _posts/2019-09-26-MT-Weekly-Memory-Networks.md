@@ -67,3 +67,19 @@ hit)? It applied the same Transformer layer over and over until some criteria
 were reached. This was also a kind of memory network—the self-attention reads
 the information from the memory and decides how much it should get overwritten.
 Maybe we should think more about the notion of memory in machine translation.
+
+__BibTeX Reference__
+```bibtex
+@inproceedings{collier2019memory,
+    title = "Memory-Augmented Neural Networks for Machine Translation",
+    author = "Collier, Mark  and
+      Beel, Joeran",
+    booktitle = "Proceedings of Machine Translation Summit XVII Volume 1: Research Track",
+    month = "19{--}23 " # aug,
+    year = "2019",
+    address = "Dublin, Ireland",
+    publisher = "European Association for Machine Translation",
+    url = "https://www.aclweb.org/anthology/W19-6617",
+    pages = "172--181",
+}
+```

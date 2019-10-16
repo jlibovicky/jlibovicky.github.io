@@ -64,3 +64,15 @@ Isn't it amazing? Instead of complaining that the hidden states of neural
 machine translation models are totally uninterpretable and that we cannot say
 anything about the expected translation quality, this paper shows that with a
 little wit and simple statistics, this can be nearly turned into an advantage.
+
+__BibTeX Reference__
+```bibtex
+@misc{niehues2019modeling,
+    title={Modeling Confidence in Sequence-to-Sequence Models},
+    author={Jan Niehues and Ngoc-Quan Pham},
+    year={2019},
+    eprint={1910.01859},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
+}
+```

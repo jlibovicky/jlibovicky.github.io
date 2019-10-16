@@ -84,3 +84,21 @@ evaluations. This makes the metrics dependent on how the machine translation
 outputs look like these days and pose a risk that they won't work well with
 newer MT systems. BERTScore is independent of how the system outputs currently
 look like which makes it more robust in the future.
+
+__BibTeX reference__
+```bibtex
+@article{zhang2019bertscore,
+  title     = {BERTScore: Evaluating Text Generation with {BERT}},
+  author    = {Tianyi Zhang and
+               Varsha Kishore and
+               Felix Wu and
+               Kilian Q. Weinberger and
+               Yoav Artzi},
+  journal   = {CoRR},
+  volume    = {abs/1904.09675},
+  year      = {2019},
+  url       = {http://arxiv.org/abs/1904.09675},
+  archivePrefix = {arXiv},
+  eprint    = {1904.09675},
+}
+```

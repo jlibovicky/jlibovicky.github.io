@@ -145,3 +145,20 @@ basically the same as the current best autoregressive model. The constant time
 decoding is only 2 BLEU points worse than left-to-right, which actually makes
 the model quite appealing for practical use because offers a decent trade-off
 translation quality and latency.
+
+__BibTeX Reference__
+```bibtex
+@article{mansimov2019generalized,
+  author    = {Elman Mansimov and
+               Alex Wang and
+               Kyunghyun Cho},
+  title     = {A Generalized Framework of Sequence Generation with Application to
+               Undirected Sequence Models},
+  journal   = {CoRR},
+  volume    = {abs/1905.12790},
+  year      = {2019},
+  url       = {http://arxiv.org/abs/1905.12790},
+  archivePrefix = {arXiv},
+  eprint    = {1905.12790},
+}
+```

@@ -90,3 +90,21 @@ Achilles heel of all non-autoregressive models. In this paper, they just try
 several possible target sentence lengths and simply chose the one yields the
 best result. Because all of them can be explored in parallel, it only means a
 negligible delay.
+
+__BibTeX reference__
+```bibtex
+@article{ghazvininejad2019constant,
+  author    = {Marjan Ghazvininejad and
+               Omer Levy and
+               Yinhan Liu and
+               Luke Zettlemoyer},
+  title     = {Constant-Time Machine Translation with Conditional Masked Language
+               Models},
+  journal   = {CoRR},
+  volume    = {abs/1904.09324},
+  year      = {2019},
+  url       = {http://arxiv.org/abs/1904.09324},
+  archivePrefix = {arXiv},
+  eprint    = {1904.09324},
+}
+```

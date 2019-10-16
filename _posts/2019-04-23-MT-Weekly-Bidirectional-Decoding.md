@@ -90,3 +90,20 @@ model (which is quite a lot). Since last year, it is obvious that the
 translation quality of the standard Transformer model can improve a lot when
 trained properly (and for an incredibly long time). The main question for this
 cool new model is, how it will work when combined with the training tricks.
+
+__BibTeX reference__
+```bibtex
+@article{zhou2019synchronous,
+    title = "Synchronous Bidirectional Neural Machine Translation",
+    author = "Zhou, Long  and
+      Zhang, Jiajun  and
+      Zong, Chengqing",
+    journal = "Transactions of the Association for Computational Linguistics",
+    volume = "7",
+    month = mar,
+    year = "2019",
+    url = "https://www.aclweb.org/anthology/Q19-1006",
+    doi = "10.1162/tacl_a_00256",
+    pages = "91--105",
+}
+```

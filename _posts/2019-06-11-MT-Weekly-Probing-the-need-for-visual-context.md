@@ -62,3 +62,23 @@ in the picture as can be seen in the following visualization.
 
 Isn't it fascinating? Anyway, congratulations to the authors for the fully
 deserved best paper award!
+
+
+__BibTeX Reference__
+```bibtex
+@inproceedings{caglayan2019probing,
+    title = "Probing the Need for Visual Context in Multimodal Machine Translation",
+    author = {Caglayan, Ozan  and
+      Madhyastha, Pranava  and
+      Specia, Lucia  and
+      Barrault, Lo{\"\i}c},
+    booktitle = "Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)",
+    month = jun,
+    year = "2019",
+    address = "Minneapolis, Minnesota",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/N19-1422",
+    doi = "10.18653/v1/N19-1422",
+    pages = "4159--4170",
+}
+```

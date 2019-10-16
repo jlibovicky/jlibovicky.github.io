@@ -96,3 +96,14 @@ resolving gender. To resolve the long-distance dependencies (which are of
 course everywhere in the data), you only rarely need to resolve what is going
 on as you do when you analyze the syntax and draw a dependency tree. Most of
 the cases can be probably resolved with simpler patterns.
+
+__BibTeX Reference__
+```bibtex
+@article{choshen2019automatically,
+  title={Automatically Extracting Challenge Sets for Non local Phenomena in Neural Machine Translation},
+  author={Leshem Choshen and Omri Abend},
+  journal={ArXiv},
+  year={2019},
+  volume={abs/1909.06814}
+}
+```

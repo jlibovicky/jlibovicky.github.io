@@ -112,3 +112,23 @@ Even if the “mysterious” head only generated noise, the rest of the network
 would be tuned to the particular type of noise. In fact, this is truly an
 elegant way of learning to remove something from a neural network without doing
 much harm.
+
+__BibTeX Reference__
+```bibtex
+@inproceedings{voita2019analyzing,
+    title = "Analyzing Multi-Head Self-Attention: Specialized Heads Do the Heavy Lifting, the Rest Can Be Pruned",
+    author = "Voita, Elena  and
+      Talbot, David  and
+      Moiseev, Fedor  and
+      Sennrich, Rico  and
+      Titov, Ivan",
+    booktitle = "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2019",
+    address = "Florence, Italy",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/P19-1580",
+    doi = "10.18653/v1/P19-1580",
+    pages = "5797--5808",
+}
+```

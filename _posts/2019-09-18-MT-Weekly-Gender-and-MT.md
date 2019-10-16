@@ -79,3 +79,21 @@ gendered nouns and pronouns related to the speaker. The obvious drawback of
 this method is that it only works for the domain of EU parliamentary addresses,
 but with little effort, it is surely applicable for simultaneous interpreting
 as well.
+
+__BibTeX Reference__
+```bibtex
+@inproceedings{stanovsky2019evaluating,
+    title = "Evaluating Gender Bias in Machine Translation",
+    author = "Stanovsky, Gabriel  and
+      Smith, Noah A.  and
+      Zettlemoyer, Luke",
+    booktitle = "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2019",
+    address = "Florence, Italy",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/P19-1164",
+    doi = "10.18653/v1/P19-1164",
+    pages = "1679--1684",
+}
+```

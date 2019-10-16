@@ -61,3 +61,20 @@ It is as simple as that. I guess from now, there is officially no excuse not to
 use neural MT and keep using the statistical models. The neural revolution in
 machine translation is now complete ([ha,
 ha](https://en.wikipedia.org/wiki/Something_Happened)).
+
+__BibTeX Reference__
+```bibtex
+@inproceedings{sennrich2019revisiting,
+    title = "Revisiting Low-Resource Neural Machine Translation: A Case Study",
+    author = "Sennrich, Rico  and
+      Zhang, Biao",
+    booktitle = "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2019",
+    address = "Florence, Italy",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/P19-1021",
+    doi = "10.18653/v1/P19-1021",
+    pages = "211--221",
+}
+```

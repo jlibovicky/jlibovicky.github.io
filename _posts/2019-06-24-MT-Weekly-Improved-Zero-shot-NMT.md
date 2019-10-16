@@ -90,3 +90,22 @@ The obvious drawback compared to the original Google approach is that for _n_
 languages, you need to generate _n_<sup>2</sup> sets of parallel data. However,
 it would be also the case when training _n_<sup>2</sup> translation models,
 whereas here a single model can be used for multiple language pairs.
+
+__BibTeX Reference__
+```bibtex
+@inproceedings{gu2019improved,
+    title = "Improved Zero-shot Neural Machine Translation via Ignoring Spurious Correlations",
+    author = "Gu, Jiatao  and
+      Wang, Yong  and
+      Cho, Kyunghyun  and
+      Li, Victor O.K.",
+    booktitle = "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2019",
+    address = "Florence, Italy",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/P19-1121",
+    doi = "10.18653/v1/P19-1121",
+    pages = "1258--1268",
+}
+```

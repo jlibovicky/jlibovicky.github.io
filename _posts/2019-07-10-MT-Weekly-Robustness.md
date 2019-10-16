@@ -60,3 +60,42 @@ translation system robust enough to work on Reddit posts is actually quite easy
 (maybe easier than the organizers expected, but certainly than I expected),
 which is certainly a pleasant surprise. If there is a competition next year, I
 hope the data will be much noisier to keep the task interesting.
+
+__BibTeX Reference__
+```bibtex
+@inproceedings{li2019findings,
+    title = "Findings of the First Shared Task on Machine Translation Robustness",
+    author = "Li, Xian  and
+      Michel, Paul  and
+      Anastasopoulos, Antonios  and
+      Belinkov, Yonatan  and
+      Durrani, Nadir  and
+      Firat, Orhan  and
+      Koehn, Philipp  and
+      Neubig, Graham  and
+      Pino, Juan  and
+      Sajjad, Hassan",
+    booktitle = "Proceedings of the Fourth Conference on Machine Translation (Volume 2: Shared Task Papers, Day 1)",
+    month = aug,
+    year = "2019",
+    address = "Florence, Italy",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/W19-5303",
+    doi = "10.18653/v1/W19-5303",
+    pages = "91--102",
+}
+
+@inproceedings{michel2018mtnt,
+    title = "{MTNT}: A Testbed for Machine Translation of Noisy Text",
+    author = "Michel, Paul  and
+      Neubig, Graham",
+    booktitle = "Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing",
+    month = oct # "-" # nov,
+    year = "2018",
+    address = "Brussels, Belgium",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/D18-1050",
+    doi = "10.18653/v1/D18-1050",
+    pages = "543--553",
+}
+```
