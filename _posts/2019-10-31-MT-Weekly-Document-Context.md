@@ -41,7 +41,7 @@ basically two ways how to do it:
 
 * Have a separate encoder for the context and for the sentence that should be
   translated and combine the states of the encoders later when decoding. There
-  are of course different how to do it.
+  are of course different ways how to do it.
 
 The context encoder does not have to be as complicated as the encoder for the
 sentence that is actually being translated. As their results show, even plain
