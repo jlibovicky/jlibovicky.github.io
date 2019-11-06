@@ -1,0 +1,217 @@
+<html>
+
+<head>
+    <title>BPE</title>
+    <link href="https://fonts.googleapis.com/css?family=Clicker+Script|Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="merges.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#segmentButton").click(function(){
+            var dropoutRate = $("#dropoutSpan").text();
+            var mergesCount = $("#mergeCountSpan").text();
+
+            var tokenized = $("#text").val().split(" ");
+            var output = []
+
+            var segmentCount = 0;
+            var segmentLengthSum = 0;
+
+            for (i in tokenized) {
+                var word = tokenized[i];
+                var segmented = segmentWord(word, dropoutRate, mergesCount);
+                for (j in segmented) {
+                    segmentCount += 1;
+                    if (segmented[j].endsWith("</w>")) {
+                        output.push(segmented[j]);
+                        segmentLengthSum += segmented[j].length - 4;
+                    } else {
+                        output.push(segmented[j] + "<span class=\"sep\">@@</span>");
+                        segmentLengthSum += segmented[j].length;
+                    }
+                }
+            }
+
+            var resultBox = $("<div />");
+            resultBox.append(
+                "<span class=\"dropout\"> BPE merges " + mergesCount +"</span>");
+            resultBox.append(
+                "<span class=\"dropout\"> Dropout rate " + dropoutRate +"</span>");
+            var avgSegmentLen = Math.round(100 * segmentLengthSum / segmentCount) / 100;
+            resultBox.append(
+                "<span class=\"avgLen\">" + avgSegmentLen + " characters per segment</span>")
+
+            resultBox.append("<p class=\"output\">" + output.join(" ") + "</p>");
+
+            $("#outputArea").prepend(resultBox);
+        });
+
+        $("#mergeCountSlider").change(function(){
+           $("#mergeCountSpan").text($("#mergeCountSlider").val());
+        });
+
+        $("#dropoutSlider").change(function(){
+            $("#dropoutSpan").text($("#dropoutSlider").val() / 100);
+        });
+    });
+
+
+    function segmentWord(word, dropoutRate, mergeCount) {
+        var current_segmentation = word.split('');
+        current_segmentation[current_segmentation.length - 1] += "</w>";
+
+        while(true) {
+            var best_merge_id = null;
+            var best_merge_rank = null;
+            var bigrams = [];
+            for (i = 0; i < current_segmentation.length; i++) {
+                var bigram = current_segmentation[i] + " " + current_segmentation[i + 1];
+                if (bigram in rankedMerges &&
+                        Math.random() > dropoutRate &&
+                        rankedMerges[bigram] < mergeCount) {
+                    if (best_merge_id == null) {
+                        best_merge_id = i;
+                    } else if (rankedMerges[bigram] < best_merge_rank) {
+                        best_merge_rank = merges[bigram];
+                        bert_merge_id = i;
+                    }
+                    continue;
+                }
+            }
+
+            var new_segmentation = [];
+            for (i = 0; i < current_segmentation.length; i++) {
+                if (i == best_merge_id) {
+                    new_segmentation.push(current_segmentation[i] + current_segmentation[i + 1]);
+                    i++;
+                }
+                else {
+                    new_segmentation.push(current_segmentation[i]);
+                }
+            }
+            current_segmentation = new_segmentation;
+
+            if (best_merge_id == null) {
+                break;
+            }
+        }
+
+        return current_segmentation;
+    }
+
+</script>
+
+<style>
+body {
+    font-family: 'Open Sans', sans-serif;
+    width: 600px;
+}
+.sep {font-size: 8px}
+.output {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px
+}
+
+#text {
+    font-family: 'Roboto Mono', monospace;
+    width: 100%;
+    font-size: 16px
+}
+
+.dropout {
+    font-size: 10px;
+    border: gray solid 1px;
+    padding: 3px;
+    border-radius: 5px;
+    margin-right:5px
+}
+
+.avgLen {
+    font-size: 10px;
+    color: gray;
+}
+
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+#segmentButton {
+  width: 100%;
+  color: #4CAF50;
+  border: black solid 2px;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+      background-color: white;
+          margin-top: 20px;
+}
+
+#segmentButton:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+    <div id="inputArea">
+    <textarea  rows="4" cols="50" id="text">Subword segmentation is widely used to address the open vocabulary problem in machine translation .</textarea>
+    <br>
+
+    <div class="slidecontainer">
+        Number of merges: <span id="mergeCountSpan">32000</span>
+         <input type="range" min="0" max="32000" value="32000" class="slider" id="mergeCountSlider">
+    </div>
+
+    <div class="slidecontainer">
+        Dropout: <span id="dropoutSpan">0.1</span>
+         <input type="range" min="0" max="100" value="10" class="slider" id="dropoutSlider">
+    </div>
+
+    <button id="segmentButton">Segment</button>
+
+    </div>
+
+    <p>Outputs</p>
+    <div id="outputArea">
+    </div>
+
+</body>
+
+</html>
