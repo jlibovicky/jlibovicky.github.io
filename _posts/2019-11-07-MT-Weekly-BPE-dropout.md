@@ -68,6 +68,18 @@ segmented in a way that was totally alien to the model. With BPE-dropout, it
 gets split into something similar to what the model had to deal with many times
 during training.
 
+It is very simple to experiment with (the [subword-nmt
+package](https://github.com/rsennrich/subword-nmt) included this option
+immediately when the paper appeared on arXiv). I tried WMT14 English-to-German
+translation with 16k vocabulary and the dropout rate of 0.1 which they used in
+the paper and the training did not converge. The reason presumably is that even
+with dropout rate 0.1 which seems rather small, the text gets segmented in very
+small units. In terms of average segment length vocabulary of 32k merges is
+equivalent to a vocabulary of 2k merges, dropout of 0.1 with a vocabulary of
+16k merges splits the similarly as a vocabulary of only 1k merges when even
+many function words get split. However, it was just my first random experiment,
+so don't take it too seriously.
+
 
 __BibTeX Reference__
 ```bibtex
