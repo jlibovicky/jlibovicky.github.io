@@ -56,7 +56,6 @@
         });
     });
 
-
     function segmentWord(word, dropoutRate, mergeCount) {
         var current_segmentation = word.split('');
         current_segmentation[current_segmentation.length - 1] += "</w>";
@@ -72,9 +71,10 @@
                         rankedMerges[bigram] < mergeCount) {
                     if (best_merge_id == null) {
                         best_merge_id = i;
+                        best_merge_rank = rankedMerges[bigram];
                     } else if (rankedMerges[bigram] < best_merge_rank) {
-                        best_merge_rank = merges[bigram];
-                        bert_merge_id = i;
+                        best_merge_rank = rankedMerges[bigram];
+                        best_merge_id = i;
                     }
                     continue;
                 }
