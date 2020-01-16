@@ -1,4 +1,4 @@
-u--
+---
 layout: post
 title: "Machine Translation Weekly 25: Weaknesses of Reinforcement Learning for NMT"
 tags: [mt-weekly, en]
