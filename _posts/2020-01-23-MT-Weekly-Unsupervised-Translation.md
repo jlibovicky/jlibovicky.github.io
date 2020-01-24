@@ -70,9 +70,9 @@ numerals which are supposed to have the same meaning in most languages. Later
 it showed up that at the beginning, a very approximate dictionary created using
 statistical heuristics is enough.
 
-When we a bilingual dictionary (even a low quality), we can fit the regression
-between the words in the dictionary. In the next step, when we have the
-projection, we can build a new bilingual dictionary based on the better
+When we have a bilingual dictionary (even a low quality), we can fit the
+regression between the words in the dictionary. In the next step, when we have
+the projection, we can build a new bilingual dictionary based on the better
 projection that we just learned. And then, when we have a new better
 dictionary, we can fit a new even better projection, use it to get a
 dictionary, and so on. At some point, this process converges and we end up with
