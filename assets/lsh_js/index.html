@@ -1,0 +1,159 @@
+<html>
+
+<head>
+    <title>LHS</title>
+    <link href="https://fonts.googleapis.com/css?family=Clicker+Script|Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="embeddings.js"></script>
+<script>
+
+// https://stackoverflow.com/questions/25582882/javascript-math-random-normal-distribution-gaussian-bell-curve
+function randn_bm() {
+    var u = 0, v = 0;
+    while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
+    while(v === 0) v = Math.random();
+    let num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+    num = num / 10.0 + 0.5; // Translate to 0 -> 1
+    if (num > 1 || num < 0) return randn_bm(); // resample between 0 and 1
+    return num;
+}
+
+function sample_bucket_projections(num_buckets) {
+    var bucket_vectors = [];
+    for (var i = 0; i < num_buckets; i++) {
+        var bucket_vec = [];
+        for (var j = 0; j < 300; j++) {
+            bucket_vec.push(randn_bm());
+        }
+        bucket_vectors.push(bucket_vec);
+    }
+    return bucket_vectors;
+}
+
+function assign_buckets(num_buckets) {
+    var projections = sample_bucket_projections(num_buckets);
+    var buckets = [];
+    for (var i = 0; i < num_buckets; i++) { buckets.push([]) };
+
+    for (var i = 0; i < words.length; i++) {
+        var best_bucket = -1;
+        var best_score = -1000000;
+        for (var j = 0; j < num_buckets; j++) {
+            var proj_vec = projections[j];
+            var dot_product = 0;
+            for (var k = 0; k < 300; k++) {
+                dot_product += proj_vec[k] * vectors[i][k];
+            }
+            //dot_product = Math.abs(dot_product);
+            if (dot_product > best_score) {
+                best_score = dot_product;
+                best_bucket = j;
+            }
+        }
+        buckets[best_bucket].push(words[i]);
+    }
+    return buckets
+}
+
+const n_colors = 8;
+const dark_colors = ["#62275D", "#C32C57", "#F38F1D", "#F5EC50", "#67D120", "#2E6FCC"];
+const light_colors = ["#CC99C9", "#9EC1CF", "#9EE09E", "#FDFD97", "#FEB144", "#FF6663"];
+
+
+function get_bucket_div(id_num, words) {
+    var bucket_div = $("<div />")
+        .addClass("bucketOut")
+        .css('background-color', light_colors[color_id]);
+    var color_id = id_num % n_colors;
+
+    var bucket_header = $("<div>#<b>" + (id_num + 1) + "</b><small><br /> "+ words.length + " words</small></div>")
+        .addClass("bucketHeader")
+        .css('font-color', "blue")
+        .appendTo(bucket_div);
+
+    var bucket_content = $("<div />").addClass("bucketIn");
+    words.forEach(function (word, w_id) {
+        bucket_content.append(word + "<br />");
+    });
+    bucket_content.appendTo(bucket_div);
+
+    return bucket_div;
+}
+
+
+$(document).ready(function() {
+    $("#hashButton").click(function() {
+        var num_buckets = $("#numberBuckets").val();
+        var buckets = assign_buckets(num_buckets);
+
+        $("#bucketContainer").empty();
+        buckets.forEach(function (bucket, b_id) {
+            get_bucket_div(b_id, bucket).appendTo("#bucketContainer");
+        });
+
+        console.log("Hashed.");
+    });
+});
+
+
+</script>
+
+<style>
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F5F5F5;
+}
+
+.bucketHeader {
+    display: block;
+    text-align: center;
+    background-color: #11111111;
+}
+
+.bucketIn {
+    width: 100px;
+    margin: 0px;
+    display: block;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    display: block;
+    font-size: 10pt
+}
+
+.bucketOut {
+    border: 2px solid gray;
+    width: 100px;
+    height: 200px;
+    margin: 10px;
+    display: inline-grid;
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+</style>
+
+</head>
+
+<body>
+
+    <div>
+    Number of buckets: <input id="numberBuckets" value=10 />
+    <button id="hashButton">Hash</button>
+    </div>
+
+    <div id="bucketContainer">
+        <div class="bucket">
+            dog <br />
+            cat
+        </div>
+
+        <div class="bucket">
+            eat <br />
+            sleep
+        </div>
+
+    </div>
+
+</body>
+
+</html>
