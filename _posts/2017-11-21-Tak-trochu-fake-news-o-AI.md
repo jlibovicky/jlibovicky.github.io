@@ -106,11 +106,11 @@ směny čepic, míčů a knížek. V experimentu využili stejného principu, kt
 používal systém [AplhaGo](https://cs.wikipedia.org/wiki/AlphaGo), který jako
 první porazil člověka ve hře Go. Program sám sebe zdokonaloval tím, že hrál
 miliony partií s různými verzemi sebe sama a metodou pokus–omyl zjišťovat, co
-je nejlepší. V případě tohoto experimentu, výzkumníci modely nejprve
-předtrénovaly tak, že uměly simulovat, jak vypadají konverzace mezi uživateli
+je nejlepší. V případě tohoto experimentu výzkumníci modely nejprve
+předtrénovali tak, že uměly simulovat, jak vypadají konverzace mezi uživateli
 na chatu – vycházely tedy z toho, jak jazyk vypadá. V průběhu dalšího trénování
-mezi sebou vyjednávaly o výměnách předmětů tak, že zkoušeli, co je pro ně
-nejvýhodnější. Modely si tak vytvořily velmi efektivní kód pro vyjednávání o
+mezi sebou modely vyjednávaly o výměnách předmětů tak, že zkoušely, co je pro
+ně nejvýhodnější. Modely si tak vytvořily velmi efektivní kód pro vyjednávání o
 výměně předmětů, který ale ani v nejmenší nepřipomínal angličtinu.
 
 Experiment získal překvapivě vysoké mediální pokrytí. Ve většině zpráv
