@@ -1,12 +1,24 @@
 <html>
 
 <head>
-    <title>LHS</title>
+    <title>Local Sensitivity Hashing</title>
     <link href="https://fonts.googleapis.com/css?family=Clicker+Script|Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="embeddings.js"></script>
 <script>
+
+function norm_vector(vector) {
+    var norm = Math.sqrt(
+        vector.map(function (x) {return x * x})
+                  .reduce(function (x, y) {return x + y}, 0));
+    return vector.map(function(x) {return x / norm});
+}
+
+for (var i = 0; i < vectors.length; i++) {
+    vectors[i] = norm_vector(vectors[i]);
+}
+
 
 // https://stackoverflow.com/questions/25582882/javascript-math-random-normal-distribution-gaussian-bell-curve
 function randn_bm() {
@@ -26,7 +38,7 @@ function sample_bucket_projections(num_buckets) {
         for (var j = 0; j < 300; j++) {
             bucket_vec.push(randn_bm());
         }
-        bucket_vectors.push(bucket_vec);
+        bucket_vectors.push(norm_vector(bucket_vec));
     }
     return bucket_vectors;
 }
@@ -34,7 +46,10 @@ function sample_bucket_projections(num_buckets) {
 function assign_buckets(num_buckets) {
     var projections = sample_bucket_projections(num_buckets);
     var buckets = [];
-    for (var i = 0; i < num_buckets; i++) { buckets.push([]) };
+    for (var i = 0; i < num_buckets; i++) {
+        buckets.push([]);
+        buckets.push([]);
+    };
 
     for (var i = 0; i < words.length; i++) {
         var best_bucket = -1;
@@ -50,6 +65,10 @@ function assign_buckets(num_buckets) {
                 best_score = dot_product;
                 best_bucket = j;
             }
+            if (-dot_product > best_score) {
+                best_score = -dot_product;
+                best_bucket = num_buckets + j;
+            }
         }
         buckets[best_bucket].push(words[i]);
     }
@@ -59,6 +78,10 @@ function assign_buckets(num_buckets) {
 const n_colors = 8;
 const dark_colors = ["#62275D", "#C32C57", "#F38F1D", "#F5EC50", "#67D120", "#2E6FCC"];
 const light_colors = ["#CC99C9", "#9EC1CF", "#9EE09E", "#FDFD97", "#FEB144", "#FF6663"];
+
+function shuffle(array) {
+      array.sort(() => Math.random() - 0.5);
+}
 
 
 function get_bucket_div(id_num, words) {
@@ -72,6 +95,7 @@ function get_bucket_div(id_num, words) {
         .css('font-color', "blue")
         .appendTo(bucket_div);
 
+    shuffle(words);
     var bucket_content = $("<div />").addClass("bucketIn");
     words.forEach(function (word, w_id) {
         bucket_content.append(word + "<br />");
@@ -84,7 +108,7 @@ function get_bucket_div(id_num, words) {
 
 $(document).ready(function() {
     $("#hashButton").click(function() {
-        var num_buckets = $("#numberBuckets").val();
+        var num_buckets = parseInt($("#numberBuckets").val());
         var buckets = assign_buckets(num_buckets);
 
         $("#bucketContainer").empty();
@@ -92,7 +116,6 @@ $(document).ready(function() {
             get_bucket_div(b_id, bucket).appendTo("#bucketContainer");
         });
 
-        console.log("Hashed.");
     });
 });
 
@@ -112,6 +135,7 @@ body {
 }
 
 .bucketIn {
+    background-color: white;
     width: 100px;
     margin: 0px;
     display: block;
@@ -137,21 +161,11 @@ body {
 <body>
 
     <div>
-    Number of buckets: <input id="numberBuckets" value=10 />
+    Number of buckets: <input id="numberBuckets" value=5 />
     <button id="hashButton">Hash</button>
     </div>
 
     <div id="bucketContainer">
-        <div class="bucket">
-            dog <br />
-            cat
-        </div>
-
-        <div class="bucket">
-            eat <br />
-            sleep
-        </div>
-
     </div>
 
 </body>
