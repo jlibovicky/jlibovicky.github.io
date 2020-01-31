@@ -6,69 +6,70 @@ lang: en
 ---
 
 This week I will not review a paper that is not primarily about machine
-translation but about a neural architecture has a potentially can make a big
-impact on machine translation. I will talk about Google's
-[Reformer](https://arxiv.org/abs/2001.04451), an architecture that is a more
-memory- and time-efficient version of the widely used Transformer architecture.
-In this post am trying to step-by-step explain what are the two main
-innovations that allow the model to time and save memory. It contains a bit
-more math than usual, but I am trying to keep things as simple as possible.
+translation but about a neural architecture but can make a big impact on
+machine translation and natural language processing in general. This post is
+about Google's [Reformer](https://arxiv.org/abs/2001.04451), a neural
+architecture that is a more memory- and time-efficient version of the widely
+used Transformer architecture. In this post am trying to step-by-step explain
+what are the two main innovations that allow the model to time and save memory.
 
 The Transformer is currently the most popular architecture for deep learning in
 natural language processing. It first became popular in machine translation
 in 2017. In 2018, it was used to train BERT, a pre-trained text representation
 that can be used in almost all NLP tasks and in 2019, many more
-Transformer-based models appeared.
+cool Transformer-based models appeared.
 
-Part of the the Transformer models strength probably comes from the fact that
-at each layer, it considers all possible combinations of its input tokens. The
-number of such combination is quadratic in the sequence length, but it does not
-pose a time bottlenect thanks intensive GPU parallelization. But you need a
-memory to store the the combinations. Also, the deeper the network is, the
-better performance you get, which also increases the memory requirements.
+Part of the Transformer's strength probably comes from the fact that at each
+layer, it considers all possible combinations of all its inputs. The number of
+such combinations is quadratic in the sequence length, but it does not pose a
+time bottleneck thanks to intensive GPU parallelization. Still, you need enough
+memory to store the combinations. Also, the deeper the network is, the better
+performance you get, which also increases the memory requirements.
 
 Reformer does two things differently from the standard Transformer
 
-1. Adds a hashing function into the self-attention similarity computation, so
-   only a small subset of states is actually used.
+1. It adds a hashing function into the self-attention similarity computation,
+   so only a small subset of states is actually used.
 
-2. Uses a trick with so-called reversible layers, a brilliant idea using
+2. It uses a trick with so-called reversible layers, a brilliant idea using
    trivial algebra that causes that the model does not store values of
    activation function during training.
 
 ## Self-Attention Locally Sensitive Hashing
 
-The transformer model is based on self-attention layers (this is the place that
-considers all combinations). In general, we can imagine attention as
-probabilistic retrieval. For a query, you want to retrieve some information
-about entries that you have in a data storage. We have some _queries_ $Q =
-(q_1, \ldots, q_L)$, we compare them with some _keys_ $K = (k_1, \ldots, k_L)$
-and based on that comparison, we retrieve some values $V = (v_1, \ldots, v_L)$.
+The Transformer model is based on self-attention layers (this is the place
+where it considers all input combinations). In general, we can imagine the
+attention mechanism as probabilistic data retrieval. For a query, you want to
+retrieve some information about entries that you have in a data storage.
+Because we are in a neural network, both the queries and the data are vectors.
+We have some _queries_ $Q = (q_1, \ldots, q_L)$, we compare them with some
+_keys_ $K = (k_1, \ldots, k_L)$ and based on that comparison, we retrieve some
+values $V = (v_1, \ldots, v_L)$ that are associated with the keys.
 
 In Transformers, each state corresponds to one input token (i.e., a word or a
-sub-word). Self-attention is uses the same states as all queries, keys and
+sub-word). Self-attention uses the same states as all queries, keys, and
 values. We can imagine the self-attention as collecting information that is
 encoded in some other hidden states (carried by other words). In each layer,
-each subword collects some information the other subwords have and pass it
-further.
+each subword collects some (hopefully relevant) information from the other
+subwords and pass it further.
 
-Because we might not want all the information from other subwords, but only
-some parts, we do something called multi-head attention. Each head gets
-specialized for retrieving a specific kind of information. This
-"specialization" is achieved by linear projections of the states. The
-projection cannot add any information to the states, they only can make
-suppress something or make something more prominent.
+Because we might not want everything from other subwords, but only some
+particular information, we do so-called multi-head attention. In this setup,
+each head gets specialized for retrieving a specific kind of information. This
+“specialization” is achieved by linear projections of the states. The
+projection cannot add any information to the states, they only can suppress
+something or make something more prominent.
 
-Image, already projected our states and have three sets of states $Q$, $K$, and
-$V$. To make things efficient, the we treat the sets of vectors as matrices.
-The attention is computed as follows:
+Now, we already projected our states and have three sets of states $Q$, $K$,
+and $V$. To make things computationally efficient, we treat the sets of vectors
+as matrices. The attention is computed as follows:
 
 $$ O = \text{softmax}\left( QK^\top / \sqrt{d} \right) V $$
 
-$Q \in \mathbb{R}^{L \times d} = (q_1, \ldots, q_n)$ are $L$ query vectors,
-analogically $K$ and $V$ are keys and values respectively. Here, the output of
-the softmax has size $L^2$ for a sequence of length $L$. This what we want to
-get rid of.
+$Q \in \mathbb{R}^{L \times d} = (q_1, \ldots, q_n)$ are $L$ query vectors, $K$
+and $V$ are keys and values respectively. Here, the output of the softmax has
+size $L^2$ for a sequence of length $L$. This square is what the Reformer tries
+to get rid of.
 
 Let us have a look at this from a perspective of a single query $q_i$ and
 re-write the dot-product (the $i$-th subword is looking for what subwords
@@ -88,90 +89,92 @@ $$o_i = \sum_{j \in \mathcal{P}_i} \exp \left( q_i k_j / \sqrt{d} - z(i, \mathca
 
 $$z(i, \mathcal{P}_i) = \log\sum_{j \in \mathcal{P}_i}\exp q_i k_j / \sqrt{d}$$
 
-From analyses of learned Transformer models, we now that the attention
+From analyses of learned Transformer models, we know that the attention
 distributions are usually quite sharp and only attend to few keys and the rest
-get a negligible probability. Now, if we were able to iterate over a
-substantially smaller set $\mathcal{P}(i)$ than $1 \ldots L$, we can save a lot
-of memory (and maybe some computation time as well). This is where the hashing
-comes into play.
+only gets a negligible probability. Now, if we were able to iterate over a
+substantially smaller set $\mathcal{P}(i)$ than $1 \ldots L$, we could save a
+lot of memory (and maybe some computation time as well). This is where the
+hashing comes into play.
 
 The first part of the trick is to unify the projection of keys and queries. If
 we do this, for one head it holds that we are looking for few vectors that are
-the most similar to the query, vectors that belong to the same cluster (the set
-$\mathcal{P}(i)$ from the previous paragraph). The clustering can be
+the most similar to the query, vectors that belong to the same cluster (i.e.,
+the set $\mathcal{P}(i)$ from the previous paragraph would be the cluster).
+Clustering is usually quite computationally demanding, but here it can be
 approximated by a fast hashing function. And in the best traditions of computer
 science, the clusters are called buckets.
 
-For $b$ buckets,  we will sample $b/2$ random vectors and compare every query
-and key with those vectors using the dot product. There are two buckets for
-each random vector $r \in \mathbb{R}^d$: one for those which are the most
-similar to the vector $r$ and one for those which are the most similar to a
-negation of the vector. In the paper, they formally introduce a matrix $R \in
+For $b$ buckets, we sample $b/2$ random vectors and compare every query and key
+with those vectors using the dot product. There are two buckets for each random
+vector $r \in \mathbb{R}^d$: one for those which are the most similar to the
+vector $r$ and one for those which are the most similar to a negation of the
+vector. In the paper, they formally introduce a matrix $R \in
 \mathbb{R}^{d\times b/2} = \left( r_1, \ldots, r_{b/2} \right)$ and define the
 hashing function as:
 
 $$h(x) = \arg\max\left([ xR; -xR ]\right) = \arg\max\left( xr_1, \ldots, xr_{b/2}, -xr_1, \ldots, -xr_{b/2} \right)$$
 
 With such a hash function, we can do the attention only over the vectors that
-fall into the same bucket. In Equation 4 at page 4 of the paper, they formally
+fall into the same bucket. In Equation 4 on page 4 of the paper, they formally
 write:
 
 $$\mathcal{P}_i = \left\{ j: h(q_i) = h(k_j) \right\} $$
 
-A hashing function like this might be useful if computed everything vector by
-vector on CPU, but we need a fast GPU implementation. GPUs are good in matrix
-multiplications and dealing with sets of indices of different sizes does not
-sound like a task for GPU-accelerated computing. Here comes another trick for
-rescue that allows reformulating what we have again as matrix multiplication.
+A hashing function like this might be useful if we computed everything vector
+by vector on CPU, but we need a fast GPU implementation. GPUs are good at
+matrix multiplications, dealing with sets of indices of different sizes does
+not sound like a task for GPU-accelerated computing. Here comes another trick
+for the rescue.
 
 We sort the vectors according to their bucket number and split them into
-several equally large consecutive chunks,. Vectors with the same hash number
-are likely to end up in the same chunk. The chunks should roughly correspond to
-the buckets because with random projections all buckets should be approximately
-the same size, although nothing is guaranteed.
+several equally large consecutive chunks. Vectors with the same hash number are
+likely to end up in the same chunk. The chunks should roughly correspond to the
+buckets because with random projections all buckets should be approximately the
+same size. Although, nothing is guaranteed, we can always have a bad luck with
+the random projection.
 
 Within the chunks, we can do the self-attention as we always did but with much
 smaller matrices. To lower the chance that we miss something because of
 chunking, the attention also considers one chunk back as keys. In a language
-model where you attend to previous positions anyway, this does not matter at
-all (given the sorting was stable). The chance that states bucket-mate is two
-chunks away is very low. In a bidirectional encoder, it can play a more
+model where you only attend to previous positions anyway, this does not matter
+at all (given the sorting was stable). The chance that the state's bucket-mate
+is two chunks away is very low. In a bidirectional encoder, it can play a more
 important role and a different strategy might be better.
 
 In Figure 2 at the top of page 4, they illustrate the process like this:
 
 ![Local Sensitivity Hashing](/assets/MT-Weekly-27/paper_lhs_scheme.png)
 
-The sequence length in the illustration is 16. Without the hashing, there will
-be a there will a similarity matrix of size 16 × 16 = 256. With the hashing,
-there are only 4 × 4 × 4 = 64 dot products. We got rid of $L^2$-sized matrix,
-now, the asymptotically most expensive part is sorting the states by the bucket
-IDs.
+The sequence length in the illustration is 16. Without the hashing, we would
+need a similarity matrix of size 16 × 16 = 256 for each attention head at each
+layer. With the hashing, there are only 4 × 4 × 4 = 64 dot products. We got rid
+of the $L^2$-sized matrix, so now, the asymptotically most expensive part is
+sorting the states by the bucket numbers.
 
-A technical detail I did not mention and that is now obvious from the
-illustration is that you do not want to attend to vectors that ended up in the
-same chunk but got a different hash. Those need to be masked out. To be
-precise, we can rewrite the self-attention as the paper does in Equation 3 on
-page 3:
+An important technical detail I did not mention and that is now obvious from
+the illustration is that we do not want to attend to vectors that ended up in
+the same chunk but got a different hash. Obviously, those need to be masked
+out. To be precise, we can rewrite the self-attention as the paper does in
+Equation 3 at the very bottom of page 3:
 
 $$o_i = \sum_{j \in \mathcal{P}_i} \exp \left( q_i k_j / \sqrt{d} - m(j, \mathcal{P}_i) - z(i, \mathcal{P}_i) \right)$$
 
 where $m(j, \mathcal{P}_i)$ is infinity if $j \not\in \mathcal{P}_i$ and 0
 otherwise. In other words, if $i$ and $j$ are not in the same bucket, the
-probability we get from the softmax will be zero.
+probability we get from the softmax output will be zero at that position.
 
 To further lower the chance that hashing will miss something, we can do the
-hashing multiple times (in parallel) and then just average what you get from
-the rounds.
+hashing multiple times (which can be done in parallel) and then just average
+what we get from the rounds.
 
 ## Reversible layers
 
 The other trick they use to improve memory efficiency is using reversible
-layers. But before I explain what exactly the reversive layers are, allow me to
-remind how back-propagation in neural networks works and how parameter
+layers. But before I explain what exactly the reversible layers are, allow me
+to remind how back-propagation in neural networks works and how parameter
 gradients get computed.
 
-Let us start with  a simple example of logistic regression:
+Let us have a look at a simple example of logistic regression:
 
 $$o = \sigma \left( \mathbf{W}\mathbf{x} + b \right)$$
 
@@ -194,20 +197,20 @@ $$ \frac{\partial L}{\partial o} = \frac{o - y^\ast}{o(1-o)}$$
 
 $$\frac{\partial o}{\partial h} = \sigma(h)\left( 1 - \sigma(h) \right)$$
 
-This example shows us that no matter what the function is when doing the
-back-propagation, we need to remember what was the value of the node in the
+This example shows us that (almost) no matter what the function is, when doing
+the back-propagation, we need to remember what was the value of the node in the
 forward pass. And with Transformers, it means a lot of memory.
 
 The standard Transformer uses residual connections. The purpose of residual
 connections is preventing the vanishing gradient problem. The trick is simple,
 we just sum the layer output with the layer input. When computing the loss
-derivative by back-propagation, for each parameter, there is always a path that
-only leads only through the summation operations (except for maybe the last few
-nodes), which are linear with respect to derivation.  Other functions have
-derivatives that are often quite small or zero. Without the residual
-connections, you would multiply the gradients by this small or zero derivatives
-so many times that it would eventually vanish. Such a summation path with
-summations is sometimes called the information highway.
+derivative by back-propagation, there is always a path that only leads through
+the summation operations (plus maybe the few last other nodes), which are
+linear with respect to derivation. Other functions have derivatives that are
+often quite small or zero. Without the residual connections, you would (because
+of the chain rule) multiply the gradients by this small or zero derivatives so
+many times that it would eventually vanish. Such a path with summation
+operations is sometimes called the information highway.
 
 ![Standard Transformer Encoder](/assets/MT-Weekly-27/residual.svg)
 
@@ -233,9 +236,10 @@ $$X_1 = Y_1 - \text{Attention}(X_2)$$
 
 Indeed, we need to call the $\text{FeedForward}$ and $\text{Attention}$
 functions again which will cost us some time, but it will save a lot of memory.
-We only need to remember the activations on the current layer and we can forget
-them as soon as we move in the back-propagation further. The memory
-requirements are now independent of the total number of layers.
+If we proceed to the layer before, the recently compute $X_1$ and $Y_2$ become
+$Y_1$ and $Y_2$ of that layer which can be again used to compute $X_2$ and
+$X_1$. We only need to remember the activations on the current layer and we can
+forget them as soon as we move in the back-propagation further.
 
 At the beginning of the network, the input token embeddings are used as both
 $X_1$ and $X_2$. After the last layer, we just concatenate $Y_1$ and $Y_2$.
@@ -244,19 +248,20 @@ $X_1$ and $X_2$. After the last layer, we just concatenate $Y_1$ and $Y_2$.
 
 And this is it. This is how to save memory when training big Transformer
 models. The paper shows only a few experimental results (most importantly
-language modeling), but they manage to show that with approximately the same
-model quality, it is much more memory efficient and thanks to the hashing also
-faster than standard Transformers.
+language modeling). They manage to show that with approximately the same model
+quality, it is much more memory-efficient and thanks to the hashing also faster
+than standard Transformers.
 
-The Reformer was released together with code in [Google's
+The Reformer was released together with an implementation in [Google's
 JAX](https://github.com/google/trax/tree/master/trax/models/reformer). The
 paper was anonymously available on OpenReview since the end of September and
 even before publishing the non-anonymous pre-print on arXiv, there was a
 [PyTorch re-implementation](https://github.com/lucidrains/reformer-pytorch)
 that gets seems to get better every day.
 
-With Reformer training deeper NLP networks becomes more accessible. It will
+With Reformer, training of deeper NLP networks becomes more accessible. It will
 certainly allow more research on character-level processing and pre-trained
 representation outside big companies. Or maybe Google and Facebook will train
-even better and larger BERTs that still will be almost impossible for anyone
-else to develop. We will see in 2020.
+even better and larger monster BERTs that still will be almost impossible for
+anyone else to develop and they will finally rule the world. We will see in
+2020.
