@@ -5,13 +5,13 @@ tags: [mt-weekly, en]
 lang: en
 ---
 
-This week I will not review a paper that is not primarily about machine
-translation but about a neural architecture but can make a big impact on
-machine translation and natural language processing in general. This post is
-about Google's [Reformer](https://arxiv.org/abs/2001.04451), a neural
-architecture that is a more memory- and time-efficient version of the widely
-used Transformer architecture. In this post am trying to step-by-step explain
-what are the two main innovations that allow the model to time and save memory.
+This week I will review a paper that is not primarily about machine translation
+but about a neural architecture but can make a big impact on machine
+translation and natural language processing in general. This post is about
+Google's [Reformer](https://arxiv.org/abs/2001.04451), a neural architecture
+that is a more memory- and time-efficient version of the widely used
+Transformer architecture. In this post am trying to step-by-step explain what
+are the two main innovations that allow the model to time and save memory.
 
 The Transformer is currently the most popular architecture for deep learning in
 natural language processing. It first became popular in machine translation

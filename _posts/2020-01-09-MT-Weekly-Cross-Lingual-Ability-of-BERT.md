@@ -29,7 +29,7 @@ which we have enough data) into other languages (for which the data do not
 exist). For example, imagine you have manually annotated offensive tweets in,
 for instance, English and French and you would like to classify the tweets in
 other languages as well. With a high-quality multilingual representation,
-you could train a model using the English and German data and (given the
+you could train a model using the English and French data and (given the
 multilingual representation is good enough) it would automatically work on
 other languages as well (this is sometimes called a zero-shot transfer).
 However, we are not there yet.
