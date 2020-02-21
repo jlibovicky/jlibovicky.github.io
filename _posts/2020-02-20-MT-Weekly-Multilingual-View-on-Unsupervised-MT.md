@@ -8,26 +8,26 @@ lang: en
 This week, it will be the third time in recent weeks when I am going to review
 a paper that primarily focuses on unsupervised machine translation. The title
 of the paper is [A Multilingual View on Unsupervised Machine
-Translation](https://arxiv.org/pdf/2002.02955.pdf) and describes again work
+Translation](https://arxiv.org/pdf/2002.02955.pdf) and it describes again work
 done at Google. The paper presents a probabilistic formalism for unsupervised
 MT and using that formalism it shows how to use parallel data between two
 languages if you actually want to translate into a third one.
 
 I like this paper because it seems to me that it is an important step to what I
-see as one of the long-term goals of machine translation having a single large
+see as one of the long-term goals of machine translation—having a single large
 model that we will feed with all data available: bilingual, monolingual,
-multilingual, whatever we have, that will learn to translate between
-everything. For every low-resource language, there are certainly several
+multilingual, whatever we have, that will learn to translate between all
+available pairs. For every low-resource language, there are certainly several
 high-resource languages the low-resource one can benefit from. For distant
 languages that seem to conceptualize the world significantly differently, there
 is a continuum of mutually related languages that allow mutual grounding of the
-concepts via more similar concept schemes.
+concepts via more similar conceptual schemes.
 
 Standard supervised machine translation is trained using a parallel corpus, a
 long list of sentence pairs which are mutual translation and this works pretty
 well if we have enough data. In addition to that, several interesting research
-directions deal with situations when you only have little available, different
-data that you actually want or no data at all. These are mainly:
+directions deal with situations when we only have little available, different
+data that we actually want or no data at all. These are mainly:
 
 __Multilingual translation.__ In this case, we have parallel data for all
 languages, but for some of the languages, we have less data than for the
@@ -46,9 +46,10 @@ __Zero-shot translation.__ We talk about zero-shot translation when we train a
 single system for translation from _A_ to _B_ and from _B_ to _C_. If we do it
 cleverly, the model should also be able to translate from _A_ directly to _C_
 without seeing this language pair during training at all. However, it seems
-hard to make such a system to work better than a cascade of two systems. For
-the same languages as in the previous figure, it can look like this (Figure 1b
-of the paper):
+hard to make such a system to work better than a cascade of two systems. (I
+already discussed this topic in [MT Weekly
+7](2019/06/24/MT-Weekly-Improved-Zero-shot-NMT.html).) For the same languages
+as in the previous figure, it can look like this (Figure 1b of the paper):
 
 ![Zero-shot translation](/assets/MT-Weekly-30/zero-shot.png)
 
@@ -61,7 +62,7 @@ This paper adds other interesting setups:
 
 * We want to translate between _A_ and _B_, we do not have any parallel data
   for _A_ and _B_, but we have additional monolingual data for _C_ (Figure 1c
-      of the paper).
+  of the paper).
 
 ![Three languages unsupervised](/assets/MT-Weekly-30/three-languages.png)
 
@@ -96,7 +97,7 @@ will likely be exactly the same as the old one. The expectation-maximization
 algorithm will converge, probably after a single step, but not learn anything
 useful.
 
-A typical application of this algorithm vector clustering. We have a set of
+A typical application of this algorithm is vector clustering. We have a set of
 vectors that form some groups that are unknown to us and we want to discover
 them. Each cluster is represented with one centroid and each vector in our
 dataset belongs to a cluster defined by the closest centroid. The algorithm
@@ -142,7 +143,7 @@ In the next step, they do similar math for adding parallel data between some
 languages. We can surely directly maximize the probability for translation in
 the two directions for which we have the parallel data, but this theoretical
 framework, we can infer additional loss that they call the _cross-translation
-term_ and you can imagine it as a kind of consistency loss. If we have the
+term_ and we can imagine it as a kind of consistency loss. If we have the
 parallel sentence pairs, they should have the same translations into the third
 language.
 
@@ -159,11 +160,11 @@ However, they can show a clear gain from using the auxiliary parallel data.
 
 Adding the auxiliary language pair seems to add consistently around 3 BLEU
 points for all language pairs they tried. Experiments with different auxiliary
-languages show that language relatedness matters (Romanesque languages help
-Romanian whereas Czech does not). Unfortunately, they did not try using
-multiple auxiliary language pairs. I would be very interested in seeing if this
-only the amount of auxiliary data that helps or if a larger variety of language
-phenomena in the data could help.
+languages show that language relatedness matters (Romanesque languages help to
+improve translation into Romanian whereas Czech does not). Unfortunately, they
+did not try using multiple auxiliary language pairs. I would be very interested
+in seeing if this only the amount of auxiliary data that helps or if a larger
+variety of language phenomena in the data could help.
 
 I already said what I liked on the paper, but there are also obvious drawbacks
 to this method. When we would apply this method on many languages at once, with
@@ -173,5 +174,5 @@ efficient use of the parallel data that provide the model the strongest
 supervision. And I must add my usual objection: training a massively
 multilingual system under this setup will be extremely computationally
 expensive and out of reach of most research labs in the world. (I admit it is
-easy to object, but hard to invent something that does not need so many
+easy to criticize, but hard to invent something that does not need so many
 resources).
