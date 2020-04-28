@@ -41,6 +41,11 @@ layout: default
             {% capture tag_name %}{{ tag }}{% endcapture %}
             <span class="tag"><a href="/tag/{{ tag_name }}"><nobr>{{ tag_name }}</nobr></a></span>&nbsp;
           {% endfor %}
+          {% capture reading_time %}
+             {{ post.content | number_of_words | divided_by: 250.0 | round: 1 }}
+          {% endcapture %}
+          ⏰ {{reading_time}} min
+
         </p>
       </div>
     {% endfor %}
