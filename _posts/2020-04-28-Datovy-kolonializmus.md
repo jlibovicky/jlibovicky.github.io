@@ -5,7 +5,7 @@ tags: [cs]
 lang: cs
 ---
 
-__[English version of the post](/2020/04/28/Data-Colonialims.html)__
+__[English version of the post](/2020/04/28/Data-Colonialism.html)__
 
 Poslední na tomto blogu většinou komentuji odborné články o strojovém překladu,
 které nebývají delší než deset stran. Tentokrát udělám výjimku a napíšu o
@@ -100,7 +100,7 @@ uživatelů a firem, ale bytostný problém současného kapitalizmu, který je 
 způsobem funkčně dost podobný historickému kolonializmu. Firmy a státy si
 přivlastňují data (a ospravedlňují to tím, že jsou vlastně volně k dispozici,
 jen vědět, jak je posbírat) velmi podobným způsobem, jako si kolonizátoři
-přivlastňovali přírodní a lidské zdroje (zámořeské země byly také volně
+přivlastňovali přírodní a lidské zdroje (zámořské země byly také volně
 k dispozici, stačilo si pro ně doplout). Kolonizátor a kolonizovaný nikdy
 nebudou v takové vzájemné pozici, aby uzavřeli férovou dohodu.
 
@@ -131,7 +131,7 @@ z práce a uvrhl tak průmyslové dělníky do extrémní chudoby s nižší k
 života, než bylo běžné v předindustriální době. Jedním z důvodů byly monopsony
 (opak monopolů) na trhu práce.
 
-Zatímco v případě monopolu je na trhu jediný prodávající, který tím páde může
+Zatímco v případě monopolu je na trhu jediný prodávající, který tím pádem může
 zvyšovat libovolně cenu svých produktů, v případě monopsonu je na trhu jediný
 kupující, který může stlačit cenu dolů, jak jen to jde. Je zřejmé, že jak
 monopoly, tak monopsony brání trhu fungovat tak, jak bychom si rádi
@@ -160,7 +160,7 @@ cenu nějakých katastrofálních společenských důsledků. Problém ale je, �
 společnost musí věřit a nemůže je při tom nijak kontrolovat.
 
 Samozřejmě je také důležité říct, že tohle platí jenom ve svobodném světě.
-Firmy, které ve stejných odvětvích působí v autoritářských zemích jsou také
+Firmy, které ve stejných odvětvích působí v autoritářských zemích, jsou také
 kombinací monopolu a monopsonu, ale navíc jsou ještě ovládané tamní vládou.
 Politická situace se ale může dramaticky změnit i kdekoli jinde na světě.
 Zkusme si představit, jaké by to bylo, kdyby Google, Facebook a Amazon se vším
@@ -187,9 +187,9 @@ Historický kolonializmus se legitimizoval mnoha mýty, které jako vedlejší e
 dodnes nebezpečně rezonují ve společnosti a jsou často důvodem nenávisti. Tím
 hlavním je rasizmus: bylo přirozené, že bílí kolonizátoři vládli těm, o nichž
 byli přesvědčení, že jsou příslušníci podřadné rasy. Brutální násilí, které
-používali k dosažení nadvlády, bylo jen malou cenou za to šíření našich hodnot
-a vědeckého a technického pokroku do zaostalých společností, které byly často
-tak zaostalé, že ani nevěděli, že pokrok západního ražení nutně potřebují.
+používali k dosažení nadvlády, bylo jen malou cenou za šíření našich hodnot a
+vědeckého a technického pokroku do zaostalých společností, které byly často tak
+zaostalé, že ani nevěděli, že pokrok západního ražení nutně potřebují.
 
 Datový kolonializmus také vytváří mýty, které posilují datové vztahy ve
 společnosti a jako vedlejší efekt vedou ke společenským změnám.
@@ -230,7 +230,7 @@ přístup k datům jak od koncových zákazníků tak od poskytovatelů služeb
 zprostředkovávají (často s využitím strojového učení). Vlastnictví dat jim
 umožňuje přenést téměř všechna rizika na zákazníky a jednotlivé poskytovatele
 služeb. Ve své reklamě říkají, že nabízí pracovníkům svobodu a flexibilní
-pracovní dobu. To, co doopravdy dostanou je zaměstnání na plný úvazek bez
+pracovní dobu. To, co doopravdy dostanou, je zaměstnání na plný úvazek bez
 jakékoliv právní ochrany.
 
 ## Co si z toho odnést
