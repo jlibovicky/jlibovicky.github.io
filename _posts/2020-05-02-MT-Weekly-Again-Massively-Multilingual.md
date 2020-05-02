@@ -17,7 +17,7 @@ In a new preprint of their ACL 2020 paper, guys from the University of
 Edinburgh show several tricks that not only improve the multilingual
 translation but also make the models reasonably large. The title of the paper
 is [Improving Massively Multilingual Neural Machine Translation and Zero-Shot
-Translation](https://arxiv.org/pdf/1903.00089.pdf). What I personally value the
+Translation](https://arxiv.org/pdf/2004.11867.pdf). What I personally value the
 most about the paper are the strong intuitions about what is going on inside
 the models.
 
