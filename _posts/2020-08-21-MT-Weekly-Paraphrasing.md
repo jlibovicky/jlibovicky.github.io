@@ -33,7 +33,7 @@ special symbols appended to the input for that. When this is trained properly,
 we can tell the model to translate between two languages it was never presented
 together at the training time, but only within different language pairs.
 Something like what is shown in the following scheme (from [MT Weekly 7 about
-zero-shot translation](2019/06/24/MT-Weekly-Improved-Zero-shot-NMT.html)):
+zero-shot translation](/2019/06/24/MT-Weekly-Improved-Zero-shot-NMT.html)):
 
 ![Zero-shot translation](/assets/MT-Weekly-7/scheme.svg)
 
