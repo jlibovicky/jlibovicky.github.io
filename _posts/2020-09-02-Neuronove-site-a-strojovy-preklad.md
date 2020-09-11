@@ -68,23 +68,14 @@ sečte. Když tento součet přesáhne určitou hodnotu, vydá na svůj výstup 
 hodnotu. Právě tyto váhy se mění v průběhu učení tak, aby neuron dával
 požadovaný výstup.
 
-\begin{center}
-\includegraphics{./img/perceptron.pdf}
-
-[obrázek: \texttt{img/perceptron.pdf}]
-\end{center}
+![Perceptron](/assets/rozhledy/perceptron.svg)
 
 Abychom vytvořili modely, které se mohou naučit složitější vztahy mezi vstupy a
 výstupy, spojujeme neurony do vrstev. Vrstvy je možné skládat dále za sebe.
 Takto nějak například může vypadat neuronová síť pro klasifikaci znaků při
 rozpoznávání textu.
 
-
-\begin{center}
-\includegraphics{./img/feedforward.pdf}
-
-[obrázek: \texttt{img/feedforward.pdf}]
-\end{center}
+![Dopředná síť](/assets/rozhledy/feedforward.svg)
 
 Na vstupu jsou hodnoty jednotlivých pixelů obrázku (u černobílého obrázku 0 a
 1). Pro každý možný znak je na konci sítě neuron, jehož výstupem je
@@ -102,11 +93,7 @@ zpracuje vstupní větu do číselné reprezentace. Dekodér potom na základě 
 reprezentace generuje jedno slovo za druhým, dokud nevygeneruje speciální
 symbol pro konce věty.
 
-\begin{center}
-    \includegraphics[width=\textwidth]{./img/encoder_decoder.pdf}
-
-    [obrázek: \texttt{img/encoder\_decoder.pdf}]
-\end{center}
+![](/assets/rozhledy/encoder_decoder.svg)
 
 Model pracuje s omezeným slovníkem. Pro každé slovo, se kterým model dovede
 pracovat má vstupní vektor. Už jsme zmínili, tím, že použijeme neuronovou síť,
@@ -120,11 +107,7 @@ vlastností je především to, že model nikdo neučí tyto kategorie rozlišov
 Neuronová síť se je naučí jaksi mimochodem, jako prostředek k tomu dělat dobrý
 překlad.
 
-\begin{center}
-    \includegraphics[width=\textwidth]{plots/tsne.pdf}
-
-    [obrázek: \texttt{plots/tsne.pdf}]
-\end{center}
+![Word embeddings.](/assets/rozhledy/tsne.png)
 
 Na obrázku vidíme dvourozměrnou projekci reprezentací 300 běžných českých slov,
 které jsou obarvené podle slovních druhů. Vidíme, že ne vždy model kategorizuje
@@ -151,10 +134,7 @@ enkodéru, tedy vlastně vybere nějaká vstupní slova a podle toho vygeneruje
 slovo na výstup.
 
 
-\begin{center}
-    \includegraphics[width=\textwidth]{plots/attention2.pdf}
-    [obrázek: \texttt{plots/attention2.pdf}]
-\end{center}
+![Ukázka attention mechanismu.](/assets/rozhledy/attention_2.png)
 
 Obrázek ukazuje, na jaká vstupní slova se dekodér zaměřoval při generování
 jednotlivých výstupních slov. Ukazuje se, že dekodér se učí přibližně párovat
@@ -249,11 +229,7 @@ V současnosti největším problémem strojového překladu je, že se provád�
 úrovni jednotlivých vět. Věty se ale vždy vyskytují v nějakém kontextu, který
 ale překladač nemá k dispozici.
 
-\begin{center}
-    \includegraphics[width=\textwidth]{./img/kocka.png}
-
-    [obrázek: \texttt{img/kocka.png}, screenshot z Google Translate]
-\end{center}
+![](/assets/rozhledy/kocka.png)
 
 Jak vidíme na příkladu z Google Translate, systém nemá jak zjistit, že podmět
 „it“ ve druhé větě je ve skutečnosti kočka, která je v češtině ženského rodu.
@@ -277,26 +253,15 @@ možné poznat podle zájmena „her” ve vedlejší větě. To je zjevně pro 
 příliš daleko a „doctor,” který o něco svého asistenta či asistentku je
 v trénovacích datech výrazně častěji muž než žena.
 
-\begin{center}
-
-\includegraphics[width=\textwidth]{./img/doctor.png}
-
-[obrázek: \texttt{img/doctor.png}, screenshot z Google Translate]
-
-\end{center}
+![Doktor je vždycky muž.](/assets/rozhledy/doctor.png)
 
 Teď se podívejme, jak se změní výstup, když řekneme, že je lékařka „sexy”.
 Tento dodatečný přívlastek (a stereotyp, který se k němu váže) modelu pomůže
 pochopit, že se jedná o lékařku a ne lékaře.
 
 
-\begin{center}
-
-\includegraphics[width=\textwidth]{./img/sexy_doctor.png}
-
-[obrázek: \texttt{img/sexy\_doktorka.png}, screenshot z Google Translate]
-
-\end{center}
+![Ale doktorka je sexy.](/assets/rozhledy/sexy_doctor.png)
+Screenshot z Google Translate.
 
 Tento možná úsměvný příklad ukazuje velké nebezpečí, které s sebou nese
 používání neuronových sítí, které se učí z velkých dat, obzvlášť za situace,
@@ -354,11 +319,6 @@ v Edinburghu.
 
 Posuďte sami…
 
-\begin{center}
-\includegraphics[width=\textwidth]{./img/maj.png}
-[obrázek: \texttt{img/maj.png}, screenshot z LINDAT Translation]
-\end{center}
+![Screenshot z LINDAT Translation service](/assets/rozhledy/maj.png)
 
 Není to úplně špatné, jen se to moc nerýmuje.
-
-
