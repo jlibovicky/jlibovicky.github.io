@@ -4,16 +4,16 @@ title: About
 permalink: /about/
 ---
 
-I am a researcher at [The Center for Inforation and Langauage Processing at
-Ludwig-Maximilan University of
-Munich](https://www.cis.uni-muenchen.de/ueber_uns/index.html), formerly a PhD
+I am a researcher at [The Center for Information and Language Processing at the
+Ludwig-Maximilian University of
+Munich](https://www.cis.uni-muenchen.de/ueber_uns/index.html), formerly a Ph.D.
 student at the [Charles University in Prague](http://www.cuni.cz), [Institute
 of Formal and Applied Linguistics](http://ufal.cz).
 
 At this blog, I am going to write my remarks and comments on natural language
-processing, artificial intelligence and their potential social impact. In an
-ideal world, the audience of this blog could be researchers in NLP, college and
-high school students, as well as the members of the general public.
+processing, artificial intelligence, and their potential social impact. In an
+ideal world, the audience of this blog could be researchers in NLP, college,
+and high school students, as well as the members of the general public.
 
 <br />
 
