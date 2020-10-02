@@ -19,6 +19,10 @@ layout: default
     {{ content }}
   </article>
 
+
+  <h3>Share the post</h3>
+  {% include share-bar.html %}
+
   <h3>Suggested citation</h3>
   <code class="language-bibtex">@misc{libovicky{{ page.date | date: "%Y" }}blog{{ page.date | date: "%m%d" }},
     author = "Jindřich Libovický",
