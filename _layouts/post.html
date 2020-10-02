@@ -19,6 +19,16 @@ layout: default
     {{ content }}
   </article>
 
+  <h3>Suggested citation</h3>
+  <code class="language-bibtex">@misc{libovicky{{ page.date | date: "%Y" }}blog{{ page.date | date: "%m%d" }},
+    author = "Jindřich Libovický",
+    title = "Jindřich's Blog -- {{ page.title }}",
+    year = "{{ page.date | date: "%Y"}}",
+    month = {{ page.date | date: "%b" | downcase }},
+    url = "{{ site.url }}{{ page.id }}",
+    note = "Online, Accessed: {{ site.time | date: '%d.%m. %Y' }}"
+}</code>
+
   <div id="disqus_thread"></div>
   <script>
 
