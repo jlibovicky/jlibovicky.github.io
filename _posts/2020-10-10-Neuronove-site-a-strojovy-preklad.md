@@ -5,34 +5,38 @@ tags: [cs, popularization]
 lang: cs
 ---
 
+_Článek původně vyšel v loňském prosincovém čísle časopisu [Rozhledy
+matematicko-fyzikální](https://www.jcmf.cz/?q=cz/node/42)._
+
 ## Co je to strojový překlad
 
-Pod strojovým překladem si většina lidí představí nejspíš Google Translate a
-většina lidí si také nejspíš na vlastní oči vyzkoušela, jak funguje. Ten, kdo
-překladač používá častěji si mohl všimnout, že zhruba před třemi lety se
-kvalita překladu, kterou služba poskytuje, dramaticky zlepšila. Důvodem bylo,
-že se změnila technologie, na které překlad stojí: překlad založený na
-statistických metodách nahradily neuronové sítě. Hodně lidí také asi překvapí,
-že překladač od Googlu není jediný a už vůbec ne nejlepší na světě a že se
-v kvalitě strojovém překladu pořádají každoroční soutěže.
+Pod strojovým překladem si většina lidí představí nejspíš [Google
+Translate](https://translate.google.com) a většina lidí si také nejspíš
+vyzkoušela, jak funguje. Ten, kdo překladač používá častěji si mohl všimnout,
+že zhruba před třemi lety se kvalita překladu, kterou služba poskytuje,
+dramaticky zlepšila. Důvodem bylo, že se [změnila
+technologie](https://arxiv.org/abs/1609.08144), na které překlad stojí: překlad
+založený na statistických metodách nahradily neuronové sítě. Hodně lidí také
+asi překvapí, že překladač od Googlu není jediný a už vůbec ne nejlepší na
+světě a že se v kvalitě strojovém překladu pořádají každoroční soutěže.
 
 Automatický překlad se v mnohém liší od jiných problémů, které informatika
-řeší. Pokud například chceme najít na mapě nejkratší cestu z bodu A do bodu B,
-existuje algoritmus, který spolehlivě tuto cestu najde. Může se stát, že mapa,
-na které hledáme, je příliš velká, nebo prostě jen chceme ušetřit výpočetní čas
-(a elektrický proud). V takové situaci můžeme použít nějaký jiný algoritmus,
-který ušetří výpočetní čas a neudělá chybu větší než třeba 10%. V případě
-strojového překladu, kde místo matematických struktur pracujeme s lidským
-jazykem, se něco takového dělá celkem těžko. Není tak úplně jasné ani to, co to
-překlad je, jak pořádně jeho kvalitu nějak exaktně měřit a co by třeba
-znamenalo, že nějaký překlad je o 10% horší, než jiný.
+řeší. Pokud například chceme najít na mapě nejkratší cestu z bodu _A_ do bodu
+_B_, existuje algoritmus, který spolehlivě tuto cestu najde. Může se stát, že
+mapa, na které hledáme, je příliš velká, nebo prostě jen chceme ušetřit
+výpočetní čas (a elektrický proud). V takové situaci můžeme použít nějaký jiný
+algoritmus, který ušetří výpočetní čas a neudělá chybu větší než třeba 10%. V
+případě strojového překladu, kde místo matematických struktur pracujeme s
+lidským jazykem, se něco takového dělá celkem těžko. Není tak úplně jasné ani
+to, co to překlad je, jak pořádně jeho kvalitu nějak exaktně měřit a co by
+třeba znamenalo, že nějaký překlad je o 10% horší, než jiný.
 
 Nejspíš bychom se shodli na tom, že jedna věta je překladem do jiného jazyka,
 pokud tyto věty mají v těchto jazycích stejný význam. To ale vyvolává hned
-další otázku: co to ten význam, o kterém zde mluvíme vlastně je. Jak se můžeme
+další otázku: co to ten význam, o kterém zde mluvíme vlastně je? Jak se můžeme
 přesvědčit v lingvistice nebo filozofii jazyka, není to vůbec jednoduchá
-otázka. Odkazuje slovo „stůl“ k množině všem stolům světa v současnosti i
-v minulosti? Ke všem stolům, které by potenciálně mohly být vyrobeny? Nebo snad
+otázka. Odkazuje slovo „stůl“ k množině všem stolům světa v současnosti i v
+minulosti? Ke všem stolům, které by potenciálně mohly být vyrobeny? Nebo snad
 odkazuje k myšlence stolu? A je ta myšlenka u všech lidí stejná? Jaký význam má
 třeba slovo „vodník“ v jazyce Hindí, když v Indii o středoevropském vodníkovi
 jaktěživ neslyšeli? A mají vůbec slova sama nějaký význam nebo význam vzniká až
@@ -64,9 +68,9 @@ používaných ve strojovém učení je potřeba brát s velkou rezervou.
 
 Umělý neuron má mnoho vstupů, kde přijímá reálná čísla. Pro každý vstup má
 jednu trénovatelnou váhu, reálné číslo, kterým vstup vynásobí a všechny vstupy
-sečte. Když tento součet přesáhne určitou hodnotu, vydá na svůj výstup nějakou
-hodnotu. Právě tyto váhy se mění v průběhu učení tak, aby neuron dával
-požadovaný výstup.
+sečte. Když tento součet přesáhne určitou hodnotu, vydá na svůj výstup nějaké
+číslo. Právě tyto váhy se mění v průběhu učení tak, aby neuron dával požadovaný
+výstup.
 
 ![Perceptron](/assets/rozhledy/perceptron.svg)
 
@@ -93,7 +97,7 @@ zpracuje vstupní větu do číselné reprezentace. Dekodér potom na základě 
 reprezentace generuje jedno slovo za druhým, dokud nevygeneruje speciální
 symbol pro konce věty.
 
-![](/assets/rozhledy/encoder_decoder.svg)
+![Encoder-decoder](/assets/rozhledy/encoder_decoder.svg)
 
 Model pracuje s omezeným slovníkem. Pro každé slovo, se kterým model dovede
 pracovat má vstupní vektor. Už jsme zmínili, tím, že použijeme neuronovou síť,
@@ -124,7 +128,8 @@ spojkám, protože ve větě plní podobnou funkci.
 
 Tyto slovní reprezentace jsou vstupem do enkodéru. Pro ten se používají různé
 architektury. V současnosti nejlepších výsledků dosahuje architektura, kterou
-Google pojmenoval atraktivním jménem Transformer, která v každé vrstvě
+Google pojmenoval atraktivním jménem
+[Transformer](https://arxiv.org/abs/1609.08144), která v každé vrstvě
 zohledňuje všechny možné vztahy mezi slovy vstupní věty.
 
 Nejsložitější částí modelu je dekodér, který generuje větu v cílovém jazyce.
@@ -132,7 +137,6 @@ Dekodér v každém kroku posbírá informaci ze vstupní věty a z textu, kter�
 vygeneroval. Podle toho, co už je na výstupu, přiřadí dekodér váhu stavům
 enkodéru, tedy vlastně vybere nějaká vstupní slova a podle toho vygeneruje
 slovo na výstup.
-
 
 ![Ukázka attention mechanismu.](/assets/rozhledy/attention_2.png)
 
@@ -152,10 +156,10 @@ Na začátku učení jsou váhy náhodné. V průběhu učení se síti postupn�
 předkládají trénovací věty po malých skupinách a váhy sítě vždy upraví tak, aby
 se trochu zvýšila pravděpodobnost, kterou síť přiřadí překladům v trénovacích
 datech. Tímto pozvolným učením se docílí toho, že síť funguje v průměru dobře
-na všech datech a že si jenom zapamatuje svoje trénovací data. Pravděpodobnost
-trénovacích vět je jediný signál, který síť v průběhu trénování dostává, to jí
-stačí k tomu, aby se naučila ukládat do slovních reprezentací gramatické
-vlastnosti slov a navíc se naučila párovat slova mezi jazyky.
+na všech datech a že si jenom nezapamatuje svoje trénovací data.
+Pravděpodobnost trénovacích vět je jediný signál, který síť v průběhu trénování
+dostává, to jí stačí k tomu, aby se naučila ukládat do slovních reprezentací
+gramatické vlastnosti slov a navíc se naučila párovat slova mezi jazyky.
 
 ## Jak vyhrát soutěž v překladu
 
@@ -164,7 +168,7 @@ Od roku 2006 se ve strojovém překladu pořádá každoroční soutěž, které
 firem. Soutěží se v poměrně velkém počtu disciplín. Kromě překladu mezi různými
 jazykovými páry se soutěží také v překladu jazyků, ke kterým je k dispozici
 pouze omezené množství dat, nebo překladu vět, které obsahují gramatické chyby
-a překlepy. Potom co soutěžní týmy odešlou překlady vět, které dostaly od
+a překlepy. Potom, co soutěžní týmy odešlou překlady vět, které dostaly od
 organizátorů, probíhá lidské hodnocení.
 
 Hodnocení od lidí se pak také používá v další zajímavé soutěžní disciplíně, a
@@ -194,22 +198,24 @@ Matematicko-fyzikální fakulty.
 
 Klíčovou metodou, která pomáhá vylepšovat kvalitu automatického překladu, je
 generování umělých trénovacích dat takzvaným zpětným překladem. Pokud například
-chceme natrénovat překladač z jazyka A do jazyka B, můžeme si pomoci už hotovým
-automatickým překladačem z jazyka B do jazyka A. K autentickým větám z jazyka B
-si totiž můžeme vygenerovat automatické překlady do jazyka A a rozšířit si tak
-trénovací data. Tyto překlady samozřejmě nejsou tak kvalitní, jako by byl
-lidský překlad, důležité ale je, že na výstupu jsou autentické věty z jazyka B,
-takže se překladač učí generovat vždy pouze plynulé autentické věty. Překladač
-z A do B, který jsme vylepšili pomocí syntetických dat, můžeme dále použít
-k vygenerování umělých dat pro trénování překladu na druhou stranu z B do A.
-Takhle je možné jazyky střídat a překlad postupně zlepšovat.
+chceme natrénovat překladač z jazyka _A_ do jazyka _B_, můžeme si pomoci už
+hotovým automatickým překladačem z jazyka _B_ do jazyka _A_. K autentickým
+větám z jazyka _B_ si totiž můžeme vygenerovat automatické překlady do jazyka
+_A_ a rozšířit si tak trénovací data. Tyto překlady samozřejmě nejsou tak
+kvalitní, jako by byl lidský překlad, důležité ale je, že na výstupu jsou
+autentické věty z jazyka _B_, takže se překladač učí generovat vždy pouze
+plynulé autentické věty. Překladač z _A_ do _B_, který jsme vylepšili pomocí
+syntetických dat, můžeme dále použít k vygenerování umělých dat pro trénování
+překladu na druhou stranu z _B_ do _A_. Takhle je možné jazyky střídat a
+překlad postupně zlepšovat.
 
 V umělé inteligenci se jedná o poměrně častý princip. V principu podobně se
-učil systém AlphaGo, který v roce 2016 porazil jednoho z nejlepších světových
-hráčů v deskové hře Go. AlphaGo je založeno na neuronové síti, která se učí na
-základě zpětné vazby z opakovaného hraní sama se sebou. V případě zpětného
-překladu se jedná o podobnou situaci, kde se dvě neuronové sítě navzájem
-vylepšují tím, že jedna druhé připravuje stále kvalitnější trénovací data.
+učil systém [AlphaGo](https://cs.wikipedia.org/wiki/AlphaGo), který v roce 2016
+porazil jednoho z nejlepších světových hráčů v deskové hře Go. AlphaGo je
+založeno na neuronové síti, která se učí na základě zpětné vazby z opakovaného
+hraní sama se sebou. V případě zpětného překladu se jedná o podobnou situaci,
+kde se dvě neuronové sítě navzájem vylepšují tím, že jedna druhé připravuje
+stále kvalitnější trénovací data.
 
 Soutěžní systémy se ale liší od toho, co vidíme, když si pustíme Google
 Translate nebo Bing Translator od Microsoftu, kde výsledky překladu vidíme
@@ -236,8 +242,8 @@ Jak vidíme na příkladu z Google Translate, systém nemá jak zjistit, že pod
 Jednoduché řešení, jakým by se mohlo zdát trénovat síť, která překládá celé
 dokumenty a ne jednotlivé věty, selhává, protože slova, která závisí na
 relativně vzdálených slovech v minulosti, se v textu vyskytují poměrně řídce a
-síť je při učení ignoruje. Jak řešit zapojení kontextu tak zůstává otevřenou
-otázkou.
+síť je proto při učení ignoruje. Jak řešit zapojení kontextu tak zůstává
+otevřenou otázkou.
 
 Jak už jsme několikrát zmínili, strojový překlad se řeší strojovým učením.
 Z toho plynou jeho silné i slabé stránky. V průběhu učení se překladač snaží
