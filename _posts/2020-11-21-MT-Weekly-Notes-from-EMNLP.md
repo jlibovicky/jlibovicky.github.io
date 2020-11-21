@@ -18,6 +18,8 @@ poster and talk to people. It seemed quite weird at the beginning, but looking
 back, I must admit I almost have false memories of talking to people at a real
 poster session, so it probably worked quite well.
 
+![In Gather.town](/assets/emnlp2020avatar.png)
+
 ## Brief comments on presentations I found most interesting
 
 ### ① [Digital Voicing of Silent Speech](https://www.aclweb.org/anthology/2020.emnlp-main.445) 🥇
