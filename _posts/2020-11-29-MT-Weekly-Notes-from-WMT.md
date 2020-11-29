@@ -73,28 +73,3 @@ Transformer](https://papers.nips.cc/paper/2019/hash/675f9820626f5bc0afb47b57890b
 [Seq2Edits](https://www.aclweb.org/anthology/2020.emnlp-main.4180)) that might
 be well-suited for this task. Alas, all the submissions were just large
 sequence-to-sequence Transformers.
-
-### Low-resourced languages
-
-On the second day of WMT, there was a breath-taking keynote about the
-[Masakhane](https://www.masakhane.io) project, a pan-African initiative to make
-machine translation NLP in general available for many low-resourced languages
-in Africa. It s a bottom-up initiative without any institutional funding or
-systematic support from the institutions in the developed world. They did an
-amazing job, the people do it for social good, strongly motivate to improve the
-life of their own communities.
-
-A question that came to my mind during the keynote and the following discussion
-was whether having a high-quality machine translation cannot, in the end, harm
-the language communities. Will it bring more opportunities for local
-businesses? Or will it on the other hand allow western companies to colonize
-other parts of developing economies?  Will it help people to be better
-informed? Or will it help governments with authoritative tendencies to collect
-more detailed information about the population?
-
-During the session, this question seemed to me to be too cynical to ask, facing
-the people that are so passionate about their work and being convinced that
-they do the right thing (which they probably do, and these my thought are only
-unwanted cynical back-seat driver advice). Anyway, I hope some people ask the
-questions that I do, take them seriously, and do something more about it than I
-do.
