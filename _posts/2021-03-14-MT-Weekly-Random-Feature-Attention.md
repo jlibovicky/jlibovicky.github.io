@@ -14,11 +14,11 @@ to deal with that. One of them is local sensitive hashing that was used in the
 [Reformer architecture](https://arxiv.org/abs/2001.04451) (see [MT Weekly
 27](/2020/01/31/MT-Weekly-Reformer.html)). The main idea was computing the
 self-attention only for hidden states that fall into the same hash function
-bucket. Random feature attention, a paper by DeepMind and the University of
-Washington, that will be presented in this year's
-[ICLR](https://iclr.cc/Conferences/2021) introduces a new way of approximating
-the attention computation without materializing the quadratic self-attention
-matrix in the memory.
+bucket. [Random feature attention](https://arxiv.org/abs/2103.02143), a paper
+by DeepMind and the University of Washington, that will be presented in this
+year's [ICLR](https://iclr.cc/Conferences/2021) introduces a new way of
+approximating the attention computation without materializing the quadratic
+self-attention matrix in the memory.
 
 ### The self-attention
 
@@ -57,7 +57,7 @@ clever reformulation and approximation of the original formulas.
 Let us get back to the self-attention equation and rewrite the equation using
 the definition of the softmax function:
 
-$$ \mathrm{softmax}(q^T K)V^T = \sum_i \frac{\exp(q \cdot k_i)}{\sum_j (q \cdot k_j)} v_i^T$$
+$$ \mathrm{softmax}(q^T K)V^T = \sum_i \frac{\exp(q \cdot k_i)}{\sum_j \exp (q \cdot k_j)} v_i^T$$
 
 At this point, they use a [mathematical trick from
 2007](https://proceedings.neurips.cc/paper/2007/file/013a006f03dbc5392effeb8f18fda755-Paper.pdf).
