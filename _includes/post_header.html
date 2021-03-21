@@ -1,0 +1,11 @@
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
+<span>
+  {% for tag in page.tags %}
+    {% capture tag_name %}{{ tag }}{% endcapture %}
+    <a href="/tag/{{ tag_name }}"><span class="tag-large"><nobr>{{ tag_name }}</nobr></span></a>&nbsp;
+  {% endfor %}
+</span>
+</p>
+  </header>
