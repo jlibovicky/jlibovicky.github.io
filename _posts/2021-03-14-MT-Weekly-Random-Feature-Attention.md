@@ -3,6 +3,9 @@ layout: post
 title: "Machine Translation Weekly 71: Explaining Random Feature Attention"
 tags: [mt-weekly, en]
 lang: en
+paperTitle: "Random Feature Attention"
+paperAuthors: "Hao Peng, Nikolaos Pappas, Dani Yogatama, Roy Schwartz, Noah A. Smith, Lingpeng Kong"
+issue: 71
 ---
 
 Transformers are the neural architecture that underlies most of the current
@@ -82,8 +85,9 @@ and get (screenshot of Equation 4 in the paper):
 ![Substitute norm definition, Eq. 4](/assets/MT-Weekly-71/substitute.png)
 
 After substituting this approximation in the self-attention formula, the
-expressions with the vector norms zero out in the fraction, we get the
-following (screenshot of Equation 5 in the paper):
+expressions with the norms of $\q_t$ zero out in the fraction. If we further
+assume that the norm of all keys is similar, we get the following (screenshot
+of Equation 5 in the paper):
 
 ![Final formula, Eq. 5](/assets/MT-Weekly-71/final_formula.png)
 
@@ -116,3 +120,13 @@ In the end, what we get is a faster model with a smaller carbon footprint. (Or
 an opportunity to train larger models at the same CO<sub>2</sub> cost.) And the
 greatest thing is that the only needed was a little bit of calculus and linear
 algebra, rather than infinite hours of computation time.
+
+*Update on 20.03.2021 after a brief discussion with Leo Boytsov:*
+
+Although the paper reports a 2× speedup on MT, the memory savings are probably
+not as large they may seem at first. Let $M$ be the input length, $d$ model
+dimension and also the dimension of the output of the random function $\phi$.
+In Section 3.4, they say they standard attention need approx. $Md$ memory, the
+random feature atdention needs $4d + 2d^2$. With $d$ being typically 512, this
+means that the memory savings start for $M > 2d$, i.e., for inputs with
+thousands of tokens, much longer than usually in MT.
