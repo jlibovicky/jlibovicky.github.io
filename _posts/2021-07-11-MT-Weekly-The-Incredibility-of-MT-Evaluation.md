@@ -44,7 +44,7 @@ claim some improvement. On the other hand, the annotation only considered the
 papers themselves. Many papers publish also their source code and those details
 might often be obtained from the training scripts.
 
-I wonder what the reasons are that the paper authors became so negligible about
+I wonder what the reasons are that the paper authors became so negligent about
 the evaluation and the paper reviewers became so indulgent at the same time.
 
 The drop of the evaluation thoroughness coincides with the advent of the deep
