@@ -13,8 +13,8 @@ dimensions of the elephant in the room of machine translation: the lack of
 empirical support of claims in research papers on machine translation. The
 title of the paper is [Scientific Credibility of Machine Translation Research:
 A Meta-Evaluation of 769 Papers](https://arxiv.org/abs/2106.15195), it has
-awill appear at this year's ACL.uthors from NICT in Japan and was awarded as a
-best paper ACL 2021.
+awill appear at this year's ACL.uthors from NICT in Japan and was awarded as an
+oustanding paper ACL 2021.
 
 The authors manually annotated an incredible number of papers and looked for
 the methodological mortal sins of machine translation:
