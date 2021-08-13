@@ -3,7 +3,7 @@ layout: post
 title: "Machine Translation Weekly 86: The Wisdom of the WMT Crowd"
 tags: [mt-weekly, en]
 lang: en
-issue: 85
+issue: 86
 ---
 
 Most of the papers that I comment on and review here present novel and cool
