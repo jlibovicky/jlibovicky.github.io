@@ -20,8 +20,8 @@ they in the paper are relevant for machine translation and multilingual models.
 4. Misinformation harms
 5. Malicious uses
 
-And two areas that I am not going to discuss here in detail because they are
-not particularly interesting from the multilingual view:
+  And two areas that I am not going to discuss here in detail because they
+  are not particularly interesting from the multilingual view:
 
 6. Human-computer interaction harms
 7. Automation, access, and environmental harms
@@ -74,7 +74,7 @@ transferred into languages where they do not work well without considering it.
 
 One of the information hazards is leaking or inferring private information from
 the training data. The same holds for multilingual models. There is a similar
-risk (although probably much smaller) for machine translation too. A [2021
+risk (although probably much smaller) for machine translation too. A [2020
 paper from JHU](https://aclanthology.org/2020.tacl-1.4/) shows that it might be
 possible to detect if a sentence was part of the training data, even though it
 is very hard.
