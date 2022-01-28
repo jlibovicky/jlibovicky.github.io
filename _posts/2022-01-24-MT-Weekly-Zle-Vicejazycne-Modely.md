@@ -25,16 +25,16 @@ Google Deepmind zveřejnil v prosinci [na pre-printovém severu arXiv
 zprávu](https://arxiv.org/abs/2112.04359), která se pokouší kategorizovat
 hlavní etické a společenské problémy spojené s velkými jazykovými modely.
 Zpráva pravděpodobně neříká nic, co bychom už dříve nevěděli, ale líbí se mi
-způsob, jakým problémy kategorizují problémy. Protože se zabývají převážně
+způsob, jakým problémy kategorizují. Protože se zabývají převážně
 jednojazyčnými modely, v tomto příspěvku probírám některé z otázek, o kterých
-hovoří, spekuluji, jak jsou relevantní pro strojový překlad a vícejazyčné
+hovoří, a spekuluji, jak jsou relevantní pro strojový překlad a vícejazyčné
 modely.
 
 Klasifikace problémů, kterou článek používá, je následující:
 
 1. Diskriminace, vyloučení určitých skupin a toxický jazyk
 2. Rizika úniku informací
-3. Síření dezinformací
+3. Šíření dezinformací
 4. Záměrné škodlivé použití
 
   A dvě oblasti, které zde podrobně nerozebírám, protože nejsou z
@@ -55,15 +55,15 @@ možné doladit aby generovali text v určité doméně, odpovídaly na otázky,
 fungovaly jako generativní komponenta v chatbotech, nebo dokonce ke [generování
 divadelní hry](https://theaitre.com).
 
-Možná ještě důležitější je, využití je, že se využívá reprezentace věty z
-modelu (tzv. embedingy) ve strojovém učení. Model se také učí reprezentovat
-větu tak musí se naučit interně zakódovat vstup tak, aby z této reprezentace
-bylo možné odhadnout, jak má věta pokračovat. Tato reprezentace se používá jako
-vstup do klasifikátorů a dalších modelů strojového učení. Reprezentace z
-jazykových modelů jsou informačně bohaté a proto stačí málo trénovacích
-příkladů. V případě vícejazyčných modelů je možné použít trénovací data v
-jednom nebo několika málo jazycích a výsledný klasifikátor bude fungovat i v
-dalších jazycích pokrytých jazykovým modelem.
+Možná ještě důležitější využití je, že se používá reprezentace věty z modelu
+(tzv. embedingy) ve strojovém učení. Aby model mohl rozhodnout, jak má věta
+pokračovat, musí se naučit interně zakódovat vstup tak, aby to z této
+reprezentace bylo možné odhadnout. Tato reprezentace se používá jako vstup do
+klasifikátorů a dalších modelů strojového učení. Reprezentace z jazykových
+modelů jsou informačně bohaté a proto stačí málo trénovacích příkladů. V
+případě vícejazyčných modelů je možné použít trénovací data v jednom nebo
+několika málo jazycích a výsledný klasifikátor bude fungovat i v dalších
+jazycích pokrytých jazykovým modelem.
 
 ## Diskriminace, vyloučení, toxicita
 
@@ -73,18 +73,18 @@ Zdrojem textů pro trénování je internet a to je důvodem mnoha problémů.
 Jazykové modely zachycují (často škodlivé) stereotypy přítomné v trénovacích
 datech. Některé skupiny lidí (a jejich názory, jejich dialekty) jsou navíc v
 trénovacích datech nedostatečně zastoupeny. Lidé s extrémními nebo neobvyklými
-názory mají tendenci o nich mluvit vehementněji než lidé s mainstreamějšími
+názory mají tendenci o nich mluvit vehementněji než lidé s mainstreamovejšími
 názory. Extrémní názory jsou tedy naopak nadměrně zastoupeny. Prvním problémem
-je tedy to, že modely kopírují to, co je trénovacích datech, která nejsou
+je tedy to, že modely kopírují to, co v je trénovacích datech, která nejsou
 spoustu zlých věcí.
 
 Druhým problémem v této oblasti je homogenizační efekt způsobený statistickou
 povahou trénování. Aby model minimalizoval pravděpodobnost chyby, stává se, že
 nejčastější (statistické) vzorce v trénovacích datech se stávají jedinými,
-které model vyprodukuje. Příklad ve zprávě DeepMindu uvádí příklad, že „rodina
+které model vyprodukuje. Zprávě DeepMindu uvádí příklad, že „rodina
 = muž a žena, kteří se vezmou a mají děti“. Ačkoli je to pravděpodobně
 nejčastější případ, takovou statistickou souvislost rozhodně nemůže vnímat v
-nějakém silně normativním smyslu. Je pak jistě místě otázka, na co všechno je
+nějakém silně normativním smyslu. Je pak jistě na místě otázka, na co všechno je
 bezpečné používat model, který z dat možná odvodil, že neúplná rodina není
 rodinou.
 
@@ -94,9 +94,9 @@ způsobit, že stereotypy nebo obecné názory z jedné kultury může model
 podstrkávat jazykům jiných kultur. Např. odpověď na otázku: „Je v pořádku jíst
 koně/vepřové/hovězí/velryby?“ se bude velmi pravděpodobně lišit na různých
 místech zeměkoule. Vícejazyčný model trénovaný převážně na západních jazycích
-může vnutit západní pohled i do jiných jazyků. Vliv předsudky z trénovacích
-data (zejména genderové zkreslení) ve strojovém překladu jsou [docela dobře
-zmapované](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00401/106991/Gender-Bias-in-Machine-Translation).
+může vnutit západní pohled i do jiných jazyků. Vliv předsudků z trénovacích dat
+(zejména genderové zkreslení) ve strojovém překladu je [docela dobře
+zmapovaný](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00401/106991/Gender-Bias-in-Machine-Translation).
 Můžete zkusit například Google Translate přesvědčit, aby anglické doctor
 přeložil jako doktorka.
 
@@ -112,11 +112,11 @@ z jednoho jazyka do druhého může být problematické.
 ## Rizika uniku informací
 
 Jedním z dalších rizik je únik nebo logické vyvození neveřejných informací,
-které se z nějakého důvodu ocitly trénovacích datech. To platí stejně pro
+které se z nějakého důvodu ocitly v trénovacích datech. To platí stejně pro
 jednojazyčné i vícejazyčné modely. Podobné riziko (i když pravděpodobně mnohem
 menší) existuje i u strojového překladu. [Článek z JHU z roku
 2020](https://aclanthology.org/2020.tacl-1.4) ukazuje, že by mohlo být možné
-zjistit, zda byla věta součástí trénovacích dat, v případě strojového překladu
+zjistit, zda byla věta součástí trénovacích dat. V případě strojového překladu
 je to výrazně těžší.
 
 ## Šíření dezinformací
@@ -130,11 +130,11 @@ jazykové modely s radostí zopakují.
 
 Stejně jako v předchozím případě mají vícejazyčné jazykové modely stejné
 problémy jako jednojazyčné a k tomu i nějaké navíc. Společenské, kulturní a
-právních normy se liší napříč zeměmi. Správná odpověď na otázku: „Je v pořádku,
+právní normy se liší napříč zeměmi. Správná odpověď na otázku: „Je v pořádku,
 když je dvouleté dítě nahé na veřejné pláži?“ zní: „Záleží na tom, v jaké
-zemi.“ Většina jazykových modelů odpoví s jistou ano nebo ne. Stručně řečeno:
-co platí pro mluvčí jednoho jazyka (být součástí jedné kultury), nemusí platit
-pro mluvčí jiného jazyka (být součástí jiné kultury) a jazykové modely to
+zemi.“ Většina jazykových modelů odpoví s jistotou ano nebo ne. Stručně řečeno:
+co platí pro mluvčí jednoho jazyka (jsou součástí jedné kultury), nemusí platit
+pro mluvčí jiného jazyka (jsou součástí jiné kultury) a jazykové modely to
 nemusí vždy reflektovat.
 
 Ve strojovém překladu vždy existuje riziko nepřesného překladu (např.
