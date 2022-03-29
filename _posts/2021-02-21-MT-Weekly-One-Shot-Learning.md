@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Machine Translation Weekly 69: One-Short learning in MT"
+title: "Machine Translation Weekly 69: One-Shot learning in MT"
 tags: [mt-weekly, en]
 lang: en
 ---
