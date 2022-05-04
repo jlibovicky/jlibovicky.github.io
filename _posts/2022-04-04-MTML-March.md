@@ -65,10 +65,10 @@ There is an ongoing discussion on whether the standard beam search decoding
 (and maximum a posteriori inference in general) in machine translation makes
 sense, or in general, what is the best way to get good output from a model that
 models well conditional probabilities of individual tokens. A recent [paper
-from the University of Zurich](https://arxiv.org/abs/2203.15721) shows that for
-machine translation, it indeed roughly holds that the higher the likelihood
-from the model, the better the translation is according to human evaluation
-(even though, e.g., a [pre-print from Google from the last
+from ETH Zurich](https://arxiv.org/abs/2203.15721) shows that for machine
+translation, it indeed roughly holds that the higher the likelihood from the
+model, the better the translation is according to human evaluation (even
+though, e.g., a [pre-print from Google from the last
 November](https://arxiv.org/abs/2111.09388) claims the opposite). In other
 tasks (such as story generation), is the relation between the likelihood in the
 model and human evaluation of the generated text.
