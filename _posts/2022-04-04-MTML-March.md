@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Machine Translation and Multilinguality 03/2022"
-tags: [mt-weekly, en]
+title: "Highlights from Machine Translation and Multilinguality in March 2022"
+tags: [mtml-highlights, en]
 lang: en
 ---
 
