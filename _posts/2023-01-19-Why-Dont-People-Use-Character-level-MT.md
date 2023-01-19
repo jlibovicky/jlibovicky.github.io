@@ -5,8 +5,8 @@ tags: [en]
 lang: en
 ---
 
-In this post, I comment on our year-old paper "[Why don't people use
-character-level machine
+In this post, I comment on our (i.e., myself, Helmut Schmid and Alex Fraser)
+year-old paper "[Why don't people use character-level machine
 translation](https://aclanthology.org/2022.findings-acl.194)," published in
 [Findings of ACL
 2022](https://aclanthology.org/events/findings-2022/#2022findings-acl). Here, I
