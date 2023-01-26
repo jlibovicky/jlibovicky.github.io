@@ -30,8 +30,10 @@ Reference-free metrics are better than the BLEU score.
 
 WMT this year hosted the sign language translation task. It is a great
 initiative, but I was quite surprised by how poor the automatic systems are.
-The best systems translating from video to written language got around 2 BLEU
-points compared to 88 points of human baseline.
+The best systems translating from video to written language got around 2 points
+out of 100 in human evaluation (compared to 88 points of human baseline), and
+0.6 BLEU points in automatic evaluation. (_Edit: Originally, I had these
+numbers wrong. Thanks, Leftheris Avramidis for point it out._)
 
 ### [Subword-Delimited Downsampling for Better Character-Level Translation](https://arxiv.org/abs/2212.01304)
 
