@@ -61,7 +61,8 @@ jazykové modely takto zvládají řešit úlohy, které od člověka vyžadují
 intelektuální úsilí.
 
 Nejznámější jsou velké jazykové modely GPT od společnosti (původně nadace)
-OpenAI. Pro představu, co znamená velké: Pro [trénování GPT-3](https://papers.nips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf)
+OpenAI. Pro představu, co znamená velké: Pro [trénování
+GPT-3](https://papers.nips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf)
 zveřejněného v květnu 2020) se použilo 45TB textu, to odpovídá například 37
 milionům výtisků Dostojevského Zločinu a trestu (kdybychom je vyskládali na
 fotbalové hřiště, sahaly by do výšky 4.5 metru). GPT-3 má 175 miliard
@@ -233,7 +234,7 @@ Maryland](https://arxiv.org/abs/2301.10226). V praxi to znamená to, že
 pravděpodobnosti v modelu upraví tak, že některá slova nebo posloupnosti slov
 se vyskytují signifikantně častěji, než v přirozeném textu, ale pro člověka je
 to nepostřehnutelné. Dá se pak relativně snadno testovat, jestli text vodotisk
-obsahuje nebo ne. OpenAI dalo na konci ledna k dispozici svůj vlastní detektor
+obsahuje nebo ne. OpenAI dalo na konci ledna k dispozici [svůj vlastní detektor
 generovaného textu](https://platform.openai.com/ai-text-classifier).
 
 Pokud se nástroje na detekci automaticky generovaného textu rozšíří, může to
