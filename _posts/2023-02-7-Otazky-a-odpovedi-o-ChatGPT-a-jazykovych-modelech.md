@@ -5,6 +5,8 @@ lang: cs
 tags: [popularization, cs]
 ---
 
+__[English version of the post](/2023/02/20/Question-and-Answers-about-ChatGPT-and-LLMs.html)__
+
 Poslední dobou se v médiích poměrně často píše o ChatGPT a jazykových modelech
 a mám pocit, že ne úplně všechno se říká úplně správně. Proto jsem připravil
 několik otázek a odpovědí, které snad pomůžou vyjasnit, o čem se to vlastně

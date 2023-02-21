@@ -5,6 +5,8 @@ tags: [popularization, en]
 lang: en
 ---
 
+__[Česká verze příspěvku](/2023/02/07/Otazky-a-odpovedi-o-ChatGPT-a-jazykovych-modelech.html)__
+
 There's been a lot of media coverage of ChatGPT and language models lately, and
 I feel like not everything is being said quite right. That's why I have
 prepared some questions and answers that hopefully help clarify what they are
