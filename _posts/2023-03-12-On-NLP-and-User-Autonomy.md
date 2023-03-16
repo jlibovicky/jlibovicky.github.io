@@ -59,42 +59,48 @@ research stabilized on the following principles ([Gillon,
 1994](https://www.bmj.com/content/309/6948/184); [Beauchamp and Childress,
 2009](https://books.google.de/books?id=xg8iwAEACAAJ)):
 
-* Respect for autonomy. Every person should be able to provide informed consent
+* **Respect for autonomy.** Every person should be able to provide informed consent
   with the research or use of technology.
 
-* Beneficence. The goal of any action should be the welfare of those directly
+* **Beneficence.** The goal of any action should be the welfare of those directly
   affected and the whole society.  Non-maleficence. The goal of any action
   should be to avoid causing harm. It typically includes thinking of dual
   effects of actions, where harm can be a side effect of otherwise beneficent
   actions.
 
-* Justice. Limited resources must be distributed fairly.
+* **Justice.** Limited resources must be distributed fairly.
 
 The beneficence of NLP research is rather implicit: the newly invented methods
 are always beneficial to at least someone; otherwise, there is no reason to
 publish such work. Avoiding causing harm is intensively studied in the context
-of societal biases replicated by NLP models (Bender and Friedman, 2018;
-Blodgett et al., 2020) or dual-use (Leins et al., 2020; Zellers et al., 2019).
+of societal biases replicated by NLP models (e.g., [Bender and Friedman,
+2018](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00041/43452/Data-Statements-for-Natural-Language-Processing);
+[Blodgett et al., 2020](https://doi.org/10.18653/v1/2020.acl-main.485)) or
+dual-use ([Leins et al., 2020](https://aclanthology.org/2020.acl-main.261);
+[Zellers et al.,
+2019](https://proceedings.neurips.cc/paper/2019/hash/3e9f0fc9b2f89e043bc6233994dfcf76-Abstract.html)).
 The NLP community also discusses justice: the biggest injustice is the impact
 of the carbon footprint of the NLP technology that affects mainly different
-populations than those that benefit from its existence (Strubell et al., 2019;
-Bender et al., 2021). User autonomy as a value is rarely discussed.
+populations than those that benefit from its existence (e.g., [Strubell et al.,
+2019](https://doi.org/10.18653/v1/P19-1355)). User autonomy as a value is
+rarely discussed.
 
 Not respecting autonomy does not necessarily mean treating people as means to
-ends. If the motivation is care or protection from harm, it is usually called
+ends. If the motivation is care or protection from harm, people talk about
 paternalism. The common consensus is that it is desirable under some
 circumstances, e.g., when states prohibit the use of some drugs. In the
 consequentialist view, we can justify it by increasing the total welfare of all
 people. In the deontology view, we can argue that this restricts short-term
 autonomy for the sake of long-term autonomy (by preventing addiction), which is
-a value in itself regardless of consequences (example from Dworkin, 2020, §3).
+a value in itself regardless of consequences (example from [Stanford
+Encyclopedia of Philosophy](https://plato.stanford.edu/entries/paternalism)).
 Paternalism is not a priori morally wrong but needs to be adequately justified.
 
 NLP ethics focusing on mitigating biases and preventing harmful consequences
 without viewing the affected people as relevant actors who should make informed
 decisions seems to be unjustified paternalism.
 
-# User Interface and no Space for Autonomy
+## User Interface and no Space for Autonomy
 
 Many complex technological artifacts inform users about their internal states:
 cars have speedos, revolution counters, and dozens of warning lights for
@@ -121,12 +127,12 @@ I am not sure if this is not a priority or if the system authors think the
 users would not use this information anyway, but for me, this is a clear sign
 of a lack of respect for user autonomy.
 
-# Ethics Statements at ACL 2021
+## Ethics Statements at ACL 2021
 
 In 2021, the separate ethics statement for ACL papers was new. Back then, I
 read all 129 statements from ACL 2021 papers, tried to categorize their values,
-and made some notes. (Now, I do not even remember what my exact plans with the
-data were.)
+and made some notes. (Now, I do not even remember what I hoped to discover in
+the statements.)
 
 Most often, the ethics statements focus on the consequences of the presented
 method if it was deployed in the real world, most frequently via replicating or
@@ -139,16 +145,21 @@ frequently, the statements mention compensation to annotators and the privacy
 of the annotators. Almost a quarter of the statements explicitly stated that
 there were no issues.
 
-Of the six papers that view interpretability as an ethical issue (without
-explicitly appealing to the principle of autonomy), three of them targeted
-professional users (Malik et al., 2021 legal text processing; Chen et al., 2021
-scientific text processing; Qiu et al., 2021 tools for robot developers). Fung
-et al. (2021) are the only ones presenting methods that might find users among
-the general public who mentions interpretability as an ethical issue. There are
-another five papers explicitly mentioning professionals in the ethics
-statements and ten that explicitly mention end-users (in different roles, e.g.,
-patients, parents, specific platform users), and around 30 that probably have
-end users in mind when talking about biases.
+Four papers view the lack of transparency for users as an ethical issue
+(without explicitly appealing to the principle of autonomy). Three of them
+targeted professional users ([Malik et al.,
+2021](https://doi.org/10.18653/v1/2021.acl-long.313) legal text processing;
+[Chen et al., 2021](https://doi.org/10.18653/v1/2021.acl-long.473) scientific
+text processing; [Qiu et al.,
+2021](https://doi.org/10.18653/v1/2021.acl-long.54) tools for robot
+developers). [Fung et al.
+(2021)](https://doi.org/10.18653/v1/2021.acl-long.133) are the only ones
+presenting methods that might find users among the general public who mentions
+interpretability as an ethical issue. There are another five papers explicitly
+mentioning professionals in the ethics statements and ten that explicitly
+mention end-users (in different roles, e.g., patients, parents, specific
+platform users), and around 30 that probably have end users in mind when
+talking about biases.
 
 Although this is a tiny sample, the ratios show that the research community
 tends to value the autonomy of professionals more than abstract and anonymous
@@ -159,12 +170,12 @@ end users of the technologies (3 out of 5 papers for professionals vs. 1 out of
 
 Both the look and feel of user interfaces of current NLP applications and the
 values reflected in the ethics statements made me think that NLP, as a field,
-unwittingly takes a paternalist stance towards the end users of the technology.
-It seems to me that the value set in the community is that technology should
-deliver good results (when they are good, there is no reason to inform anyone
-about anything). We should protect those who might be harmed by unintended or
-intended harm caused by the technology—no need to inform the user about
-anything.
+unwittingly takes a paternalist stance towards the end users of NLP
+technologies. It seems to me that the value set in the community is that
+technology should deliver good results (when they are good, there is no reason
+to inform anyone about anything). We should protect those who might be harmed
+by unintended or intended harm caused by the technology—no need to inform the
+user about anything.
 
 This is a pity. It would be great if we could change the mindset and keep in
 mind that not only the system designers but also the system user should be able
