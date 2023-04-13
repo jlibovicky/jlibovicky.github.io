@@ -12,29 +12,31 @@ concerned about the ethics of this technology. When people talk about NLP
 ethics, the main topics are: biases that the models get from training data,
 replication of toxic behavior found on the Internet, underrepresentation of
 already underprivileged groups, differences between the technology availability
-between the global north and global south.
+between the global north and global south. Now, after ChatGPT was released
+people add some science-fictions fears.
 
-There are many good articles on this topic, and I don't have much to add, but I
-want to tackle this from a slightly different angle. Most work on this topic
-views the technology creators as the active ones. The potential technology
-users are passive, and the research community's task is to protect them from
-unintentional or intentional harm, taking a sort of paternalist stance toward
-the users. I was thinking about this already in 2021 when Covid vaccination was
-a big topic, and some governments were considering compulsory vaccination,
-which many people opposed as a lack of respect for patient autonomy.
-Fundamental issues of medical ethics: informed consent, and patient autonomy,
-were suddenly in the mainstream discourse. I was surprised that in NLP,
-informed consent and autonomy are not a concern at all. The release of ChatGPT
-and what followed made me think about user autonomy again.
+There are many good articles on NLP and AI ethics, and I don't have much to
+add, but I want to tackle this from a slightly different angle. Most work on
+this topic views the technology creators as the active ones. The potential
+technology users are passive, and the research community's task (or perhaps
+industry's task) is to protect them from unintentional or intentional harm,
+taking a sort of paternalist stance toward the users. I was thinking about this
+already in 2021 when Covid vaccination was a big topic, and some governments
+were considering compulsory vaccination, which many people opposed as a lack of
+respect for patient autonomy. Fundamental issues of medical ethics: informed
+consent, and patient autonomy, were suddenly in the mainstream discourse. I was
+surprised that in NLP, informed consent and autonomy are not a concern at all.
+The release of ChatGPT and what followed made me think about user autonomy
+again.
 
 ## Basic concepts (as I see them) and what ethics is NLP ethics
 
-First, I try to summarize the main theoretical concept here. I do not mean to
+First, I try to summarize the main theoretical concepts here. I do not mean to
 educate the readers but rather show how limited (and perhaps naive) my
-understanding is. Two major theoretical frameworks are typically considered
-when discussing ethics of technology: consequentialist ethics and rule-driven
-deontology. Several more potentially relevant theoretical frameworks exist,
-such as virtue or care ethics.
+understanding of ethics is. Two major theoretical frameworks are typically
+considered when discussing ethics of technology: consequentialist ethics and
+rule-driven deontology. Several more potentially relevant theoretical
+frameworks exist, such as virtue or care ethics.
 
 In the consequentialist view, a good action is an action that maximizes the
 overall happiness or welfare or, negatively defined, minimizes harm. In other
@@ -59,14 +61,15 @@ research stabilized on the following principles ([Gillon,
 1994](https://www.bmj.com/content/309/6948/184); [Beauchamp and Childress,
 2009](https://books.google.de/books?id=xg8iwAEACAAJ)):
 
-* **Respect for autonomy.** Every person should be able to provide informed consent
-  with the research or use of technology.
+* **Respect for autonomy.** Every person should be able to provide informed
+  consent with the research or use of technology.
 
-* **Beneficence.** The goal of any action should be the welfare of those directly
-  affected and the whole society.  Non-maleficence. The goal of any action
-  should be to avoid causing harm. It typically includes thinking of dual
-  effects of actions, where harm can be a side effect of otherwise beneficent
-  actions.
+* **Beneficence.** The goal of any action should be the welfare of those
+  directly affected and the whole society.
+
+* **Non-maleficence.** The goal of any action should be to avoid causing harm.
+  It typically includes thinking of dual effects of actions, where harm can be
+  a side effect of otherwise beneficent actions.
 
 * **Justice.** Limited resources must be distributed fairly.
 
@@ -125,14 +128,15 @@ make a qualified and informed decision about what to do with the output.
 
 I am not sure if this is not a priority or if the system authors think the
 users would not use this information anyway, but for me, this is a clear sign
-of a lack of respect for user autonomy.
+of a lack of respect for user autonomy and paternalisms from the system
+creators.
 
 ## Ethics Statements at ACL 2021
 
-In 2021, the separate ethics statement for ACL papers was new. Back then, I
-read all 129 statements from ACL 2021 papers, tried to categorize their values,
-and made some notes. (Now, I do not even remember what I hoped to discover in
-the statements.)
+In 2021, the separate ethics statement for ACL papers was a new thing. Back
+then, I read all 129 statements from ACL 2021 papers, tried to categorize their
+values, and made some notes. (Hard to say what I hoped to discover in the
+statements.)
 
 Most often, the ethics statements focus on the consequences of the presented
 method if it was deployed in the real world, most frequently via replicating or
