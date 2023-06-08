@@ -5,7 +5,7 @@ tags: [mtml-highlights, en]
 lang: en
 ---
 
-Here is my monthly summray of what new papers and preprints are liked the most
+Here is my monthly summary of what new papers and preprints are liked the most
 during the previous month.
 
 ## [Multilingual Machine Translation with Large Language Models: Empirical Results and Analysis](https://arxiv.org/abs/2304.04675v1)
