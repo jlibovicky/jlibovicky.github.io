@@ -39,7 +39,7 @@ množství dostupných trénovacích dat. Současné jazykové modely jsou neuro
 sítě založené na [architektuře
 Transformer](https://papers.nips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf).
 To je architektura, která reprezentuje vstupní slova jako posloupnosti vektorů
-spojitých čísel. Střídá klasické dopředné vrstvy s něčím, čemu se říká
+reálných čísel. Střídá klasické dopředné vrstvy s něčím, čemu se říká
 _attention mechanism_. V těchto vrstvách model jakoby „vyzobává“ z textu na
 vstupu (nerozlišuje se mezi zadaným vstupem a vygenerovaným textem) relevantní
 informace pro předpovězení dalšího slova.
@@ -65,7 +65,7 @@ intelektuální úsilí.
 Nejznámější jsou velké jazykové modely GPT od společnosti (původně nadace)
 OpenAI. Pro představu, co znamená velké: Pro [trénování
 GPT-3](https://papers.nips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf)
-zveřejněného v květnu 2020) se použilo 45TB textu, to odpovídá například 37
+zveřejněného v květnu 2020) se použilo 45 TiB textu, to odpovídá například 37
 milionům výtisků Dostojevského Zločinu a trestu (kdybychom je vyskládali na
 fotbalové hřiště, sahaly by do výšky 4.5 metru). GPT-3 má 175 miliard
 trénovatelných parametrů. Každý parametr je reálné číslo, na jehož uložení jsou
@@ -83,7 +83,7 @@ zpoplatnění](https://www.nytimes.com/2023/02/01/technology/openai-chatgpt-plus
 Technicky vzato je ChatGPT dotrénovaný model GPT 3.5 (vylepšená verze GPT 3, ke
 které OpenAI nezveřejnilo příliš detailů) tak, aby pro plnění úloh nepotřeboval
 uvádět příklady, ale řešil je rovnou na základě instrukcí od uživatele. Podobný
-princip využilo OpenAI ve svém modelu InstuctGPT, ke kterému vyšel [v dubnu
+princip využilo OpenAI ve svém modelu InstructGPT, ke kterému vyšel [v dubnu
 2022 preprint](https://arxiv.org/abs/2203.02155), který zatím nevyšel v žádném
 recenzovaném sborníku.
 
@@ -91,7 +91,7 @@ Trénování ChatGPT probíhá ve dvou fázích: v první fázi anotátoři (ta
 obvykle říká pracovníkům, kteří připravují trénovací data pro strojové učení)
 s pomocí modelu GPT vytvářely ukázkové dialogy, jak by se měl chatbot chovat.
 V druhé fázi, už systém nedostával přímo ukázky správných dialogů, ale učil se
-pouze pomocí jednoduché zpětné vazby: anotátoři odpovědi označovali jako dobré
+pouze pomocí jednoduché zpětné vazby: anotátoři odpovědi označovali jako dobré,
 nebo špatné a na základě toho se systém zlepšoval bez přímých ukázek správných
 odpovědí. Aby se snížila potřeba lidských anotací, autoři systému natrénovali
 další neuronové sítě, které simulují lidské hodnocení. Celý systém se pak může
@@ -107,7 +107,7 @@ v přirozeném jazyce. Vykazuje rozsáhlé encyklopedické znalosti, a protože
 součástí trénovacích dat bylo i hodně zdrojového kódu a informatických textů,
 zdá se, že umí i poměrně dobře programovat. Je to nejspíš poprvé v dějinách
 informatiky, kdy nějaký počítačový systém do velké míry splňuje lidové
-představy o tom, jak by mohla nebo měla vypadat umělá umělá inteligence.
+představy o tom, jak by mohla nebo měla vypadat umělá inteligence.
 Největším problémem systému je, že informace, které podává sice zní velmi
 věrohodně, ale neuvádí k nim žádné zdroje a často jsou fakticky špatně. Při
 práci s ChatGPT je potřeba vždy důsledně ověřovat všechna fakta ve spolehlivých
@@ -115,7 +115,7 @@ zdrojích.
 
 ## Je GPT-3.5 a ChatGPT to nejlepší, co existuje? {#gpt-nejlepsi}
 
-GPT-3.5 a ChatGPT pravděpodobně nejlepší modely, které jsou snadno dostupné pro
+GPT-3.5 a ChatGPT jsou pravděpodobně nejlepší modely (únor 2023), které jsou snadno dostupné pro
 širší veřejnost. Nejsou to ale největší a nejlepší modely, které existují.
 Google má k dispozici model PaLM
 ([preprint](https://arxiv.org/abs/2204.02311), který ho popisuje vyšel v dubnu
@@ -134,7 +134,7 @@ Google má také chatbot LaMDA ([preprint z ledna
 recenzovaný článek dosud nevyšel), který se trénoval trochu jinak než ChatGPT.
 Je to čistý jazykový model trénovaný ale pouze na konverzacích, tedy bez
 dotrénování na zpětné vazbě. Chatbot LaMDA vzbudil rozruch v první polovině
-roku 2022, kdy jeden z jeho vývojářů [tvrdil, že LaMDA je cítící
+roku 2022, kdy jeden z jeho vývojářů [tvrdil, že model LaMDA je cítící
 bytost](https://www.washingtonpost.com/technology/2022/06/11/google-ai-lamda-blake-lemoine)
 a mělo by s ním podle toho zacházet. V lednu 2023, po více než půl roce od této
 kauzy Google oznámil [veřejné testování tohoto
@@ -148,14 +148,14 @@ k dispozici prostřednictvím webového rozhraní a OpenAI si [za něj účtuje
 poplatky](https://openai.com/api/pricing).
 
 Existují open-source alternativy. Společnost Meta připravila modely OPT, které
-jsou velmi podobné GPT-3 a dala je volně k dispozici ke stažení. Iniciativa
+jsou velmi podobné GPT-3, a dala je volně k dispozici ke stažení. Iniciativa
 [Big Science Workshop](https://bigscience.huggingface.co), za kterou stojí
 newyorský startup [HuggingFace](https://huggingface.co) a konsorcium evropských
 a amerických univerzit, připravila [vícejazyčný model
 BLOOM](https://bigscience.huggingface.co/blog/bloom), který ovládá přibližně 40
-jazyků. Vývoj velkých jazykových modelů pro evropské podporuje v rámci několika
+jazyků. Vývoj velkých jazykových modelů pro evropské jazyky podporuje v rámci několika
 projektů i Evropská Unie – součástí jednoho z nich
-([HTLP](https://cordis.europa.eu/project/id/101070350)) je i Ústav formální a
+([HPLT](https://cordis.europa.eu/project/id/101070350)) je i Ústav formální a
 aplikované lingvistiky MFF UK.
 
 Vznikla také open source iniciativa
@@ -172,14 +172,14 @@ Stanfordské univerzitě. Subjektivně se zdá, že funguje hůře, než ChatGPT
 rozdíl od něj, ale pracuje s vyhledávačem a generuje odpovědi z výsledků
 vyhledávání. Uživatel si tak může ověřit, z jakých zdrojů odpověď pochází.
 
-## Jaktože umí ChatGPT česky, používá strojový překlad? {#je-to-mt}
+## Jak to, že ChatGPT umí česky? Používá strojový překlad? {#je-to-mt}
 
 Česky a dalšími jazyky se ChatGPT naučil jaksi mimochodem z trénovacích dat, do
 kterých byly kromě angličtiny zamíchané i další jazyky. Není to tedy tak, že by
 se jednalo o chatbot a překladač zapojený za sebe.
 
 Čím větší je digitální stopa nějakého jazyka, tím lépe ho ChatGPT ovládá. Jak
-dobře které jazyky ovládá se odhadnout pomocí, jak dobře je ChatGPT schopné
+dobře které jazyky ovládá se dá odhadnout podle toho, jak dobře je ChatGPT schopné
 provádět samotný překlad. Nedávný [preprint od čínské společnosti
 Tencent](https://arxiv.org/abs/2301.08745), který hodnotil schopnosti
 strojového překladu ChatGPT, ukazuje, že pro jazyky s velkou digitální stopou
@@ -195,22 +195,22 @@ jazykových jednotek, řádově desetitisící, maximálně statisíci. Častá 
 zůstávají vcelku – v tomto případě nejčastější slova jsou anglická. Čím méně je
 časté slovo v trénovacích datech, na tím více jednotek se rozpadne. Kdyby se
 jednalo o automatický překlad, na české straně by byly delší jednotky. Navíc by
-ChatGPT v češtině delší odezvu: nejprve by text generoval a teprve potom
+měl ChatGPT v češtině delší odezvu: nejprve by text generoval a teprve potom
 překládal.
 
 ## Kde se berou znalosti, které má ChatGPT? Používá nějaký vyhledávač? {#znalosti}
 
 Všechno, co ChatGPT a všechny jazykové modely vědí o světě, je zakódované
-v naučených parametrech modelu, žádný vyhledávač se používá. To je
+v naučených parametrech modelu, žádný vyhledávač se nepoužívá. To je
 problematické v mnoha ohledech. Jedním problémem je to, že nevíme, z jakého
 zdroje se konkrétní informace vzala. Další problém je, že není úplně snadné
 znalosti v modelu editovat a tak například selektivně odstraňovat dezinformace.
-S tím souvisí další problém a to, že celý systém se trénoval v nějaké době a
+S tím souvisí další problém a to, že se celý systém trénoval v nějaké době a
 neexistuje přímočarý způsob, jak ho aktualizovat. ChatGPT tak nemá znalosti o
 tom, co se stalo pro roce 2020.
 
 Neuronové sítě jsou v obecnosti obtížně interpretovatelné a vysvětlení, jak
-věci uvnitř sítě po jejím trénování, se typicky hledají dodatečně. Nedávné
+věci uvnitř sítě fungují po jejím trénování, se typicky hledají dodatečně. Nedávné
 [experimenty s jazykovými modely na MIT ukázaly](https://rome.baulab.info), že
 faktické znalosti se ukládají distribuovaně do dopředných vrstev. Některá fakta
 je možné lokalizovat a editovat, jiná nikoli. Jak tuto metodu aplikovat ve
@@ -236,19 +236,19 @@ Maryland](https://arxiv.org/abs/2301.10226). V praxi to znamená to, že
 pravděpodobnosti v modelu upraví tak, že některá slova nebo posloupnosti slov
 se vyskytují signifikantně častěji, než v přirozeném textu, ale pro člověka je
 to nepostřehnutelné. Dá se pak relativně snadno testovat, jestli text vodotisk
-obsahuje nebo ne. OpenAI dalo na konci ledna k dispozici [svůj vlastní detektor
+obsahuje, nebo ne. OpenAI dalo na konci ledna k dispozici [svůj vlastní detektor
 generovaného textu](https://platform.openai.com/ai-text-classifier).
 
 Pokud se nástroje na detekci automaticky generovaného textu rozšíří, může to
 odstartovat nikdy nekončící hru na kočku a myš. Ten, kdo má k dispozici
 detektor generovaného textu a může ho donekonečna pouštět, ho také může použít
 pro trénování dalšího, menšího jazykového modelu, který bude parafrázovat
-původní text, tak aby neměnil obsah a obelhal detektor.
+původní text tak, aby neměnil obsah a obelhal detektor.
 
 Podle mého názoru je snaha omezovat používání jazykových modelů předem
 odsouzená k neúspěchu. Nemá smysl nic zakazovat, ale je potřeba žáky připravit
 na svět s umělou inteligencí. Technologie jako ChatGPT do budoucna změní
-způsob, jakým se pracuje se znalostmi a školy by na to měly žáky a studující
+způsob, jakým se pracuje se znalostmi, a školy by na to měly žáky a studující
 připravit.
 
 ## Jazykové modely mají své odpůrce, kteří je považují za nebezpečnou technologii. V čem je to nebezpečí? {#nebezpeci}
@@ -266,7 +266,7 @@ politický extremismus). Protože se model učí napodobovat trénovací data, u
 nevyhnutelně napodobovat i toto chování, které není žádoucí.
 [Studie](https://aclanthology.org/2021.acl-long.416), které zkoumají menší
 jazykové modely v reáliích USA, došly k velmi znepokojivým výsledkům. Když to
-spojíme s dalším problematickou vlastností všech neuronových sítí, a to je
+spojíme s další problematickou vlastností všech neuronových sítí, a to je
 neprůhlednost modelů, kdy nevíme, proč došlo k nějakému rozhodnutí, dostáváme
 se do situace, kdy nevíme, jestli model negeneruje nějaký výstup na základě
 rasistických nebo sexistických předsudků, které byly v trénovacích datech.
@@ -274,7 +274,7 @@ rasistických nebo sexistických předsudků, které byly v trénovacích datec
 V odborné komunitě proti používání jazykových modelů hlasitě vystupuje
 profesorka Emily Bender z University of Washington. Její argumenty vycházejí
 z předpokladu, že jazykový význam je vlastně záměr člověka, který něco říká
-nebo píše. Jazykové modely nemají žádný záměr nemají a jenom sofistikovaně
+nebo píše. Jazykové modely žádný záměr nemají a jenom sofistikovaně
 v různých variacích papouškují, co bylo v trénovacích datech. Podle tohoto
 argumentu pak není možné bezpečně jazykové modely použít, protože model nemůže
 vědět, co se _má nebo nemá_, ale jenom co se _dělá nebo nedělá_. To navíc často
@@ -298,6 +298,6 @@ prostřednictvím zpětnovazebního učení dostat co nejvíce palců nahoru od
 anotátorů.
 
 To ale nic nemění na tom, že jazykové modely často velmi nenápadně replikují
-rasové, genderové a jiné předsudky z trénovacích dat, a že generují velmi
+rasové, genderové a jiné předsudky z trénovacích dat a že generují velmi
 věrohodně znějící nepravdivé texty. Pokud se s tím nic neudělá a pokud si to
 uživatelé nebudou uvědomovat, může to způsobit nemalé společenské škody.
