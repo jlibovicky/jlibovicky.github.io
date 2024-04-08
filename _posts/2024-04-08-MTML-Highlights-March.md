@@ -7,7 +7,7 @@ lang: en
 
 ### [Did Translation Models Get More Robust Without Anyone Even Noticing?](https://arxiv.org/abs/2403.03923v1)
 
-Folks from Libsbon study how robust the newest MT systems are against source-side noise. Machine translation using large models, including translation-specific NLLB or via LLMs (such as Tower or GPT-3.5), is much more robust both towards synthetic noise (the nice feature of synthetic noise is that you can check the translation quality for different noise levels) and also real-world noisy data from social networks.
+Folks from Lisbon study how robust the newest MT systems are against source-side noise. Machine translation using large models, including translation-specific NLLB or via LLMs (such as Tower or GPT-3.5), is much more robust both towards synthetic noise (the nice feature of synthetic noise is that you can check the translation quality for different noise levels) and also real-world noisy data from social networks.
 
 ### [Tracing the Roots of Facts in Multilingual Language Models: Independent, Shared, and Transferred Knowledge](https://arxiv.org/abs/2403.05189v1)
 
@@ -19,4 +19,4 @@ A negative result LREC paper from the University of Helsinki shows that continue
 
 ### [Is Translation All You Need? A Study on Solving Multilingual Tasks with Large Language Models](https://arxiv.org/abs/2403.10258)
 
-A study from several institutions in Singapore attempts to evaluate the multilingual abilities of LLMs while comparing ChatGPT, LLaMA 2, and Mistral. For the established more linguistic NLP tasks such as natural langauge inference or paraphrase detection, the best strategy was to translate the input into English and do the task in English. For prompts from ShareGPT (a web page where users can upload their experience with ChatGPT), the situation was slightly different, and it appears that for prompts that require cultural knowledge, it is better to prompt the model in the language.
+A study from several institutions in Singapore attempts to evaluate the multilingual abilities of LLMs while comparing ChatGPT, LLaMA 2, and Mistral. For the established more linguistic NLP tasks such as natural language inference or paraphrase detection, the best strategy was to translate the input into English and do the task in English. For prompts from ShareGPT (a web page where users can upload their experience with ChatGPT), the situation was slightly different, and it appears that for prompts that require cultural knowledge, it is better to prompt the model in the language.
