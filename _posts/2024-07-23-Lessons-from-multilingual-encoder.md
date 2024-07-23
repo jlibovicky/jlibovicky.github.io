@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Lessons learned from analyzing values multilingual encoders and what it means for LLMs"
+title: "Lessons learned from analyzing values in multilingual encoders and what it means for LLMs"
 tags: [en]
 lang: en
 ---
