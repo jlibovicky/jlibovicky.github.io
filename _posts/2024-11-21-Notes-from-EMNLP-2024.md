@@ -13,7 +13,7 @@ The conference had three keynotes: two good and one amazing.
 
 In the first keynote, Percy Liang talked about research on LLMs that they do at Stanford. One topic was LLM-based agents: Percy Liang predicts that LLMs are awaiting their AlphaGo moment so that we will move from coded agents; soon, the big topic will be agents trained with reinforcement learning, in other words, small black boxes operating over big black boxes. I am not completely sure about this.
 
-The second keynote by Anca Dragan discussed reinforcement learning. As always, when talking about reinforcement learning, we saw examples of learning bad objectives that were exploited by the algorithms. An interesting point was 
+The second keynote by Anca Dragan discussed reinforcement learning. As always, when talking about reinforcement learning, we saw examples of learning bad objectives that were exploited by the algorithms. An interesting point was that when using RL in practice, we often need to make choice whther we want a rational agent or a human-like agent.
 
 The third keynote delivered by Tom Griffiths was about Bayesian thinking about LLMs. Initially, I worried about the understandability of the talk because Bayesian typically means plenty of complicated math that I have a hard time understanding, but the talk was excellent. One nice result that he showed in the keynote was that some of the reasoning errors of LLMs (famous example: preferring "A" in multiple-choice QA or being able to decipher substitution ciphers only with popular shifts) can be explained by a high prior from the training data:
 
